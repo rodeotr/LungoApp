@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="LungoApp.Views.Learn.AddMedia.Youtube"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks" 
+             >
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1" Height="40">
+            <TextBox x:Name="LinkTextBox" Width="300" Style="{DynamicResource SignUpTextBoxStyle}" Text="{Binding Path=Link,UpdateSourceTrigger=PropertyChanged}" FontSize="18px" Padding="10 0"   VerticalContentAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="3"/>
+            <TextBlock IsHitTestVisible="False" Text="Link" Margin="10" FontSize="15px" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="DarkGray">
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=LinkTextBox}" Value="">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+        
+        </Grid>
+       
+    </Grid>
+    
+    
+</UserControl>

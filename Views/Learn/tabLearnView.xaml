@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="LungoApp.Views.Learn.tabLearn"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LungoApp.Views.Learn"
+             xmlns:views="clr-namespace:LungoApp.Views.Learn"
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks" 
+             xmlns:vms="clr-namespace:LungoViewModels.ViewModels.Learn;assembly=LungoViewModels" 
+             xmlns:vmsTabs="clr-namespace:LungoViewModels.ViewModels.Learn.Tabs;assembly=LungoViewModels" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.Resources>
+            <DataTemplate DataType="{x:Type vmsTabs:TabAddMediaViewModel}">
+                <views:tabAddMediaView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vmsTabs:TabContinueMediaViewModel}">
+                <views:tabContinueMediaView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vmsTabs:TabAddWordViewModel}">
+                <views:tabAddWordView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vmsTabs:TabAddExpressionViewModel}">
+                <views:tabExpressionsView/>
+            </DataTemplate>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <Border  Grid.Row="0" Background="#fff">
+            <TabControl VerticalAlignment="Bottom" Margin="0 0" Template="{DynamicResource TabControlTemplateLearning}" FontFamily="Century Gothic" FontWeight="Bold"  SelectedIndex="{Binding SelectedTabIndex}" VerticalContentAlignment="Center" HorizontalAlignment="Stretch">
+                <TabItem Template="{DynamicResource TabItemTemplateLearning}" Width="120">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Icon:PackIconMaterial Kind="Plus" Width="15px" Height="15px" Margin="0 0 5 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="green"/>
+                            <TextBlock Text="{DynamicResource Learn_TabAddMedia}" Foreground="#000" FontSize="15" VerticalAlignment="Center"/>
+
+                        </StackPanel>
+                    </TabItem.Header>
+                </TabItem>
+                <TabItem Template="{DynamicResource TabItemTemplateLearning}" Width="200" Margin="10 0">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Icon:PackIconMaterial Kind="Play" Width="15px" Height="15px" Margin="0 0 5 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="green"/>
+                            <TextBlock Text="{DynamicResource Learn_TabContinueMedia}" Foreground="#000" FontSize="15"/>
+                        </StackPanel>
+                    </TabItem.Header>
+                </TabItem>
+                <TabItem Template="{DynamicResource TabItemTemplateLearning}" Width="150" Margin="10 0">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Icon:PackIconMaterial Kind="FormatLetterCaseUpper" Width="15px" Height="15px" Margin="0 0 5 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="green"/>
+                            <TextBlock Text="{DynamicResource Learn_TabAddWord}" Foreground="#000" FontSize="15"/>
+                        </StackPanel>
+                    </TabItem.Header>
+                </TabItem>
+                <TabItem Template="{DynamicResource TabItemTemplateLearning}" Width="190" Margin="10 0">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Icon:PackIconMaterial Kind="CommentPlus" Width="15px" Height="15px" Margin="0 0 5 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="green"/>
+                            <TextBlock Text="{DynamicResource Learn_TabAddExpression}" Foreground="#000" FontSize="15"/>
+                        </StackPanel>
+                    </TabItem.Header>
+                </TabItem>
+
+            </TabControl>
+        </Border>
+        <ContentControl Grid.Row="2"  Content="{Binding CurrentLearnViewModel}"/>
+
+    </Grid>
+</UserControl>

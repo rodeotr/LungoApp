@@ -1,0 +1,745 @@
+﻿<UserControl x:Class="LungoApp.Views.LeftPanel.TabTestOverview"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks" 
+			 
+			 xmlns:local="clr-namespace:LungoApp.Views"
+			 xmlns:xrpb="http://XamlRadialProgressBar/DotNet"
+			 
+			 mc:Ignorable="d" Width="820px" HorizontalAlignment="Left">
+	
+
+	<Border>
+		<Grid Margin="0 40">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="auto"/>
+				<RowDefinition Height="auto"/>
+			</Grid.RowDefinitions>
+			<Border Grid.Row="0" Width="800" Height="250">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width="2.3*"/>
+					</Grid.ColumnDefinitions>
+					<!--<Grid HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2">
+						<Ellipse x:Name="EG_1"
+								 Height="100"
+								 Width="100"
+								 Fill="#A9C220"
+								 />
+						<Ellipse x:Name="EG_2"
+								 Height="100"
+								 Width="100"
+								 Fill="#A9C220"
+								 />
+
+
+					</Grid>-->
+					
+					<Border Grid.Column="0" CornerRadius="40" Margin="10 5 10 20" Background="#eee"/>
+					<Grid Grid.Column="0">
+						<Border Width="50" Height="50" CornerRadius="25" Background="red" HorizontalAlignment="Right" VerticalAlignment="Top" BorderBrush="#FFEA7878" BorderThickness="2">
+							<TextBlock Text="{Binding Model.TotalWordsToBeTested}" Foreground="white" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Arial"/>
+						</Border>
+						<Border  CornerRadius="20" Margin="20">
+							<Border.Background>
+								<ImageBrush Stretch="Fill" ImageSource="/Assets/Images/Avatars/Male/male1.png"/>
+							</Border.Background>
+						</Border>
+					</Grid>
+
+					<Border Grid.Column="1">
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="*"/>
+								<RowDefinition Height="*"/>
+								<RowDefinition Height="*"/>
+								<RowDefinition Height="*"/>
+							</Grid.RowDefinitions>
+							<TextBlock Grid.Row="0" Text="Yasin" Margin="40 0" Foreground="#000" FontSize="40" FontFamily="Yu Gothic UI Semilight"/>
+							<Grid Grid.Row="2">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="*"/>
+									<ColumnDefinition Width="*"/>
+									<ColumnDefinition Width="*"/>
+								</Grid.ColumnDefinitions>
+								<Grid Grid.Column="0">
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="*"/>
+										<ColumnDefinition Width="2*"/>
+									</Grid.ColumnDefinitions>
+									<Icon:PackIconMaterial Grid.Column="0" Kind="FlagVariant" Width="30px" Height="30px"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#000"/>
+									<StackPanel Grid.Column="1" Orientation="Vertical" Margin="10 0 0 0">
+										<TextBlock Text="{Binding Model.StreakCount}" FontSize="25" FontFamily="Arial"/>
+										<TextBlock Text="{DynamicResource TestOverView_Streaks}" FontSize="15" Margin="0 7 0 0" Foreground="#aaa" FontFamily="Eras ITC"/>
+									</StackPanel>
+								</Grid>
+								<Grid Grid.Column="1">
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="*"/>
+										<ColumnDefinition Width="2*"/>
+									</Grid.ColumnDefinitions>
+									<Icon:PackIconMaterial Grid.Column="0" Kind="FormatLetterCase" Width="30px" Height="30px"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#000"/>
+									<StackPanel Grid.Column="1" Orientation="Vertical" Margin="10 0 0 0">
+										<TextBlock Text="{Binding Model.AllTestedWordCount}" FontSize="25"  FontFamily="Arial"/>
+										<TextBlock Text="{DynamicResource TestOverView_TotalWordsPracticed}" FontSize="10" Margin="0 7 0 0" Foreground="#aaa" FontFamily="Eras ITC"/>
+									</StackPanel>
+								</Grid>
+								<Grid Grid.Column="2">
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="*"/>
+										<ColumnDefinition Width="2*"/>
+									</Grid.ColumnDefinitions>
+									<Icon:PackIconMaterial Grid.Column="0" Kind="ArrowUpCircle" Width="30px" Height="30px"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#000"/>
+									<StackPanel Grid.Column="1" Orientation="Vertical" Margin="10 0 0 0">
+										<TextBlock Text="{Binding Model.AllAcedWordCount}" FontSize="25"  FontFamily="Arial"/>
+										<TextBlock Text="{DynamicResource TestOverView_AcedWords}" FontSize="15" Margin="0 7 0 0" Foreground="#aaa" FontFamily="Eras ITC"/>
+									</StackPanel>
+								</Grid>
+							</Grid>
+						</Grid>
+					</Border>
+				</Grid>
+			</Border>
+			<Grid Grid.Row="1" Height="270" Margin="30 25">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="1.6*"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+				<Border Margin="10" Grid.Column="0" Background="#ffffff" CornerRadius="5">
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="0.5*"/>
+							<RowDefinition Height="2*"/>
+						</Grid.RowDefinitions>
+						<Grid>
+							<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="15 0">
+								<Icon:PackIconMaterial Kind="FormatLetterCase" Width="30px" Height="30px"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="green"/>
+								<TextBlock Text="{DynamicResource TestOverView_TestOptions}" FontSize="20" VerticalAlignment="Center" Margin="10 0"/>
+							</StackPanel>
+							<Border VerticalAlignment="Bottom" HorizontalAlignment="Center" Height="1" Width="400" Background="#888"/>
+						</Grid>
+
+						<Grid Grid.Row="1">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*"/>
+								<ColumnDefinition Width="*"/>
+								<ColumnDefinition Width="*"/>
+							</Grid.ColumnDefinitions>
+							<Grid Grid.Column="2">
+								<Grid.RowDefinitions>
+									<RowDefinition Height="*"/>
+									<RowDefinition Height="*"/>
+								</Grid.RowDefinitions>
+								<!--<Grid Grid.Row="0" Margin="5 0">
+									<Border RenderTransformOrigin=".5,.5">
+										<Border.InputBindings>
+											<MouseBinding Gesture="LeftClick" Command="{Binding TabTestCommand}" CommandParameter="Practice_30"/>
+										</Border.InputBindings>
+										<Border.Style>
+											<Style>
+												<Style.Triggers>
+													<Trigger Property="Border.IsMouseOver" Value="True">
+														<Setter Property="Border.RenderTransform">
+															<Setter.Value>
+																<ScaleTransform ScaleX="1.05" ScaleY="1.05" />
+																
+															</Setter.Value>
+														</Setter>
+													</Trigger>
+												</Style.Triggers>
+											</Style>
+										</Border.Style>
+										<Border.Effect>
+											<DropShadowEffect Direction="220" ShadowDepth="2"/>
+										</Border.Effect>
+										<Grid>
+											<Border Height="40" Cursor="Hand" CornerRadius="20" Background="#2b4bf6" BorderBrush="#FFE21761">
+												
+												<TextBlock Text="30" FontSize="25" Margin="0 0 -30 0" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="DejaVu Sans" Foreground="white"/>
+											</Border>
+											<Border Cursor="Hand" Height="40" Width="40" CornerRadius="20 0 0 20" HorizontalAlignment="Left" Background="#1e3ee1">
+												<Icon:PackIconMaterial Kind="Chevronup" Width="25px" Height="25px"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="white"/>
+											</Border>
+										</Grid>
+									</Border>
+									
+								</Grid>
+								<Grid Grid.Row="1" Margin="5 0">
+									<Border RenderTransformOrigin=".5,.5">
+										<Border.InputBindings>
+											<MouseBinding Gesture="LeftClick" Command="{Binding TabTestCommand}" CommandParameter="Practice_30"/>
+										</Border.InputBindings>
+										<Border.Style>
+											<Style>
+												<Style.Triggers>
+													<Trigger Property="Border.IsMouseOver" Value="True">
+														<Setter Property="Border.RenderTransform">
+															<Setter.Value>
+																<ScaleTransform ScaleX="1.05" ScaleY="1.05" />
+
+															</Setter.Value>
+														</Setter>
+													</Trigger>
+												</Style.Triggers>
+											</Style>
+										</Border.Style>
+										<Border.Effect>
+											<DropShadowEffect Direction="220" ShadowDepth="2"/>
+										</Border.Effect>
+										<Grid>
+											<Border Height="40" Cursor="Hand" Margin="0 0 0 5" CornerRadius="20" Background="#415C62" BorderBrush="#FFE21761">
+												<TextBlock Text="60" FontSize="25" Margin="0 0 -30 0" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="DejaVu Sans" Foreground="white"/>
+											</Border>
+											<Border Height="40" Width="40" Margin="0 0 0 5" CornerRadius="20 0 0 20" HorizontalAlignment="Left" Background="#212E31">
+												<Icon:PackIconMaterial Kind="ChevronDoubleUp" Width="25px" Height="25px"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="white"/>
+											</Border>
+										</Grid>
+									</Border>
+									
+								</Grid>-->
+							</Grid>
+							<Grid Grid.Column="0" Margin="15 0 0 0">
+								<Grid>
+									<Border Height="120" Width="120" Cursor="Hand" CornerRadius="60" Background="#0033cc" RenderTransformOrigin=".5,.5">
+									<Border.InputBindings>
+										<MouseBinding Gesture="LeftClick" Command="{Binding TabTestCommand}" CommandParameter="Practice_30"/>
+									</Border.InputBindings>
+									<Border.Style>
+										<Style>
+											<Style.Triggers>
+												<Trigger Property="Border.IsMouseOver" Value="True">
+													<Setter Property="Border.RenderTransform">
+														<Setter.Value>
+															<ScaleTransform ScaleX="1.05" ScaleY="1.05" />
+														</Setter.Value>
+													</Setter>
+												</Trigger>
+											</Style.Triggers>
+										</Style>
+									</Border.Style>
+										<Grid>
+											<Border Width="40px" Height="40px" CornerRadius="20" HorizontalAlignment="Right" VerticalAlignment="Top" Background="Red">
+												<Icon:PackIconMaterial Kind="ChevronUp" Width="20px" Height="20px" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="white"/>
+											</Border>
+											<TextBlock Text="30" FontSize="60" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="white"/>
+										</Grid>
+								</Border>
+
+								</Grid>
+							</Grid>
+							<Grid Grid.Column="1" Margin="15 0 0 0">
+								<Grid>
+									<Border Height="120" Width="120" Cursor="Hand" CornerRadius="60" Background="#009933" RenderTransformOrigin=".5,.5">
+										<Border.InputBindings>
+											<MouseBinding Gesture="LeftClick" Command="{Binding TabTestCommand}" CommandParameter="Practice_60"/>
+										</Border.InputBindings>
+										<Border.Style>
+											<Style>
+												<Style.Triggers>
+													<Trigger Property="Border.IsMouseOver" Value="True">
+														<Setter Property="Border.RenderTransform">
+															<Setter.Value>
+																<ScaleTransform ScaleX="1.05" ScaleY="1.05" />
+															</Setter.Value>
+														</Setter>
+													</Trigger>
+												</Style.Triggers>
+											</Style>
+										</Border.Style>
+										<Grid>
+											<Border Width="40px" Height="40px" CornerRadius="20" HorizontalAlignment="Right" VerticalAlignment="Top" Background="Red">
+												<Icon:PackIconMaterial Kind="ChevronDoubleUp" Width="20px" Height="20px" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="white"/>
+											</Border>
+											<TextBlock FontSize="60" Text="60" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="white"/>
+										</Grid>
+									</Border>
+
+								</Grid>
+							</Grid>
+							<Grid Grid.Column="2" Margin="15 0 0 0">
+								<Grid>
+									<Border Height="120" Width="120" Cursor="Hand" CornerRadius="60" Background="#E52724" RenderTransformOrigin=".5,.5">
+										<Border.InputBindings>
+											<MouseBinding Gesture="LeftClick" Command="{Binding TabTestCommand}" CommandParameter="Practice_All"/>
+										</Border.InputBindings>
+										<Border.Style>
+											<Style>
+												<Style.Triggers>
+													<Trigger Property="Border.IsMouseOver" Value="True">
+														<Setter Property="Border.RenderTransform">
+															<Setter.Value>
+																<ScaleTransform ScaleX="1.05" ScaleY="1.05" />
+															</Setter.Value>
+														</Setter>
+													</Trigger>
+												</Style.Triggers>
+											</Style>
+										</Border.Style>
+										<Icon:PackIconMaterial Kind="Infinity" Width="70px" Height="70px" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="white"/>
+
+									</Border>
+
+								</Grid>
+							</Grid>
+
+						</Grid>
+
+
+					</Grid>
+
+				</Border>
+
+				<Border Margin="10" Grid.Column="1" Background="#fff" CornerRadius="10" Visibility="Visible">
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="*"/>
+							<RowDefinition Height="4*"/>
+						</Grid.RowDefinitions>
+						<Grid>
+							<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="15 0">
+								<Icon:PackIconMaterial Kind="ProgressStar" Width="30px" Height="30px"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FA5586"/>
+                                <TextBlock Text="{DynamicResource TestOverView_TestProgressTitle}" FontSize="20" VerticalAlignment="Center" Margin="10 0"/>
+							</StackPanel>
+							<Border VerticalAlignment="Bottom" HorizontalAlignment="Center" Height="1" Width="350" Background="#888"/>
+
+						</Grid>
+						<Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <!--<xrpb:RadialProgressBar 
+                                Grid.Column="0" 
+                                Value="70"
+                                Width="100" 
+                                Height="100" 
+                                ArcWidth="5" 
+                                InnerBackgroundBrush="#31313F"
+								Foreground="red" />-->
+
+                            <!--<Grid Grid.Row="0" Width="200" HorizontalAlignment="Left">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="1*"/>
+									<ColumnDefinition Width="2*"/>
+								</Grid.ColumnDefinitions>
+								<Icon:PackIconMaterial Grid.Column="0" Kind="Youtube" Width="30px" Height="30px"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="red"/>
+								<TextBlock Grid.Column="1" Text="Neuroscience" FontSize="22" VerticalAlignment="Center"/>
+							</Grid>
+							<Grid Grid.Row="1" Width="200" HorizontalAlignment="Left">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="1*"/>
+									<ColumnDefinition Width="2*"/>
+								</Grid.ColumnDefinitions>
+								<Icon:PackIconMaterial Grid.Column="0" Kind="BowlMix" Width="30px" Height="30px"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#783811"/>
+								<TextBlock Grid.Column="1" Text="B2 Level" FontSize="22" VerticalAlignment="Center"/>
+							</Grid>
+							<Grid Grid.Row="2" Width="200" HorizontalAlignment="Left">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="1*"/>
+									<ColumnDefinition Width="2*"/>
+								</Grid.ColumnDefinitions>
+								<Icon:PackIconMaterial Grid.Column="0" Kind="DesktopMac" Width="30px" Height="30px"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="black"/>
+								<TextBlock Grid.Column="1" Text="Harry Potter" FontSize="22" VerticalAlignment="Center"/>
+							</Grid>-->
+						
+						</Grid>
+					</Grid>
+				</Border>
+
+				<!--<Border Grid.Column="0" Width="360" Height="250" HorizontalAlignment="Left" CornerRadius="20">
+					<Border.Background>
+						<ImageBrush Stretch="Fill" ImageSource="/Assets/Images/exam.jpg"/>
+					</Border.Background>
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="*"/>
+						</Grid.ColumnDefinitions>
+					   
+						-->
+				<!--<Border Margin="30 30 0 0" Width="70px" Height="70px" HorizontalAlignment="Left" VerticalAlignment="Top" Background="white" CornerRadius="35">
+							<Icon:PackIconMaterial Kind="Run" Width="50px" Height="50px"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="black"/>
+						</Border>-->
+				<!--
+						<Grid Grid.Column="1">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="*"/>
+								<RowDefinition Height="*"/>
+								<RowDefinition Height="*"/>
+								<RowDefinition Height="*"/>
+							</Grid.RowDefinitions>
+							<TextBlock Grid.Row="0" Grid.Column="1" Margin="0 10" Text="Quiz" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="EmojiOne Color"/>
+							<Grid Grid.Row="1" >
+								<Border  Height="40" Margin="20 0" Cursor="Hand" CornerRadius="20" Background="#2b4bf6" BorderBrush="#FFE21761">
+									<Border.InputBindings>
+										<MouseBinding Gesture="LeftClick" Command="{Binding TabTestCommand}" CommandParameter="Practice_30"/>
+									</Border.InputBindings>
+									<Border.Style>
+										<Style>
+											<Style.Triggers>
+												<Trigger Property="Border.IsMouseOver" Value="True">
+													<Setter Property="Border.RenderTransform">
+														<Setter.Value>
+															<ScaleTransform ScaleX="1.05" ScaleY="1.05" />
+														</Setter.Value>
+													</Setter>
+												</Trigger>
+											</Style.Triggers>
+										</Style>
+									</Border.Style>
+									<Border.Effect>
+										<DropShadowEffect Direction="220" ShadowDepth="2"/>
+									</Border.Effect>
+									<TextBlock Text="30" FontSize="35" Margin="0 0 -30 0" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="DejaVu Sans" Foreground="white"/>
+								</Border>
+								<Border Height="40" Width="40" Margin="20 0 0 0" CornerRadius="20 0 0 20" HorizontalAlignment="Left" Background="#1e3ee1">
+									<Icon:PackIconMaterial Kind="Chevronup" Width="25px" Height="25px"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="white"/>
+								</Border>
+							</Grid>
+							<Grid Grid.Row="2" >
+								<Border Height="40" Cursor="Hand" Margin="20 0" CornerRadius="20" Background="#415C62" BorderBrush="#FFE21761">
+									<Border.InputBindings>
+										<MouseBinding Gesture="LeftClick" Command="{Binding TabTestCommand}" CommandParameter="Practice_60"/>
+									</Border.InputBindings>
+									<Border.Style>
+										<Style>
+											<Style.Triggers>
+												<Trigger Property="Border.IsMouseOver" Value="True">
+													<Setter Property="Border.RenderTransform">
+														<Setter.Value>
+															<ScaleTransform ScaleX="1.05" ScaleY="1.05" />
+														</Setter.Value>
+													</Setter>
+												</Trigger>
+											</Style.Triggers>
+										</Style>
+									</Border.Style>
+									<Border.Effect>
+										<DropShadowEffect Direction="220" ShadowDepth="2"/>
+									</Border.Effect>
+									<TextBlock Text="60" FontSize="35" Margin="0 0 -30 0" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="DejaVu Sans" Foreground="white"/>
+								</Border>
+								<Border Height="40" Width="40" Margin="20 0 0 0" CornerRadius="20 0 0 20" HorizontalAlignment="Left" Background="#212E31">
+									<Icon:PackIconMaterial Kind="ChevronDoubleUp" Width="25px" Height="25px"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="white"/>
+								</Border>
+							</Grid>
+							<Grid Grid.Row="3" >
+								<Border  Height="40" Cursor="Hand" Margin="20 0" CornerRadius="20" Background="#E52724" BorderBrush="#FFE21761">
+									<Border.InputBindings>
+										<MouseBinding Gesture="LeftClick" Command="{Binding TabTestCommand}" CommandParameter="Practice_All"/>
+									</Border.InputBindings>
+									<Border.Style>
+										<Style>
+											<Style.Triggers>
+												<Trigger Property="Border.IsMouseOver" Value="True">
+													<Setter Property="Border.RenderTransform">
+														<Setter.Value>
+															<ScaleTransform ScaleX="1.05" ScaleY="1.05" />
+														</Setter.Value>
+													</Setter>
+												</Trigger>
+											</Style.Triggers>
+										</Style>
+									</Border.Style>
+									<Border.Effect>
+										<DropShadowEffect Direction="220" ShadowDepth="2"/>
+									</Border.Effect>
+									<Icon:PackIconMaterial Kind="Infinity" Margin="0 0 -30 0" Width="40px" Height="40px"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="white"/>
+
+									-->
+				<!--<TextBlock Text="60" FontSize="35" Margin="0 0 -30 0" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="DejaVu Sans" Foreground="white"/>-->
+				<!--
+								</Border>
+								<Border Height="40" Width="40" Margin="20 0 0 0" CornerRadius="20 0 0 20" HorizontalAlignment="Left" Background="#6E0E0D">
+									<Icon:PackIconMaterial Kind="ChevronTripleUp" Width="25px" Height="25px"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="white"/>
+								</Border>
+							</Grid>
+							
+						</Grid>
+						
+					</Grid>
+				</Border>
+				<Border Grid.Column="1" Width=" 360" Height="250" HorizontalAlignment="Left" CornerRadius="20">
+					<Border.Background>
+						<ImageBrush Stretch="Fill" ImageSource="/Assets/Images/collection.png"/>
+					</Border.Background>
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="2*"/>
+							<ColumnDefinition Width="1.5*"/>
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="*"/>
+							<RowDefinition Height="*"/>
+						</Grid.RowDefinitions>
+						<Icon:PackIconMaterial Kind="Rhombus" Width="70px" Height="70px" Margin="40 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="white"/>
+						<TextBlock Grid.Row="0" Grid.Column="1" Margin="-80 0 0 0" Foreground="white" Text="Collections" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="EmojiOne Color"/>
+						<Border Grid.Row="1" Grid.Column="1" BorderThickness="3" Height="80" Margin="0 0 15 0" CornerRadius="40" Background="white" BorderBrush="#FFE21761">
+							<TextBlock Text="GO" FontSize="45" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Cascadia Code SemiLight"/>
+						</Border>
+					</Grid>
+				</Border>-->
+
+			</Grid>
+
+		</Grid>
+	</Border>
+
+	<!--<Grid Margin="10 0 0 0">
+		<Grid.Resources>
+			<Style x:Key="testBorderStyle" TargetType="Border">
+				<Setter Property="Margin" Value="0"/>
+				<Setter Property="Cursor" Value="Hand"/>
+				<Setter Property="Width" Value="180px"/>
+				<Setter Property="Height" Value="180px"/>
+				<Setter Property="CornerRadius" Value="5"/>
+				<Setter Property="Effect">
+					<Setter.Value>
+						<DropShadowEffect Direction="250" ShadowDepth="3"/>
+					</Setter.Value>
+				</Setter>
+			</Style>
+		   
+		</Grid.Resources>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="6*"/>
+			<RowDefinition Height="5*"/>
+			<RowDefinition Height="5*"/>
+			<RowDefinition Height="*"/>
+			
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			-->
+	<!--<ColumnDefinition Width="*"/>-->
+	<!--
+			<ColumnDefinition Width="1.1*"/>
+			<ColumnDefinition Width="1*"/>
+			<ColumnDefinition Width="1*"/>
+			<ColumnDefinition Width="1*"/>
+		</Grid.ColumnDefinitions>
+		<Border Grid.Column="0" Grid.Row="0" Grid.RowSpan="4" Margin="20 100 20 50">
+			<Border.Background>
+				<ImageBrush ImageSource="/Views/LeftPanel/phot.png"/>
+			</Border.Background>
+
+		</Border>
+		<Border  Style="{StaticResource testBorderStyle}" Grid.Row="0" Grid.ColumnSpan="5" Grid.Column="1" Width="400px" Height="150" Cursor="Arrow" Background="#20bf55" Margin="0 0 0 20" CornerRadius="10"  HorizontalAlignment="Left">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+				<Grid Grid.Column="1" Grid.ColumnSpan="2">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width="*"/>
+					</Grid.ColumnDefinitions>
+					<Border Grid.Column="0" CornerRadius="10" Background="#20bf55">
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="*"/>
+								<RowDefinition Height="*"/>
+							</Grid.RowDefinitions>
+							<StackPanel Orientation="Vertical" Grid.Row="0">
+								<Icon:PackIconMaterial Kind="Calendar" Width="30px" Height="30px" Margin="0 10 0 0" HorizontalAlignment="Center" Foreground="white"/>
+								<TextBlock Text="{Binding LastTimeReviewed}" VerticalAlignment="Center" Foreground="#fff" HorizontalAlignment="Center" Margin="0 10 0 0" FontSize="15px"/>
+							</StackPanel>
+							<StackPanel Orientation="Vertical" Grid.Row="1">
+								<Icon:PackIconMaterial Kind="DiamondStone" Width="20px" Height="20px" Margin="0 10 0 0" HorizontalAlignment="Center" Foreground="white"/>
+								<TextBlock Text="{Binding StreakCount}" VerticalAlignment="Center" Foreground="#fff" HorizontalAlignment="Center" Margin="0 0 0 0" FontSize="25px"/>
+							</StackPanel>
+						</Grid>
+						
+					</Border>
+					<Border Grid.Column="1" Background="#0b4f6c" CornerRadius="0 10 10 0">
+						<StackPanel Orientation="Vertical" Height="auto">
+							-->
+	<!--<TextBlock Text="To Test" Foreground="#fff" Margin="0 10 0 0" HorizontalAlignment="Center" FontSize="15px"/>-->
+	<!--
+							<TextBlock Text="Growth" Margin="0 5 0 0" Padding="0" Foreground="#fff" HorizontalAlignment="Center" FontSize="15px"/>
+							<Icon:PackIconMaterial Kind="LeafMaple" Width="80px" Height="80px" Margin="0 20 0 0"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="white"/>
+						</StackPanel>
+					</Border>
+
+
+				</Grid>
+				<Border Grid.Column="0" Width="auto" Background="#0297db" CornerRadius="10">
+					<StackPanel Orientation="Vertical">
+						-->
+	<!--<TextBlock Text="To Test" Foreground="#fff" Margin="0 10 0 0" HorizontalAlignment="Center" FontSize="15px"/>-->
+	<!--
+						<Icon:PackIconMaterial Kind="TestTube" Width="30px" Height="30px" Margin="0 10 0 0" HorizontalAlignment="Center" Foreground="white"/>
+						<TextBlock Text="{Binding TotalWordsToReview}" LineStackingStrategy="BlockLineHeight" VerticalAlignment="Center" LineHeight="60" Margin="0 15 0 0" Padding="0" Foreground="#fff" HorizontalAlignment="Center" FontSize="70px"/>
+						<TextBlock Text="
+	" Foreground="#fff"  HorizontalAlignment="Center" FontSize="15px"/>
+					</StackPanel>
+				</Border>
+			   
+			</Grid>
+			-->
+	<!--<TextBlock Text="To Test " Foreground="#fff"/>-->
+	<!--
+		</Border>
+		-->
+	<!--<TextBlock Grid.Row="0" Text="{Binding TextTotalWordsToTest}" Grid.ColumnSpan="3" Foreground="white"/>-->
+	<!--
+		<Border Style="{StaticResource testBorderStyle}" Grid.Row="1" Grid.Column="1" Background="#4ba9c6">
+			<Border.InputBindings>
+				<MouseBinding Gesture="LeftClick" Command="{Binding TabTestCommand}" CommandParameter="Practice_30"/>
+			</Border.InputBindings>
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="2*"/>
+					<RowDefinition Height="*"/>
+				</Grid.RowDefinitions>
+				<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="5 5 0 0">
+					<Icon:PackIconMaterial Kind="Dumbbell" Width="17px" Height="17px" Margin="5 5 0 0" VerticalAlignment="Center" Foreground="white"/>
+					<TextBlock Text="Test" VerticalAlignment="Center" FontWeight="Bold" Margin="10 0 0 0" FontSize="15" Foreground="white"/>
+				</StackPanel>
+				<StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center">
+					<TextBlock Text="30" VerticalAlignment="Center" HorizontalAlignment="Center"   FontSize="50" Foreground="white" FontFamily="Berlin Sans FB"/>
+					<TextBlock Text="Words" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Foreground="white" FontFamily="Berlin Sans FB"/>
+				</StackPanel>
+				<StackPanel Grid.Row="2" Orientation="Horizontal" TextBlock.FontSize="8px" Margin="10 0 0 0">
+					<TextBlock Text="Last Time Reviewed" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="white"/>
+					<TextBlock Text="30/09/2022" Margin="15 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="white"/>
+				</StackPanel>
+			</Grid>
+		</Border>
+		<Border Style="{StaticResource testBorderStyle}" Grid.Row="1" Grid.Column="2" Background="#eb4034">
+			<Border.InputBindings>
+				<MouseBinding Gesture="LeftClick" Command="{Binding TabTestCommand}" CommandParameter="Practice_60"/>
+			</Border.InputBindings>
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="2*"/>
+					<RowDefinition Height="*"/>
+				</Grid.RowDefinitions>
+				<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="5 5 0 0">
+					<Icon:PackIconMaterial Kind="Dumbbell" Width="17px" Height="17px" Margin="5 5 0 0" VerticalAlignment="Center" Foreground="white"/>
+					<TextBlock Text="Test" VerticalAlignment="Center" FontWeight="Bold" Margin="10 0 0 0" FontSize="15" Foreground="white"/>
+				</StackPanel>
+				<StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center">
+					<TextBlock Text="60" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="50" Foreground="white" FontFamily="Berlin Sans FB"/>
+					<TextBlock Text="Words" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Foreground="white" FontFamily="Berlin Sans FB"/>
+				</StackPanel>
+				<StackPanel Grid.Row="2" Orientation="Horizontal" TextBlock.FontSize="8px" Margin="10 0 0 0">
+					<TextBlock Text="Last Time Reviewed" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="white"/>
+					<TextBlock Text="30/09/2022" Margin="15 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="white"/>
+				</StackPanel>
+			</Grid>
+		</Border>
+		<Border Style="{StaticResource testBorderStyle}" Grid.Row="1" Grid.Column="3" Background="#03991c">
+			<Border.InputBindings>
+				<MouseBinding Gesture="LeftClick" Command="{Binding TabTestCommand}" CommandParameter="Practice_All"/>
+			</Border.InputBindings>
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="2*"/>
+					<RowDefinition Height="*"/>
+				</Grid.RowDefinitions>
+				<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="5 5 0 0">
+					<Icon:PackIconMaterial Kind="Run" Width="17px" Height="17px" Margin="5 5 0 0" VerticalAlignment="Center" Foreground="white"/>
+					<TextBlock Text="Test" VerticalAlignment="Center" FontWeight="Bold" Margin="10 0 0 0" FontSize="15" Foreground="white"/>
+				</StackPanel>
+				<StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center">
+					<TextBlock Text="∞" VerticalAlignment="Center" Margin="0 -13 0 0" HorizontalAlignment="Center" FontWeight="Bold" FontSize="60" Foreground="white"/>
+					<TextBlock Text="Words" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="15" Foreground="white"/>
+				</StackPanel>
+				<StackPanel Grid.Row="2" Orientation="Horizontal" TextBlock.FontSize="8px" Margin="10 0 0 0">
+					<TextBlock Text="Last Time Reviewed" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="white"/>
+					<TextBlock Text="30/09/2022" Margin="15 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="white"/>
+				</StackPanel>
+			</Grid>
+		</Border>
+		<Border Style="{StaticResource testBorderStyle}" Grid.Row="2" Grid.Column="1" Background="#0511ed">
+			<Border.InputBindings>
+				<MouseBinding Gesture="LeftClick" Command="{Binding TabTestCommand}" CommandParameter="Practice_Episodes"/>
+			</Border.InputBindings>
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="2*"/>
+					<RowDefinition Height="*"/>
+				</Grid.RowDefinitions>
+				<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="5 5 0 0">
+					<Icon:PackIconMaterial Kind="Sofa" Width="17px" Height="17px" Margin="5 5 0 0" VerticalAlignment="Center" Foreground="white"/>
+					<TextBlock Text="Test" VerticalAlignment="Center" FontWeight="Bold" Margin="10 0 0 0" FontSize="15" Foreground="white"/>
+				</StackPanel>
+				<StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center">
+					<Icon:PackIconMaterial Kind="DesktopMac" Width="50px" Height="50px" Margin="0 10 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="white"/>
+					-->
+	<!--<TextBlock Text="∞" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"  FontSize="40" Foreground="white"/>-->
+	<!--
+					<TextBlock Text="Episodes" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="15" Foreground="white"/>
+				</StackPanel>
+				<StackPanel Grid.Row="2" Orientation="Horizontal" TextBlock.FontSize="8px" Margin="10 0 0 0">
+					<TextBlock Text="Last Time Reviewed" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="white"/>
+					<TextBlock Text="30/09/2022" Margin="15 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="white"/>
+				</StackPanel>
+			</Grid>
+		</Border>
+		<Border Style="{StaticResource testBorderStyle}" Grid.Row="2" Grid.Column="2" Background="#c20a60">
+			<Border.InputBindings>
+				<MouseBinding Gesture="LeftClick" Command="{Binding TabTestCommand}" CommandParameter="Practice_Videos"/>
+			</Border.InputBindings>
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="2*"/>
+					<RowDefinition Height="*"/>
+				</Grid.RowDefinitions>
+				<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="5 5 0 0">
+					<Icon:PackIconMaterial Kind="Sofa" Width="17px" Height="17px" Margin="5 5 0 0" VerticalAlignment="Center" Foreground="white"/>
+					<TextBlock Text="Test" VerticalAlignment="Center" FontWeight="Bold" Margin="10 0 0 0" FontSize="15" Foreground="white"/>
+				</StackPanel>
+				<StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center">
+					<Icon:PackIconMaterial Kind="Youtube" Width="50px" Height="50px" Margin="0 10 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="white"/>
+					-->
+	<!--<TextBlock Text="∞" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"  FontSize="40" Foreground="white"/>-->
+	<!--
+					<TextBlock Text="Videos" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="15" Foreground="white"/>
+				</StackPanel>
+				<StackPanel Grid.Row="2" Orientation="Horizontal" TextBlock.FontSize="8px" Margin="10 0 0 0">
+					<TextBlock Text="Last Time Reviewed" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="white"/>
+					<TextBlock Text="30/09/2022" Margin="15 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="white"/>
+				</StackPanel>
+			</Grid>
+		</Border>
+		<Border Style="{StaticResource testBorderStyle}" Grid.Row="2" Grid.Column="3" Background="#00786a">
+			<Border.InputBindings>
+				<MouseBinding Gesture="LeftClick" Command="{Binding TabTestCommand}" CommandParameter="Practice_Movies"/>
+			</Border.InputBindings>
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="2*"/>
+					<RowDefinition Height="*"/>
+				</Grid.RowDefinitions>
+				<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="5 5 0 0">
+					<Icon:PackIconMaterial Kind="Sofa" Width="17px" Height="17px" Margin="5 5 0 0" VerticalAlignment="Center" Foreground="white"/>
+					<TextBlock Text="Test" VerticalAlignment="Center" FontWeight="Bold" Margin="10 0 0 0" FontSize="15" Foreground="white"/>
+				</StackPanel>
+				<StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center">
+					<Icon:PackIconMaterial Kind="Filmstrip" Width="50px" Height="50px" Margin="0 10 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="white"/>
+					-->
+	<!--<TextBlock Text="∞" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"  FontSize="40" Foreground="white"/>-->
+	<!--
+					<TextBlock Text="Movies" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="15" Foreground="white"/>
+				</StackPanel>
+				<StackPanel Grid.Row="2" Orientation="Horizontal" TextBlock.FontSize="8px" Margin="10 0 0 0">
+					<TextBlock Text="Last Time Reviewed" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="white"/>
+					<TextBlock Text="30/09/2022" Margin="15 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="white"/>
+				</StackPanel>
+			</Grid>
+		</Border>
+	   
+	</Grid>-->
+</UserControl>

@@ -1,0 +1,119 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <StartupObject></StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Images\Avatars\Female\female1.png" />
+    <None Remove="Assets\Images\Avatars\Male\male1.png" />
+    <None Remove="Assets\Images\book.jpg" />
+    <None Remove="Assets\Images\book1.png" />
+    <None Remove="Assets\Images\cloudd.png" />
+    <None Remove="Assets\Images\collection.png" />
+    <None Remove="Assets\Images\despacito.jpg" />
+    <None Remove="Assets\Images\exam.jpg" />
+    <None Remove="Assets\Images\got.jpg" />
+    <None Remove="Assets\Images\harry.jpg" />
+    <None Remove="Assets\Images\LanguageFlags\en.png" />
+    <None Remove="Assets\Images\phot.png" />
+    <None Remove="Assets\Images\success.jpg" />
+    <None Remove="ResourceDictionary\WordParsing.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="ResourceDictionary\LangEnglish.xaml" />
+    <Page Remove="ResourceDictionary\WordParsing.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LoadingSpinner.WPF" Version="1.0.0" />
+    <PackageReference Include="MahApps.Metro.IconPacks" Version="4.11.0" />
+    <PackageReference Include="Prism.Core" Version="8.1.97" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LungViewModels\LungoViewModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Content\Collections\0v79a1k4ec\" />
+    <Folder Include="Content\Collections\42pxau75fm\" />
+    <Folder Include="Content\Collections\7zg5ftmmme\" />
+    <Folder Include="Content\Collections\fpuyht0pra\" />
+    <Folder Include="Content\Collections\l7chgmxokp\" />
+    <Folder Include="Content\Collections\p5bji3shbo\" />
+    <Folder Include="Content\Collections\pow5vzww5a\" />
+    <Folder Include="Content\Collections\r79m9qf2uu\" />
+    <Folder Include="Content\Collections\ykawuxjaq6\" />
+    <Folder Include="Content\Collections\yxound39f0\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Images\Avatars\Female\female1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\Avatars\Male\male1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\book.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\book1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\cloudd.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\collection.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\despacito.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\exam.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\got.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\harry.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\LanguageFlags\en.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\phot.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\success.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceDictionary\LangEnglish.xaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceDictionary\WordParsing.xaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ResourceDictionary\WordParsing.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="ResourceDictionary\LangTurkish.xaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+  </ItemGroup>
+
+</Project>

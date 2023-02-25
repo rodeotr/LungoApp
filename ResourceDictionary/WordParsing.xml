@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<REGEX_PATTERNS>
+	<IndividiualWordPattern>\b[^\d\W][\w'-]+|[I]\b</IndividiualWordPattern>
+	<SRT_TimePattern>\b[\d]{2}:[\d]{2}:[\d]{2},[\d]{3} --> \b[\d]{2}:[\d]{2}:[\d]{2},[\d]{3}</SRT_TimePattern>
+
+</REGEX_PATTERNS>

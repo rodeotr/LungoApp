@@ -1,0 +1,144 @@
+﻿<Window x:Class="LungoApp.Windows.Collections.EditCollectionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LungoApp"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks" 
+        mc:Ignorable="d" Height="550" Width="380" Background="Transparent"
+        AllowsTransparency="True"
+        WindowStyle="None" WindowStartupLocation="CenterScreen"
+        Title="ShowContextsWindow">
+    <Window.Resources>
+        <Style x:Key="Titles" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="FontFamily" Value="Sniglet"/>
+            <Setter Property="Margin" Value="25 0 0 0"/>
+            <Setter Property="FontWeight" Value="ExtraBlack"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="Values" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Regular"/>
+            <!--<Setter Property="Margin" Value="0 0 50 0"/>-->
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Sniglet"/>
+            <Setter Property="Foreground" Value="#85868a"/>
+            <Setter Property="TextAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+    <Border CornerRadius="5" Background="#fff">
+        <Grid TextBlock.FontSize="15">
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.4*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.3*"/>
+            </Grid.RowDefinitions>
+
+            <!--<Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="7" Opacity="0.1">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1" SpreadMethod="Repeat">
+                        <GradientStop Offset="0" Color="#008B74"/>
+                        <GradientStop Offset="0.5" Color="Black"/>
+                        <GradientStop Offset="0.5" Color="#005e52"/>
+                        <GradientStop Offset="1" Color="Black"/>
+
+                        <LinearGradientBrush.RelativeTransform>
+                            <ScaleTransform ScaleX="0.3" ScaleY="0.3"/>
+                        </LinearGradientBrush.RelativeTransform>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>-->
+
+            <Button Style="{StaticResource topButton}" Grid.Row="0" Grid.Column="1" Margin="5 13" Width="40px" Height="40px" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Close">
+                <Icon:PackIconMaterial Kind="Close" Width="20px" Height="20px" Foreground="black" />
+            </Button>
+            <Icon:PackIconMaterial Grid.Row="0" Margin="0 20 0 0" Grid.Column="0" Grid.ColumnSpan="2" Kind="Rhombus" Width="50px" Height="50px" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#b80278" />
+            <TextBlock Style="{StaticResource Titles}" Grid.Row="1" Grid.Column="0" Text="Name"/>
+            <TextBlock Style="{StaticResource Values}" Grid.Row="1" Grid.Column="1" Text="{Binding Name}"/>
+            <TextBlock Style="{StaticResource Titles}" Grid.Row="2" Grid.Column="0" Text="Total Elements"/>
+            <TextBlock Style="{StaticResource Values}" Grid.Row="2" Grid.Column="1" Text="{Binding TotalElements}" />
+            <TextBlock Style="{StaticResource Titles}" Grid.Row="3" Grid.Column="0" Text="Total Examples" />
+            <TextBlock Style="{StaticResource Values}" x:Name="medium" Grid.Row="3" Grid.Column="1" Text="{Binding TotalExamples}"/>
+            <TextBlock Style="{StaticResource Titles}" Grid.Row="4" Grid.Column="0" Text="Collection Type"/>
+            <TextBlock Style="{StaticResource Values}" Grid.Row="4" Grid.Column="1" Text="{Binding CollectionType}" />
+            <TextBlock Style="{StaticResource Titles}" Grid.Row="5" Grid.Column="0" Text="Creation Time"/>
+            <TextBlock Style="{StaticResource Values}" Grid.Row="5" Grid.Column="1" Text="{Binding CreationTime}"  FontSize="15"/>
+            <TextBlock Style="{StaticResource Titles}" Grid.Row="6" Grid.Column="0" Text="Media Type"/>
+            <TextBlock Style="{StaticResource Values}" Grid.Row="6" Grid.Column="1" Text="{Binding MediaType}" />
+
+
+
+            <Border Grid.Row="7" Height="50" Margin="50 0" Cursor="Hand"  CornerRadius="2" Grid.ColumnSpan="2" MouseDown="PublishToServer">
+                    <Border.Style>
+                        <Style>
+                            <Setter Property="Border.Background" Value="#2b4bf6"/>
+                            <Setter Property="Border.RenderTransformOrigin" Value="0.5, 0.5"/>
+                            <Style.Triggers>
+                                <Trigger Property="Border.IsMouseOver" Value="True">
+                                    <Setter Property="Border.RenderTransform">
+                                        <Setter.Value>
+                                            <ScaleTransform ScaleX="1.05" ScaleY="1.05" />
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="Border.Background" Value="#121f61"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                    <Grid>
+                        <Border Margin="0 0 0 0" Background="#1e3ee1" Width="50" Height="50" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="2" >
+                            <Border.Effect>
+                                <DropShadowEffect Direction="220" ShadowDepth="2"/>
+                            </Border.Effect>
+                            <Icon:PackIconMaterial Kind="CloudUpload" Width="25" Height="25" Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#fff"/>
+                            <!--<Icon:PackIconMaterial Kind="DesktopMac" Width="50" Height="50" Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="ForestGreen"/>-->
+                        </Border>
+                        <TextBlock Text="Publish" Margin="20 0 0 0" FontFamily="Arial" FontWeight="Normal" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#fff"/>
+                    </Grid>
+                </Border>
+           
+            <Border Grid.Row="8" Height="50" Margin="50 0" Cursor="Hand" CornerRadius="2" Grid.ColumnSpan="2">
+                <Border.Style>
+                    <Style>
+                        <Setter Property="Border.Background" Value="#0B834D"/>
+                        <Setter Property="Border.RenderTransformOrigin" Value="0.5, 0.5"/>
+                        <Style.Triggers>
+                            <Trigger Property="Border.IsMouseOver" Value="True">
+                                <Setter Property="Border.RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="1.05" ScaleY="1.05" />
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Border.Background" Value="#053922"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+                <Grid>
+                    <Border Margin="0 0 0 0" Background="#053922" Width="50" Height="50" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="2">
+                        <Border.Effect>
+                            <DropShadowEffect Direction="220" ShadowDepth="2"/>
+                        </Border.Effect>
+                        <Icon:PackIconMaterial Kind="ContentSave" Width="25" Height="25" Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#fff"/>
+                    </Border>
+                    <TextBlock Text="Save" Margin="20 0 0 0"  FontSize="20" FontFamily="Arial" FontWeight="Normal" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#fff"/>
+                </Grid>
+            </Border>
+
+        </Grid>
+    </Border>
+</Window>

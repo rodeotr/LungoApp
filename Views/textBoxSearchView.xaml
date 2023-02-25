@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="LungoApp.Views.textBoxSearch"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:local="clr-namespace:LungoApp.Views"
+             mc:Ignorable="d">
+    <Grid Width="300" HorizontalAlignment="Left">
+        <TextBlock Margin="20 0" VerticalAlignment="Center" Foreground="#b0b9c6"
+                               IsHitTestVisible="False" Panel.ZIndex="1" Text="Search here.."
+                               Visibility="{Binding ElementName=txtSearch}"/>
+        <TextBox x:Name="txtSearch" Style="{StaticResource textBoxSearch}"/>
+        <Icon:PackIconMaterial Kind="Magnify" Width="15" Height="15" VerticalAlignment="Center"
+                                           Margin="0 0 15 0" Foreground="#b0b9c6" HorizontalAlignment="Right"/>
+
+    </Grid>
+</UserControl>

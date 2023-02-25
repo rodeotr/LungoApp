@@ -1,0 +1,216 @@
+﻿<UserControl x:Class="LungoApp.Views.LeftPanel.TabTestView"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks" 
+			 xmlns:xrpb="http://XamlRadialProgressBar/DotNet"
+			 xmlns:local="clr-namespace:LungoApp.Views"
+			 mc:Ignorable="d">
+	
+	<UserControl.Resources>
+		<BooleanToVisibilityConverter x:Key="BoolToVis"/>
+	</UserControl.Resources>
+	
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="2*"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		<DockPanel Grid.Row="0">
+			<Border RenderTransformOrigin=".5,.5" Margin="25 50 0 0" Cursor="Hand" Width="50" Height="50" Background="black" CornerRadius="25" VerticalAlignment="Top" >
+				<Border.InputBindings>
+					<MouseBinding Gesture="LeftClick" Command="{Binding TabTestCommand}" CommandParameter="PromptWarning"/>
+				</Border.InputBindings>
+				<Border.Style>
+					<Style>
+						<Style.Triggers>
+							<Trigger Property="Border.IsMouseOver" Value="True">
+								<Setter Property="Border.RenderTransform">
+									<Setter.Value>
+										<ScaleTransform ScaleX="1.05" ScaleY="1.05" />
+									</Setter.Value>
+								</Setter>
+							</Trigger>
+						</Style.Triggers>
+					</Style>
+				</Border.Style>
+				<Icon:PackIconMaterial  Kind="ArrowLeft" Foreground="white" Width="35px" Height="35px" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+			</Border>
+			<TextBlock Text="Do you know the meaning of .." FontFamily="Century Gothic" Foreground="#000" FontSize="25" Width="400" HorizontalAlignment="Left" TextAlignment="Left" Padding="70 45" TextWrapping="Wrap"/>
+			<!--<TextBlock Text="10" Margin="0 0 20 0" Foreground="AliceBlue" FontSize="15px" HorizontalAlignment="Right" TextAlignment="Center" VerticalAlignment="Center"/>-->
+			<!--<TextBlock Text="{Binding RemainingWords}" Margin="0 0 30 0" FontFamily="Century Gothic" Foreground="#000" FontSize="15px" HorizontalAlignment="Right" TextAlignment="Center" VerticalAlignment="Center"/>-->
+			<Grid Margin="0 60  30 0" HorizontalAlignment="Right">
+				<!--<xrpb:RadialProgressBar Value="{Binding ProgressBarValue}"
+				Width="100" Height="100" ArcWidth="1" InnerBackgroundBrush="#31313F"
+				Foreground="red" />-->
+				<TextBlock Text="{Binding RemainingWordCountString}" FontSize="20" Foreground="white" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+			</Grid>
+			
+		</DockPanel>
+		<Grid Grid.Row="1">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="3*"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+			
+			<Viewbox Grid.Column="1" Height="320" VerticalAlignment="Top">
+				<StackPanel Orientation="Vertical">
+					<Button Style="{DynamicResource ButtonStyleTestWord}" FontFamily="Berlin Sans FB" Content="{Binding Word}" Background="Transparent" BorderThickness="0"   VerticalAlignment="Top" HorizontalAlignment="Center" Command="{Binding TabTestCommand}" CommandParameter="Meaning"/>
+					<Border>
+						<!--<Border.InputBindings>
+							<MouseBinding Gesture="LeftClick" Command="{Binding TabTestCommand}" CommandParameter="ShowImage"/>
+						</Border.InputBindings>-->
+						<StackPanel Orientation="Vertical">
+							<StackPanel Orientation="Horizontal" Margin="0 5 0 0" VerticalAlignment="Center">
+								<Border Cursor="Hand" Margin="1 0" Width="5px" Height="5px" Background="Transparent" VerticalAlignment="Center">
+									<Border.InputBindings>
+										<MouseBinding Gesture="LeftClick" Command="{Binding TabTestCommand}" CommandParameter="Meaning"/>
+									</Border.InputBindings>
+									<Icon:PackIconMaterial Kind="FormatLetterCase" Width="5px" Height="5px"   Foreground="green" />
+								</Border>
+								<Border Cursor="Hand" Margin="1 0" Width="5px" Height="5px" Background="Transparent" VerticalAlignment="Center">
+									<Border.InputBindings>
+										<MouseBinding Gesture="LeftClick" Command="{Binding TabTestCommand}" CommandParameter="ShowImage"/>
+									</Border.InputBindings>
+									<Icon:PackIconMaterial Kind="Image" Width="5px" Height="5px"   Foreground="red" />
+								</Border>
+
+								<!--<Button Style="{DynamicResource ButtonStyleTestWord}" Command="{Binding TabTestCommand}" CommandParameter="ShowImage">
+									<Icon:PackIconMaterial Margin="0 0 0 0" Cursor="Hand" Kind="Image" Width="5px" Height="5px"   Foreground="red" />
+								</Button>-->
+							</StackPanel>
+							<TextBlock Text="{Binding ScoreText}" FontSize="5" Margin="0 20 0 10" HorizontalAlignment="Center"/>
+						</StackPanel>
+						
+					</Border>
+						
+					
+				</StackPanel>
+
+				<!--<Button Style="{DynamicResource ButtonStyleTestWord}" FontFamily="Century Gothic" Content="{Binding Word}" Background="Transparent" BorderThickness="0" Margin="0 0 0 30"  VerticalAlignment="Top" HorizontalAlignment="Center" Command="{Binding TabTestCommand}" CommandParameter="Meaning"/>-->
+			</Viewbox>
+            <ItemsControl Grid.Column="2" Margin="0 0 20 0" ItemsSource="{Binding Members}" HorizontalAlignment="Right">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="2" VerticalAlignment="Top"/>
+                    </ItemsPanelTemplate>
+                    
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Style="{StaticResource gridSaveButton}" Command="{Binding DataContext.TabTestCommand,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type ItemsControl}}}" CommandParameter="{Binding}" Width="40px" Height="40px" Margin="0 10 10 0">
+                            <Icon:PackIconMaterial Kind="{Binding IconKind}" Width="30px" Height="30px" Foreground="#fff" />
+                        </Button>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+			<!--<ListView ItemsSource="{Binding Members}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  x:Name="sss" Width="150" Grid.Column="2" SelectedIndex="{Binding SelectedSourceIndex}" HorizontalAlignment="Right" HorizontalContentAlignment="Left" Background="Transparent" BorderThickness="0" Foreground="#fff" FontSize="15px">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<StackPanel Orientation="Horizontal" >
+							<Icon:PackIconMaterial Kind="{Binding Path=IconKind}" Width="20px" Height="20px" VerticalAlignment="Center" Foreground="#000"/>
+							<TextBlock Width="{Binding ElementName=sss, Path=Width}" Margin="10 0 0 0" TextWrapping="NoWrap"  Text="{Binding Path=MediaName}" HorizontalAlignment="Center" Foreground="#000"/>
+
+						</StackPanel>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>-->
+		
+		</Grid>
+        <Grid Grid.Row="2" TextBlock.Foreground="white" TextBlock.FontSize="60" VerticalAlignment="Center" HorizontalAlignment="Center" TextBlock.FontFamily="Century Gothic" Margin="10 0 10 70">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+			
+			<StackPanel Style="{StaticResource TestConfirmButton}" Grid.Column="0">
+
+				<Border  Height="100" Width="300" CornerRadius="50">
+					<Border.InputBindings>
+						<MouseBinding Gesture="LeftClick" Command="{Binding TabTestCommand}" CommandParameter="YES"/>
+					</Border.InputBindings>
+					<Border.Style>
+						<Style>
+							<Setter Property="Border.Background" Value="ForestGreen"/>
+							<Setter Property="Border.RenderTransformOrigin" Value="0.5, 0.5"/>
+							<Style.Triggers>
+
+								<Trigger Property="Border.IsMouseOver" Value="True">
+									<Setter Property="Border.RenderTransform">
+										<Setter.Value>
+											<ScaleTransform ScaleX="1.05" ScaleY="1.05" />
+										</Setter.Value>
+									</Setter>
+									<Setter Property="Border.Background" Value="#024f14"/>
+								</Trigger>
+							</Style.Triggers>
+						</Style>
+					</Border.Style>
+					<Grid Width="300">
+						<Border Margin="0 0 0 0" Background="white" Width="100" Height="100" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="50">
+							<Border.Effect>
+								<DropShadowEffect Direction="220" ShadowDepth="2"/>
+							</Border.Effect>
+							<Icon:PackIconMaterial Kind="Check" Width="50" Height="50" Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="ForestGreen"/>
+							<!--<Icon:PackIconMaterial Kind="DesktopMac" Width="50" Height="50" Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="ForestGreen"/>-->
+						</Border>
+						<TextBlock Text="YES" Margin="40 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Berlin Sans FB"/>
+					</Grid>
+				</Border>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Center" Margin="15 0">
+				<Border Height="100" Width="300" CornerRadius="50">
+					<Border.InputBindings>
+						<MouseBinding Gesture="LeftClick" Command="{Binding TabTestCommand}" CommandParameter="NO"/>
+					</Border.InputBindings>
+					<Border.Style>
+						<Style>
+							<Setter Property="Border.Background" Value="#f00518"/>
+							<Setter Property="Border.RenderTransformOrigin" Value="0.5, 0.5"/>
+							<Style.Triggers>
+
+								<Trigger Property="Border.IsMouseOver" Value="True">
+									<Setter Property="Border.RenderTransform">
+										<Setter.Value>
+											<ScaleTransform x:Name="AnimatedBorderNo" ScaleX="1.05" ScaleY="1.05" />
+										</Setter.Value>
+									</Setter>
+									<Setter Property="Border.Background" Value="#690303"/>
+								</Trigger>
+								<!--<EventTrigger RoutedEvent="Border.MouseEnter">
+									<BeginStoryboard>
+										<Storyboard>
+											<DoubleAnimation  Storyboard.TargetName="AnimatedBorderNo"
+													Storyboard.TargetProperty="(ScaleTransform)"
+													To="3" Duration="0:0:02" AutoReverse="True"/>
+										</Storyboard>
+									</BeginStoryboard>
+								</EventTrigger>-->
+							</Style.Triggers>
+						</Style>
+					</Border.Style>
+					<Grid Width="300">
+						<Border Background="white" Width="100" Height="100" Margin="0 0 0 0" HorizontalAlignment="Right" VerticalAlignment="Center" CornerRadius="50">
+							<Border.Effect>
+								<DropShadowEffect Direction="220" ShadowDepth="2"/>
+							</Border.Effect>
+							<Icon:PackIconMaterial Kind="Close" Width="50" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#f00518"/>
+						</Border>
+						<TextBlock Text="NO" Margin="-40 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Berlin Sans FB"/>
+					</Grid>
+				</Border>
+			</StackPanel>
+			
+
+
+
+
+
+
+		</Grid>
+	</Grid>
+</UserControl>

@@ -1,0 +1,56 @@
+﻿<Window x:Class="LungoApp.Windows.AddToCollectionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LungoApp"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks" 
+        mc:Ignorable="d" Height="250" Width="400" Background="Transparent"
+        AllowsTransparency="True"
+        WindowStyle="None" WindowStartupLocation="CenterScreen"
+        Title="ShowContextsWindow">
+    <Border CornerRadius="20" Background="#0288b5">
+        <Grid Margin="15 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.7*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button Style="{StaticResource topButton}" Grid.Row="0" Grid.Column="1" Margin="0 13" Width="40px" Height="40px" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Close">
+                <Icon:PackIconMaterial Kind="Close" Width="20px" Height="20px" Foreground="white" />
+            </Button>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Collection" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="white" FontSize="20"/>
+            <ComboBox Width="150" x:Name="collection" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20"/>
+
+            <Border Grid.Row="4" Grid.Column="0" MouseLeftButtonDown="AddButtonDown" Grid.ColumnSpan="2" Cursor="Hand" Height="50" Width="120" Margin="10 0" CornerRadius="25">
+               
+                <Border.Style>
+                    <Style>
+                        <Setter Property="Border.Background" Value="#2db521"/>
+                        <Setter Property="Border.RenderTransformOrigin" Value="0.5, 0.5"/>
+                        <Style.Triggers>
+
+                            <Trigger Property="Border.IsMouseOver" Value="True">
+                                <Setter Property="Border.RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="1.05" ScaleY="1.05" />
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Border.Background" Value="#024f14"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+                <Grid Width="120">
+                    <TextBlock Text="Add" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#fff"/>
+                </Grid>
+            </Border>
+
+
+        </Grid>
+    </Border>
+</Window>

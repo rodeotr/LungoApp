@@ -1,0 +1,250 @@
+﻿<UserControl x:Class="LungoApp.Views.Learn.tabListWordsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:local="clr-namespace:LungoApp.Views.LeftPanel"
+             xmlns:views="clr-namespace:LungoApp.Views.Learn"
+             xmlns:vms="clr-namespace:LungoViewModels.ViewModels;assembly=LungoViewModels" 
+             xmlns:loadingspinnercontrol="clr-namespace:LoadingSpinnerControl;assembly=LoadingSpinnerControl"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             >
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+        <local:ContextConverter x:Key="multiConverter"/>
+    </UserControl.Resources>
+    <!--<UserControl.Resources>
+        <local:CommandConverter x:Key="commandConverter"/>
+    </UserControl.Resources>-->
+    <Grid>
+        <loadingspinnercontrol:LoadingSpinner Panel.ZIndex="10" Diameter="100" Thickness="5" IsLoading="{Binding IsLoading}" VerticalAlignment="Center"></loadingspinnercontrol:LoadingSpinner>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <!--Search Textbox-->
+            <!--<Grid Width="300" HorizontalAlignment="Left">
+                    <TextBlock Margin="20 0" VerticalAlignment="Center" Foreground="#b0b9c6"
+                               IsHitTestVisible="False" Panel.ZIndex="1" Text="Search here.."
+                               Visibility="{Binding ElementName=txtSearch,Path=Text.IsEmpty,Converter={StaticResource BoolToVis}}"/>
+                    <TextBox x:Name="txtSearch" Style="{StaticResource textBoxSearch}"/>
+                    <Icon:PackIconMaterial Kind="Magnify" Width="15" Height="15" VerticalAlignment="Center"
+                                           Margin="0 0 15 0" Foreground="#b0b9c6" HorizontalAlignment="Right"/>
+
+                </Grid>-->
+
+            <!--Top Buttons-->
+
+
+            <!--Page Title-->
+            <!--<TextBlock Text="Members" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0"
+                           HorizontalAlignment="Left" Foreground="#fff" />-->
+            <!--Add Button-->
+            <!--<Button Style="{StaticResource addButton}">
+            <StackPanel Orientation="Horizontal">
+                <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Width="11" Height="11" Margin="5 1 8 0"/>
+                <TextBlock Text="Add New Member"></TextBlock>
+            </StackPanel>
+        </Button>-->
+
+            <!--Separator-->
+            <Separator Height="1" Grid.Row="3" Background="#dae2ea" Margin="0 20 0 10"/>
+
+            <!-- Buttons-->
+
+            <!--Counter Title-->
+            <!--Text="{Binding TotalWordString}"-->
+
+            <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15 20 0 0">
+                <TextBlock Text="{Binding TotalWordString}" Name="wordTitleText" FontSize="18" FontWeight="SemiBold"
+                           Foreground="#000" />
+                <TextBlock Text="{DynamicResource DashBoard_Words}" FontSize="18" FontWeight="SemiBold" Margin="10 0 0 0"
+                           Foreground="#000" />
+
+            </StackPanel>
+
+            <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="200 20 0 0"  HorizontalAlignment="Left" VerticalAlignment="Center">
+                <!--<TextBlock Text="{DynamicResource Learn_WordList_LastLearned}"   FontSize="18" FontWeight="SemiBold"
+                           Foreground="#000"  />-->
+                <TextBlock Text="{Binding LastLearnedText}" Margin="10 0 0 0"  FontSize="18" FontWeight="SemiBold"
+                           Foreground="#000"  />
+
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="4" Margin="0 20 270 0" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <TextBlock Text="{DynamicResource Learn_WordList_Page}" FontSize="18" FontWeight="SemiBold" 
+                           Foreground="#000" />
+                <TextBlock Text="{Binding PageNumString}" Name="addTablePage" Margin="10 0 0 0"  FontSize="18" FontWeight="SemiBold" 
+                           Foreground="#000" />
+            </StackPanel>
+
+            <!--<Button Grid.Row="4" Content="Finish" Width="70px" Margin="0 0 20 0" HorizontalAlignment="Right"></Button>-->
+            <Button Grid.Row="4" Content="Finish" Width="70px" Visibility="{Binding Path=FinishVisibility, Converter={StaticResource BoolToVis}}" Margin="0 0 20 0" HorizontalAlignment="Right" Command="{Binding NewWordsCommand}" CommandParameter="finish"></Button>
+            <!--<TextBlock Grid.Row="4" Text="{Binding PageNum}" Foreground="#fff" FontSize="18" HorizontalAlignment="Right" Margin="0 0 260 0"/>-->
+            <!--Filter TextBox-->
+            <!--<Grid Width="200" HorizontalAlignment="Right" Grid.Row="4">
+            <TextBlock Margin="15 0" VerticalAlignment="Center" Foreground="#b0b9c6"
+                               IsHitTestVisible="False" Panel.ZIndex="1" Text="Search in Members.."
+                               Visibility="{Binding ElementName=txtFilter,Path=Text.IsEmpty}"/>
+            <TextBox x:Name="txtFilter" Style="{StaticResource textBoxFilter}"/>
+        </Grid>-->
+            <!--Members DataGrid-->
+            <DataGrid Style="{DynamicResource DataGridStyle1}" 
+                          CellStyle="{DynamicResource DataGridCellStyle1}" 
+                          ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" 
+                          RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5" 
+                          x:Name="membersDataGrid"
+                          ItemsSource="{Binding Members}"
+                  >
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn Header="#" Foreground="#000" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Number}"/>
+                    <DataGridTemplateColumn  Header="Word" IsReadOnly="True" Width="auto">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Border Width="40" Height="40" CornerRadius="50" Margin="0 0 10 0" Background="{Binding BGColor}">
+                                        <TextBlock Text="{Binding Character}" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#eee" Margin="0 0 0 0"/>
+                                    </Border>
+                                    <TextBlock Text="{Binding WordObj.Name}" FontSize="20" VerticalAlignment="Center" FontFamily="Sniglet"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    
+                    <!--<DataGridTemplateColumn Header="{DynamicResource Learn_WordList_Header_OriginalForm}" IsReadOnly="True" CanUserResize="False" Width="auto">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Width="100" Height="30" FontSize="15px" VerticalContentAlignment="Center" Name="textAlternativeWord" Text="{Binding Path=AlternativeNames,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ToolTipService.ToolTip="{DynamicResource Learn_WordList_Header_OriginalForm_ToolTip}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>-->
+
+                    <!--<DataGridTextColumn Foreground="#000" Header="{DynamicResource Learn_WordList_Header_Position}" IsReadOnly="True"  Width="*" Binding="{Binding Position}"/>-->
+                    <DataGridTemplateColumn Header="{DynamicResource Learn_WordList_Header_Contexts}" IsReadOnly="True" Width="auto">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <ItemsControl ItemsSource="{Binding Contexts}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <UniformGrid Columns="3"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Button  Style="{StaticResource gridSaveButton}" Command="{Binding DataContext.NewWordsCommand,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGrid}}}" CommandParameter="{Binding}" Margin="0 0 5 5" ToolTipService.ToolTip="{DynamicResource Learn_WordList_Context_ToolTip}">
+                                                <Icon:PackIconMaterial Kind="{Binding IconKind}" Width="20px" Height="20px"/>
+                                            </Button>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                                <!--<ListView ItemsSource="{Binding Contexts}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Left" Background="Transparent" BorderThickness="0" Foreground="#fff" FontSize="15px">
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <VirtualizingStackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button  Style="{StaticResource gridSaveButton}" Command="{Binding DataContext.GridCommand,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGrid}}}" CommandParameter="{Binding}">
+                                            <Icon:PackIconMaterial Kind="{Binding IconKind}" Width="20px" Height="20px"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>-->
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <!--<DataGridTextColumn Foreground="#000" Header="Full Context" IsReadOnly="True"  Width="*" Binding="{Binding Context}" >
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="ToolTip" Value="{Binding Context}" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap"/>
+                            <Setter Property="TextBlock.TextAlignment" Value="Left"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>-->
+                    <DataGridTemplateColumn Header="{DynamicResource Learn_WordList_Header_Operations}" IsReadOnly="True" Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <Button Style="{StaticResource gridSaveButton}" Command="{Binding DataContext.NewWordsCommand,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGrid}}}" CommandParameter="{Binding WordObj.Name}" ToolTipService.ToolTip="{DynamicResource Learn_WordList_Search_ToolTip}">
+                                        <Icon:PackIconMaterial Kind="Magnify" Style="{StaticResource gridButtonIcon}"/>
+                                    </Button>
+                                    <Button Style="{StaticResource gridSaveButton}" Margin="2 0 0 0" Command="{Binding DataContext.NewWordsCommand,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGrid}}}" ToolTipService.ToolTip="{DynamicResource Learn_WordList_Add_ToolTip}">
+                                        <Button.CommandParameter>
+                                            <MultiBinding Converter="{StaticResource multiConverter}">
+                                                <Binding>
+                                                    <Binding.Source>
+                                                        Add
+                                                    </Binding.Source>
+                                                </Binding>
+                                                <Binding Path="."/>
+                                            </MultiBinding>
+                                        </Button.CommandParameter>
+                                        
+                                        <!--<Button.CommandParameter>
+                                    <MultiBinding Converter="{StaticResource commandConverter}">
+                                        <Binding Path="{Binding Number}" ElementName=""/>
+                                        <Binding Path="{Binding DataContext.Operation}" ElementName=""/>
+                                    </MultiBinding>
+                                </Button.CommandParameter>-->
+                                        <Icon:PackIconMaterial Kind="CheckboxMarkedOutline" Style="{StaticResource gridButtonIcon}"/>
+                                    </Button>
+
+                                </StackPanel>
+
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+
+                </DataGrid.Columns>
+            </DataGrid>
+
+
+
+            <!--Pagination Section-->
+            <Border Grid.Row="6" HorizontalAlignment="Right" BorderBrush="#dee4ec" BorderThickness="1"
+                        CornerRadius="5" Padding="5" Background="White" Margin="0 10 10 10">
+                <StackPanel Orientation="Horizontal" Name="stackPaging">
+                    <Button Style="{StaticResource pagingButton}" Tag="previous" Command="{Binding NewWordsCommand}" CommandParameter="prev" Click="pageClicked">
+                        <Icon:PackIconMaterial Kind="ChevronLeft" Style="{StaticResource pagingButtonIcon}"/>
+                    </Button>
+                    <Rectangle Width="1" Fill="#dee4ec" Margin="3 7"/>
+
+                    <!--<Button Style="{StaticResource pagingButton}" Content="1" Name="btnPaging1" Command="{Binding GridCommand}" CommandParameter="1" Tag="1"/>
+                <Button Style="{StaticResource pagingButton}" Content="2" Click="btnPaging_Click"  Tag="2"/>
+                <Button Style="{StaticResource pagingButton}" Content="3" Click="btnPaging_Click" Tag="3"/>-->
+
+                    <!--<TextBlock Text="..." Foreground="#6c7682" VerticalAlignment="Center"
+                                   FontSize="15" Margin="10 0"/>-->
+
+
+                    <Rectangle Width="1" Fill="#dee4ec" Margin="3 7"/>
+
+                    <Button Style="{StaticResource pagingButton}" Command="{Binding NewWordsCommand}" CommandParameter="next" Click="pageClicked">
+                        <Icon:PackIconMaterial Kind="ChevronRight" Style="{StaticResource pagingButtonIcon}"/>
+                    </Button>
+
+
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+    
+</UserControl>

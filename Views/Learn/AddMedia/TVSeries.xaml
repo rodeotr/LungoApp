@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="LungoApp.Views.Learn.AddMedia.TVSeries"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks" 
+             xmlns:local="clr-namespace:LungoApp.Views.Learn"
+             
+             >
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+        <local:STRValidation x:Key="vall"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1" Height="40">
+            <TextBox x:Name="SeasonIndexTextBox" Width="120" Style="{DynamicResource SignUpTextBoxStyle}" FontSize="18px" Padding="10 0"   VerticalContentAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="3" PreviewTextInput="PreviewTextInputMaxFreq">
+                <TextBox.Text>
+                    <Binding Path="SeasonIndex" 
+                             UpdateSourceTrigger="PropertyChanged"
+                             >
+                        <Binding.ValidationRules>
+                            <local:STRValidation/>
+                        </Binding.ValidationRules>
+                        
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBlock IsHitTestVisible="False" Text="{DynamicResource Learn_AddMedia_SeasonIndex}" Margin="10" FontSize="15px" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="DarkGray">
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=SeasonIndexTextBox}" Value="">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+        </Grid>
+        <Grid Grid.Row="2" Margin="0 5" Height="40">
+            <TextBox x:Name="EpisodeIndexTextBox" Width="120" Style="{DynamicResource SignUpTextBoxStyle}" FontSize="18px" Padding="10 0"   VerticalContentAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="3" PreviewTextInput="PreviewTextInputMaxFreq">
+                <TextBox.Text>
+                    <Binding Path="EpisodeIndex" 
+                             UpdateSourceTrigger="PropertyChanged"
+                             >
+                        <Binding.ValidationRules>
+                            <local:STRValidation/>
+                        </Binding.ValidationRules>
+
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBlock IsHitTestVisible="False" Text="{DynamicResource Learn_AddMedia_EpisodeIndex}" Margin="10" FontSize="15px" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="DarkGray">
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=EpisodeIndexTextBox}" Value="">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+
+        </Grid>
+       
+    </Grid>
+    
+    
+</UserControl>

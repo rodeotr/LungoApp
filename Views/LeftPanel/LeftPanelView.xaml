@@ -1,0 +1,220 @@
+﻿<UserControl x:Class="LungoApp.Views.LeftPanel.LeftPanelView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks" 
+             xmlns:local="clr-namespace:LungoApp.Views.LeftPanel"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Border Grid.Row="1" Background="#38a152" CornerRadius="20">
+            <StackPanel Orientation="Vertical">
+                <Grid DockPanel.Dock="Top" Margin="0 20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        
+                        <!--white background-->
+                        <Border Width="90" Height="90" Visibility="Visible"
+                                 HorizontalAlignment="Center"  CornerRadius="45" Background="#fff">
+                        </Border>
+                        <Border Width="94" Height="94" Visibility="Visible"
+                                 HorizontalAlignment="Center"  CornerRadius="45" BorderBrush="Black" BorderThickness="4" Background="Transparent">
+                        </Border>
+                      
+                    </Grid>
+                    <Border Width="80" Height="80" DockPanel.Dock="Top" CornerRadius="35"
+                                 HorizontalAlignment="Center" Margin="0 4 0 0">
+                        <Border.Background>
+                            <ImageBrush Stretch="Fill" ImageSource="{Binding UserInfo.AvatarSource}"/>
+                        </Border.Background>
+                    </Border>
+                    <TextBlock Grid.Row="1" Margin="0 10" Text="{Binding UserInfo.Name}" FontFamily="Century Gothic" Foreground="#fff" FontSize="20" HorizontalAlignment="Center"/>
+                </Grid>
+
+                <ItemsControl Margin="10 0" ItemsSource="{Binding Languages}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="4"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+
+                    <!--<Border Cursor="Hand" Width="50" Height="50">
+                        <Grid>
+                            <Border Cursor="Hand" Width="50" Height="50" Visibility="Visible"
+                                 HorizontalAlignment="Center"  CornerRadius="45" Background="#fff">
+                            </Border>
+                            <Border Width="50" Height="50"  CornerRadius="20"
+                                 HorizontalAlignment="Center">
+                                <Border.Background>
+                                    <ImageBrush Stretch="Fill" ImageSource="/Assets/Images/LanguageFlags/en.png"/>
+                                </Border.Background>
+                            </Border>
+                        </Grid>
+                    </Border>-->
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Cursor="Hand">
+                                <Border.InputBindings>
+                                    <MouseBinding Gesture="LeftClick" Command="{Binding DataContext.LeftPanelCommand,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type ItemsControl}}}" CommandParameter="{Binding}"/>
+                                </Border.InputBindings>
+                                <Image Width="46" Height="46" Margin="0 0 0 5" Source="{Binding ImageSource}" Opacity="{Binding Opacity}" SnapsToDevicePixels="False"></Image>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    
+                    <!--<Image Cursor="Hand" Width="46" Height="46" Margin="0 0 0 5" Source="/Assets/Images/LanguageFlags/de.png" SnapsToDevicePixels="True" Opacity="0.5"></Image>
+                    <Image Cursor="Hand" Width="46" Height="46" Margin="0 0 0 5" Source="/Assets/Images/LanguageFlags/ja.png" SnapsToDevicePixels="False" Opacity="0.5"></Image>
+                    <Image Cursor="Hand" Width="46" Height="46" Margin="0 0 0 5" Source="/Assets/Images/LanguageFlags/es.png" SnapsToDevicePixels="False" Opacity="0.5"></Image>-->
+
+                    <!--<Border Cursor="Hand" Width="50" Height="50">
+                        <Grid>
+                            <Border Cursor="Hand" Width="50" Height="50" Visibility="Visible"
+                                 HorizontalAlignment="Center"  CornerRadius="45" Background="#fff">
+                            </Border>
+                            <Border Width="50" Height="50"  CornerRadius="20"
+                                 HorizontalAlignment="Center">
+                                <Border.Background>
+                                    <ImageBrush Stretch="Fill" ImageSource="/Assets/Images/LanguageFlags/de.png"/>
+                                </Border.Background>
+                            </Border>
+                        </Grid>
+                    </Border>-->
+                    <!--<Image Width="60" Height="60" Source="/Assets/Images/LanguageFlags/ja.png" SnapsToDevicePixels="False"></Image>-->
+                    <!--<Border Cursor="Hand" Width="40" Height="40" Opacity="1">
+                        <Grid>
+                            <Border Cursor="Hand" Width="40" Height="40" Visibility="Visible"
+                                 HorizontalAlignment="Center"  CornerRadius="45" Background="#fff">
+                            </Border>
+                            <Border Width="40" Height="40"  CornerRadius="20" SnapsToDevicePixels="False"
+                                 HorizontalAlignment="Center">
+                                <Border.Background>
+                                    <ImageBrush Stretch="Fill" ImageSource="/Assets/Images/LanguageFlags/ja.png"/>
+                                </Border.Background>
+                            </Border>
+                        </Grid>
+                    </Border>-->
+
+                   
+                </ItemsControl>
+               
+
+
+                <Separator Margin="50 30 50 10" DockPanel.Dock="Top" Height="0.8" Background="#1a1819"/>
+
+                <!--Menu Buttons-->
+                <StackPanel TextBlock.FontFamily="Bahnschrift" TextBlock.Foreground="#1a1819">
+                    <!--<Image Width="100px" Source="/Assets/Images/LanguageFlags/en.png"/>-->
+
+
+                    <Button Style="{StaticResource menuButton}" HorizontalAlignment="Left" Name="btnDashBoard" Command="{Binding LeftPanelCommand}" CommandParameter="{Binding LeftPanel.LeftMenuItems[0].ItemName}">
+                        <StackPanel Width="140px" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <Icon:PackIconMaterial Kind="{Binding LeftPanel.LeftMenuItems[0].ItemLogoName}" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="{DynamicResource LeftPanel_DashBoard}" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </Button>
+
+
+                    <Button Style="{StaticResource menuButton}" Command="{Binding LeftPanelCommand}" CommandParameter="{Binding LeftPanel.LeftMenuItems[1].ItemName}">
+                        <StackPanel Width="140px" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <Icon:PackIconMaterial Kind="{Binding LeftPanel.LeftMenuItems[1].ItemLogoName}" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="{DynamicResource LeftPanel_Learn}" Margin="20 10"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Style="{StaticResource menuButton}" Command="{Binding LeftPanelCommand}" CommandParameter="{Binding LeftPanel.LeftMenuItems[2].ItemName}">
+                        <Grid>
+                            <StackPanel Width="140px" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <Icon:PackIconMaterial Kind="{Binding LeftPanel.LeftMenuItems[2].ItemLogoName}" Style="{StaticResource menuButtonIcon}"/>
+                                <Grid>
+                                    <Border Width="20" Height="20" Visibility="{Binding TestVisibility,Converter={StaticResource BoolToVis}}" CornerRadius="10" VerticalAlignment="Top" HorizontalAlignment="Right" Background="Red" Margin="0 0 7 0" Panel.ZIndex="2">
+                                        <TextBlock Text="{Binding TestWordCount}" FontSize="12" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Border>
+                                    <TextBlock Text="{DynamicResource LeftPanel_Test}" Margin="20 10"/>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                    </Button>
+                    <Button Style="{StaticResource menuButton}" Command="{Binding LeftPanelCommand}" CommandParameter="{Binding LeftPanel.LeftMenuItems[3].ItemName}">
+                        <StackPanel Width="140px" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <Icon:PackIconMaterial Kind="{Binding LeftPanel.LeftMenuItems[3].ItemLogoName}" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="{DynamicResource LeftPanel_Media}" Margin="20 10"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Style="{StaticResource menuButton}" Command="{Binding LeftPanelCommand}" CommandParameter="{Binding LeftPanel.LeftMenuItems[4].ItemName}">
+                        <StackPanel Width="140px" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <Icon:PackIconMaterial Kind="{Binding LeftPanel.LeftMenuItems[4].ItemLogoName}" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="{DynamicResource LeftPanel_Storage}" Margin="20 10"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Style="{StaticResource menuButton}" Command="{Binding LeftPanelCommand}" CommandParameter="{Binding LeftPanel.LeftMenuItems[5].ItemName}">
+                        <StackPanel Width="140px" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <Icon:PackIconMaterial Kind="{Binding LeftPanel.LeftMenuItems[5].ItemLogoName}" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="{DynamicResource LeftPanel_Collections}" Margin="20 10"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Style="{StaticResource menuButton}" Command="{Binding LeftPanelCommand}" CommandParameter="{Binding LeftPanel.LeftMenuItems[6].ItemName}">
+                        <Grid Width="140px" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20px"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" Width="20px" ClipToBounds="True">
+                                <Border Width="20" ClipToBounds="True">
+                                    <Border.Triggers>
+                                        <EventTrigger RoutedEvent="Border.Loaded">
+                                            <BeginStoryboard>
+                                                <Storyboard >
+                                                    <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" BeginTime="00:00:00" RepeatBehavior="Forever">
+                                                        <EasingThicknessKeyFrame KeyTime="00:00:00" Value="-20,0,0,0"/>
+                                                        <EasingThicknessKeyFrame KeyTime="00:00:0.3" Value="0,0,0,0" />
+                                                        <EasingThicknessKeyFrame KeyTime="00:00:04" Value="0,0,0,0" />
+                                                        <EasingThicknessKeyFrame KeyTime="00:00:04.3" Value="20,0,0,0" />
+                                                        <EasingThicknessKeyFrame KeyTime="00:00:05" Value="20,0,0,0" />
+                                                    </ThicknessAnimationUsingKeyFrames>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                    </Border.Triggers>
+                                    <Icon:PackIconMaterial Kind="{Binding LeftPanel.LeftMenuItems[6].ItemLogoName}" Style="{StaticResource menuButtonIcon}"/>
+                                </Border>
+                                
+                            </Border>
+                                
+
+                            <TextBlock Grid.Column="1" Text="{DynamicResource LeftPanel_Browse}" Margin="20 10" />
+                        </Grid>
+                    </Button>
+                    <Button Style="{StaticResource menuButton}" Command="{Binding LeftPanelCommand}" CommandParameter="{Binding LeftPanel.LeftMenuItems[6].ItemName}">
+                        <StackPanel Width="140px" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <Icon:PackIconMaterial Kind="{Binding LeftPanel.LeftMenuItems[7].ItemLogoName}" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="{DynamicResource LeftPanel_FAQ}" Margin="20 10"/>
+                        </StackPanel>
+                    </Button>
+                    
+                    <Button Style="{StaticResource menuButton}" Margin="20 30 0 0"  Command="{Binding LeftPanelCommand}" CommandParameter="{Binding LeftPanel.LeftMenuItems[8].ItemName}">
+                        <StackPanel Width="140px" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <Icon:PackIconMaterial Kind="{Binding LeftPanel.LeftMenuItems[8].ItemLogoName}" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="{DynamicResource LeftPanel_Settings}" Margin="20 10"/>
+                        </StackPanel>
+                    </Button>
+                    
+                    
+               
+        </StackPanel>
+
+            </StackPanel>
+
+        </Border>
+
+    </Grid>
+</UserControl>

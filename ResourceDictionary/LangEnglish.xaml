@@ -1,0 +1,132 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:system="clr-namespace:System;assembly=System.Runtime">
+
+    <system:String x:Key="FirstTime_Name">Name</system:String>
+    <system:String x:Key="FirstTime_YourLanguage">Your Language</system:String>
+    <system:String x:Key="FirstTime_AppLanguage">Application Language</system:String>
+    <system:String x:Key="FirstTime_TargetLanguage">The Language You Want To Learn</system:String>
+    <system:String x:Key="FirstTime_ButtonStart">START</system:String>
+
+    <system:String x:Key="LeftPanel_DashBoard">Dashboard</system:String>
+    <system:String x:Key="LeftPanel_Learn">Learn</system:String>
+    <system:String x:Key="LeftPanel_Test">Test</system:String>
+    <system:String x:Key="LeftPanel_Media">Media</system:String>
+    <system:String x:Key="LeftPanel_Storage">Storage</system:String>
+    <system:String x:Key="LeftPanel_Collections">Collections</system:String>
+    <system:String x:Key="LeftPanel_Ranking">Ranking</system:String>
+    <system:String x:Key="LeftPanel_FAQ">FAQ</system:String>
+    <system:String x:Key="LeftPanel_Browse">Browse</system:String>
+    <system:String x:Key="LeftPanel_Settings">Settings</system:String>
+    <system:String x:Key="LeftPanel_Exit">Exit</system:String>
+
+    <system:String x:Key="DashBoard_Title">See How You're Doing!</system:String>
+    <system:String x:Key="DashBoard_Words">Words</system:String>
+    <system:String x:Key="DashBoard_Episodes">Episodes</system:String>
+    <system:String x:Key="DashBoard_Movies">Movies</system:String>
+    <system:String x:Key="DashBoard_Videos">Videos</system:String>
+    <system:String x:Key="DashBoard_Books">Books</system:String>
+    <system:String x:Key="DashBoard_Media">Media</system:String>
+    <system:String x:Key="DashBoard_Challenge">Up for a challenge?</system:String>
+    <system:String x:Key="DashBoard_LastReview">Last Review</system:String>
+
+    <system:String x:Key="Learn_TabAddMedia">ADD MEDIA</system:String>
+    <system:String x:Key="Learn_TabContinueMedia">CONTINUE MEDIA</system:String>
+    <system:String x:Key="Learn_TabAddWord">ADD WORD</system:String>
+    <system:String x:Key="Learn_TabAddExpression">ADD EXPRESSION</system:String>
+
+    <system:String x:Key="Learn_AddMedia_Type">Type</system:String>
+    <system:String x:Key="Learn_AddMedia_Season">Season</system:String>
+    <system:String x:Key="Learn_AddMedia_Episode">Episode</system:String>
+    <system:String x:Key="Learn_AddMedia_Title">Title</system:String>
+    <system:String x:Key="Learn_AddMedia_SubtitleLocation">Subtitle Location</system:String>
+    <system:String x:Key="Learn_AddMedia_Link">Link</system:String>
+    <system:String x:Key="Learn_AddMedia_ButtonOpen">Open</system:String>
+    <system:String x:Key="Learn_AddMedia_MaxWordFrequency">Max Word Frequency</system:String>
+    <system:String x:Key="Learn_AddMedia_ButtonRun">Run</system:String>
+    <system:String x:Key="Learn_AddMedia_Type_ToolTip">Type of media you want to learn from.</system:String>
+    <system:String x:Key="Learn_AddMedia_SubtitleLocation_ToolTip" xml:space="preserve">You can select a subtitle file in srt format. &#x0a; Example : &#x0a; C:\Users\YourFolder\Desktop\Subtitles\Breaking Bad S01E01.srt</system:String>
+    <system:String x:Key="Learn_AddMedia_MaxWordFrequency_ToolTip" xml:space="preserve">Maximum frequency of words used in the selected media. To put it simply,&#x0a;some words are used more than others. For example the usage of the word &#x0a;'to do' must be used many times in the medium. If you don't want to study&#x0a;such simple words you should lower the value. If you're not sure leave it as it is.</system:String>
+
+    <system:String x:Key="Learn_AddMedia_SeasonIndex">Season Index</system:String>
+    <system:String x:Key="Learn_AddMedia_EpisodeIndex">Episode Index</system:String>
+
+    <system:String x:Key="Learn_AddMedia_PPS">Page Count Per Section</system:String>
+    <system:String x:Key="Learn_AddMedia_StartPage">Start Page</system:String>
+    <system:String x:Key="Learn_AddMedia_EndPageFirstSession">End Page of First Session</system:String>
+    
+    <system:String x:Key="Learn_AddMedia_Text">Text</system:String>
+
+
+    <system:String x:Key="Learn_ContinueMedia_Type">Type</system:String>
+    <system:String x:Key="Learn_ContinueMedia_Title">Title</system:String>
+    <system:String x:Key="Learn_ContinueMedia_MaxWordFrequency">Max Word Frequency</system:String>
+    <system:String x:Key="Learn_ContinueMedia_Bring">Bring</system:String>
+
+    <system:String x:Key="Learn_AddWord_Word">Word</system:String>
+    <system:String x:Key="Learn_AddWord_Expression">Idiom Or Expression</system:String>
+
+    <system:String x:Key="Learn_WordList_LastLearned">Last Learned Word Index</system:String>
+    <system:String x:Key="Learn_WordList_Page">Page</system:String>
+    <system:String x:Key="Learn_WordList_Header_Word">Word</system:String>
+    <system:String x:Key="Learn_WordList_Header_OriginalForm">Original Form</system:String>
+    <system:String x:Key="Learn_WordList_Header_Position">Position</system:String>
+    <system:String x:Key="Learn_WordList_Header_Contexts">Contexts</system:String>
+    <system:String x:Key="Learn_WordList_Header_Operations">Operations</system:String>
+    <system:String x:Key="Learn_WordList_Search_ToolTip">Search On Web!</system:String>
+    <system:String x:Key="Learn_WordList_Add_ToolTip">Add to the learned words!</system:String>
+    <system:String x:Key="Learn_WordList_Context_ToolTip">Click to see where it's used.</system:String>
+    <system:String x:Key="Learn_WordList_Header_OriginalForm_ToolTip">Use it</system:String>
+
+
+    <system:String x:Key="TestOverView_Streaks">Streaks</system:String>
+    <system:String x:Key="TestOverView_TotalWordsPracticed">Total Words Practiced</system:String>
+    <system:String x:Key="TestOverView_AcedWords">Aced Words</system:String>
+    <system:String x:Key="TestOverView_Words">Words</system:String>
+    <system:String x:Key="TestOverView_TestOptions">Test Options</system:String>
+    <system:String x:Key="TestOverView_TestProgressTitle">Test Progress</system:String>
+    <system:String x:Key="TestOverView_Collections">Collections</system:String>
+    <system:String x:Key="TestOverView_TodayPracticed">Today Practiced</system:String>
+    <system:String x:Key="TestOverView_TotalWords">Total Words</system:String>
+
+
+    <system:String x:Key="Media_Media">Media</system:String>
+    <system:String x:Key="Media_Words">Words</system:String>
+    <system:String x:Key="Media_MediaType">Media Type</system:String>
+    <system:String x:Key="Media_MediaLinked">Media Linked</system:String>
+    <system:String x:Key="Media_LinkMedia">Link Media</system:String>
+    <system:String x:Key="Media_Season">Season</system:String>
+    <system:String x:Key="Media_Episode">Episode</system:String>
+
+
+    <system:String x:Key="Storage_Header_Word">Word</system:String>
+    <system:String x:Key="Storage_Header_Contexts">Contexts</system:String>
+    <system:String x:Key="Storage_Header_Operations">Operations</system:String>
+    <system:String x:Key="Storage_Search">Search</system:String>
+
+    <system:String x:Key="Storage_Header_Operations_Collection_ToolTip">Add To A Collection</system:String>
+    <system:String x:Key="Storage_Header_Operations_Edit_ToolTip">Edit the Word</system:String>
+    <system:String x:Key="Storage_Header_Operations_Delete_ToolTip">Delete the Word</system:String>
+    <system:String x:Key="Storage_Header_Contexts_ToolTip">Show Context</system:String>
+
+    <system:String x:Key="Collections_Tab_Collections">COLLECTIONS</system:String>
+    <system:String x:Key="Collections_Tab_Browse">BROWSE</system:String>
+    <system:String x:Key="Collections_Tab_Media">MEDIA</system:String>
+    <system:String x:Key="Collections_Button_Create">Create</system:String>
+    <system:String x:Key="Collections_Browse_Elements">Elements</system:String>
+    <system:String x:Key="Collections_Browse_Examples">Examples</system:String>
+
+
+    <system:String x:Key="Settings_User">User</system:String>
+    <system:String x:Key="Settings_Language">Language</system:String>
+    <system:String x:Key="Settings_Language_ToolTip">Add a language.</system:String>
+    <system:String x:Key="Settings_Button_Save">Save</system:String>
+    <system:String x:Key="Settings_Button_AddUser">User</system:String>
+    <system:String x:Key="Settings_Button_AddUser_ToolTip">Add a user.</system:String>
+
+
+    <system:String x:Key="LoadingWindow_Title">Parsing The File</system:String>
+    <system:String x:Key="ContextWindow_Meaning">meaning</system:String>
+
+    
+    
+</ResourceDictionary>

@@ -1,0 +1,63 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:system="clr-namespace:System;assembly=System.Runtime">
+
+    <system:String x:Key="FirstTime_Name">İsim</system:String>
+    <system:String x:Key="FirstTime_YourLanguage">Ana Dil</system:String>
+    <system:String x:Key="FirstTime_AppLanguage">Uygulama Dili</system:String>
+    <system:String x:Key="FirstTime_TargetLanguage">Öğrenmek İstediğin Dil</system:String>
+    <system:String x:Key="FirstTime_ButtonStart">BAŞLA</system:String>
+
+    <system:String x:Key="LeftPanel_DashBoard">Panel</system:String>
+    <system:String x:Key="LeftPanel_Learn">Öğren</system:String>
+    <system:String x:Key="LeftPanel_Test">Test</system:String>
+    <system:String x:Key="LeftPanel_Media">Medya</system:String>
+    <system:String x:Key="LeftPanel_Storage">Depo</system:String>
+    <system:String x:Key="LeftPanel_Collections">Koleksiyon</system:String>
+    <system:String x:Key="LeftPanel_Ranking">Sıralama</system:String>
+    <system:String x:Key="LeftPanel_Settings">Ayarlar</system:String>
+    <system:String x:Key="LeftPanel_Exit">Çıkış</system:String>
+
+    <system:String x:Key="DashBoard_Title">Nasıl Olduğunu Gör!</system:String>
+    <system:String x:Key="DashBoard_Words">Kelimeler</system:String>
+    <system:String x:Key="DashBoard_Episodes">Bölümler</system:String>
+    <system:String x:Key="DashBoard_Movies">Film</system:String>
+    <system:String x:Key="DashBoard_Videos">Videolar</system:String>
+    <system:String x:Key="DashBoard_Books">Kitap</system:String>
+    <system:String x:Key="DashBoard_Media">Medya</system:String>
+    <system:String x:Key="DashBoard_Challenge">Denemeye var mısın?</system:String>
+
+    <system:String x:Key="Learn_TabAddMedia">MEDYA EKLE</system:String>
+    <system:String x:Key="Learn_TabContinueMedia">MEDYAYA DEVAM</system:String>
+    <system:String x:Key="Learn_TabAddWord">KELİME EKLE</system:String>
+    <system:String x:Key="Learn_TabAddExpression">DEYİM EKLE</system:String>
+
+    <system:String x:Key="Learn_AddMedia_Type">Tür</system:String>
+    <system:String x:Key="Learn_AddMedia_Season">Sezon</system:String>
+    <system:String x:Key="Learn_AddMedia_Episode">Bölüm</system:String>
+    <system:String x:Key="Learn_AddMedia_Title">Başlık</system:String>
+    <system:String x:Key="Learn_AddMedia_SubtitleLocation">Altyazı Lokasyonu</system:String>
+    <system:String x:Key="Learn_AddMedia_Link">Link</system:String>
+    <system:String x:Key="Learn_AddMedia_ButtonOpen">Aç</system:String>
+    <system:String x:Key="Learn_AddMedia_MaxWordFrequency">Max Kelime Sıklığı</system:String>
+    <system:String x:Key="Learn_AddMedia_ButtonRun">Başla</system:String>
+    <system:String x:Key="Learn_AddMedia_Type_ToolTip">Type of media you want to learn from.</system:String>
+    <system:String x:Key="Learn_AddMedia_SubtitleLocation_ToolTip" xml:space="preserve">You can select a subtitle file in srt format. &#x0a; Example : &#x0a; C:\Users\YourFolder\Desktop\Subtitles\Breaking Bad S01E01.srt</system:String>
+    <system:String x:Key="Learn_AddMedia_MaxWordFrequency_ToolTip" xml:space="preserve">Maximum frequency of words used in the selected media. To put it simply,&#x0a;some words are used more than others. For example the usage of the word &#x0a;'to do' must be used many times in the medium. If you don't want to study&#x0a;such simple words you should lower the value. If you're not sure leave it as it is.</system:String>
+
+    <system:String x:Key="Learn_AddMedia_SeasonIndex">Hangi Sezon</system:String>
+    <system:String x:Key="Learn_AddMedia_EpisodeIndex">Hangi Bölüm</system:String>
+    
+    <system:String x:Key="Learn_AddMedia_PPS">Kısım Başına Sayfa Sayısı</system:String>
+
+    <system:String x:Key="Learn_AddMedia_Text">Metin</system:String>
+
+
+    <system:String x:Key="Learn_ContinueMedia_Type">Tür</system:String>
+    <system:String x:Key="Learn_ContinueMedia_Title">İsim</system:String>
+    <system:String x:Key="Learn_ContinueMedia_MaxWordFrequency">Max Kelime Sıklığı</system:String>
+    <system:String x:Key="Learn_ContinueMedia_Bring">Getir</system:String>
+
+    <system:String x:Key="Learn_AddWord_Word">Kelime</system:String>
+    <system:String x:Key="Learn_AddWord_Expression">Deyim ya da İfade</system:String>
+
+</ResourceDictionary>
