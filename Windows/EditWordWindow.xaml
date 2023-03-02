@@ -59,8 +59,8 @@
             </Button>
             <!--<TextBlock Style="{StaticResource Values}" Grid.Row="1" Grid.Column="1" Text="{Binding Name}"/>-->
             <TextBlock Style="{StaticResource Titles}" Grid.Row="2" Grid.Column="0" Text="Meaning"/>
-            <Icon:PackIconMaterial Kind="ContentSave" Width="20px" Height="20px"/>
-                <Icon:PackIconMaterial Kind="ContentSave" Width="20px" Height="20px"/>
+            <!--<Icon:PackIconMaterial Kind="ContentSave" Width="20px" Height="20px"/>-->
+            <!--<Icon:PackIconMaterial Kind="ContentSave" Width="20px" Height="20px"/>-->
             <TextBox x:Name="textBox_Meaning" Grid.Row="2" Grid.Column="1" Margin="0 0 20 0"/>
             <Button Grid.Row="2" Grid.Column="2" Style="{StaticResource gridSaveButton}" Click="MeaningEditClick" Margin="0 0 5 5">
                 <Icon:PackIconMaterial Kind="ContentSave" Width="20px" Height="20px"/>

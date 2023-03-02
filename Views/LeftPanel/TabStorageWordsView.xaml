@@ -48,7 +48,7 @@
 
             <Separator Height="1" Grid.Row="3" Width="200" HorizontalAlignment="Left" Background="#dae2ea" Margin="0 -1 0 10"/>
             <Grid Grid.Row="3" HorizontalAlignment="Right">
-                <ComboBox x:Name="SearcgTextBox" FontSize="18px" Width="250px" Height="30px" Margin="10 10" VerticalContentAlignment="Center" IsEditable="True"/>
+                <TextBox x:Name="SearcgTextBox" FontSize="18px" Width="250px" Height="30px" Margin="10 10" VerticalContentAlignment="Center" TextChanged="SearchChanged"/>
                 <TextBlock IsHitTestVisible="False" Text="{DynamicResource Storage_Search}" Margin="15 0" FontSize="15px" VerticalAlignment="Center" Foreground="DarkGray">
                     <TextBlock.Style>
                         <Style TargetType="{x:Type TextBlock}">
@@ -97,7 +97,7 @@
                           ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" 
                           RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5" 
                           x:Name="membersDataGrid"
-                  ItemsSource="{Binding StorageMemberModel.CurrentMembers}">
+                  ItemsSource="{Binding CurrentMembers}">
                 <DataGrid.Columns>
                     <DataGridCheckBoxColumn CanUserResize="False" Width="auto" ElementStyle="{StaticResource CheckBoxStyle1}">
 
