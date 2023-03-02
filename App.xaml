@@ -8,6 +8,7 @@
              
              >
     <Application.Resources>
+        
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -334,11 +335,6 @@
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
-
-
-
-
-
         <Style x:Key="ComboBoxEditableTextBox" TargetType="{x:Type TextBox}">
             <Setter Property="OverridesDefaultStyle" Value="true"/>
             <Setter Property="AllowDrop" Value="true"/>
@@ -1537,6 +1533,14 @@
             </Style.Triggers>
         </Style>
 
-
+        <!--<ResourceDictionary x:Key="aa">
+            <ResourceDictionary.MergedDictionaries>
+                --><!-- MahApps.Metro resource dictionaries. Make sure that all file names are Case Sensitive! --><!--
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                --><!-- Theme setting --><!--
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Blue.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>-->
     </Application.Resources>
 </Application>

@@ -32,7 +32,6 @@ namespace LungoApp
 
         public App()
         {
-
             _host = Host.CreateDefaultBuilder().ConfigureServices(services =>
             {
                 services.AddSingleton(getDatabaseOptions());

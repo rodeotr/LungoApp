@@ -97,7 +97,7 @@
                           ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" 
                           RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5" 
                           x:Name="membersDataGrid"
-                  ItemsSource="{Binding CurrentMembers}">
+                  ItemsSource="{Binding StorageMemberModel.CurrentMembers}">
                 <DataGrid.Columns>
                     <DataGridCheckBoxColumn CanUserResize="False" Width="auto" ElementStyle="{StaticResource CheckBoxStyle1}">
 

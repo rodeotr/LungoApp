@@ -1,4 +1,5 @@
-﻿using LungoModels;
+﻿using CaptionCrafter;
+using LungoModels;
 using LungoViewModels;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,7 @@ namespace LungoApp.Windows
         private readonly WordProgressEventAggregator _eventAggregator;
         private WordProgressMessage _message;
         private LoadingContext _loadingContext;
+        IDisposable subscription;
         Random r;
         int num;
 
@@ -33,23 +35,29 @@ namespace LungoApp.Windows
             InitializeComponent();
             _eventAggregator = eventAggregator;
             _loadingContext = new LoadingContext();
-            DataContext = _loadingContext;
+            Console.WriteLine("loading window constructor");
+            //DataContext = this;
+
+            //DataContext = _loadingContext;
             r = new Random();
 
-            _eventAggregator.ShowWindowObservable.Subscribe(x => { OnShowWindow(x); });
+            subscription = _eventAggregator.ShowWindowObservable.Subscribe(x => { OnShowWindow(x); });
+            
         }
 
-        public void OnShowWindow(WordProgressMessage message)
+        public void OnShowWindow(Report message)
         {
-            if (!message.shouldClose)
+            if (!message.EndOfProcess)
             {
-                _message = message;
-                num = r.Next(100);
-                if (num < 8)
-                {
-                    Dispatcher.Invoke(new Action(() => { updateUI(message.wordName); }), DispatcherPriority.DataBind);
+                 updateUI(message);
 
-                }
+
+                //num = r.Next(100);
+                //if (num < 8)
+                //{
+                //    Dispatcher.Invoke(new Action(() => { updateUI(message.wordName); }), DispatcherPriority.DataBind);
+
+                //}
 
                 //Dispatcher.Invoke(() => {
                 //    progressText.Text = message.wordName;
@@ -57,15 +65,24 @@ namespace LungoApp.Windows
                 //    Console.WriteLine(progressText.Text);
                 //});
             }
+            else
+            {
+                subscription.Dispose();
+            }
         }
 
-        private void updateUI(string word)
+        private void updateUI(Report message)
         {
-            _loadingContext.WordName = word;
-            _loadingContext.Percentage = _message.percentage;
-            Console.WriteLine(_loadingContext.WordName);
-            //progressText.Text = _message.wordName;
-            //progressBar.Value = Int32.Parse(_message.percentage);
+            //_loadingContext.WordName = message.wordName;
+            //_loadingContext.Percentage = message.percentage;
+            //Dispatcher.Invoke(() =>
+            //{
+            //    text.Text = "DAAS";
+            //});
+
+
+            text.Text = message.Word;
+            bar.Value = Double.Parse(message.Percentage);
         }
 
         public class LoadingContext : INotifyPropertyChanged

@@ -7,6 +7,7 @@
              xmlns:local="clr-namespace:LungoApp.Views.LeftPanel"
              xmlns:views="clr-namespace:LungoApp.Views.Learn"
              xmlns:vms="clr-namespace:LungoViewModels.ViewModels;assembly=LungoViewModels" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:loadingspinnercontrol="clr-namespace:LoadingSpinnerControl;assembly=LoadingSpinnerControl"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
@@ -20,6 +21,27 @@
     </UserControl.Resources>-->
     <Grid>
         <loadingspinnercontrol:LoadingSpinner Panel.ZIndex="10" Diameter="100" Thickness="5" IsLoading="{Binding IsLoading}" VerticalAlignment="Center"></loadingspinnercontrol:LoadingSpinner>
+        <xctk:RangeSlider Minimum="1" Maximum="20" LowerValue="1" HigherValue="2" TickPlacement="BottomRight" RangeBackground="#007ACC"  IsSnapToTickEnabled="True" TickFrequency="1"  LowerValueChanged="WordFrequencyRangeLowerValueChanged" HigherValueChanged="WordFrequencyRangeHigherValueChanged">
+            <xctk:RangeSlider.Style>
+                <Style TargetType="{x:Type xctk:RangeSlider}">
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                    <Setter Property="TickPlacement" Value="BottomRight"/>
+                    <Setter Property="Margin" Value="10"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </xctk:RangeSlider.Style>
+           
+        </xctk:RangeSlider>
+
+        <!--<metro:RangeSlider Minimum="1" Maximum="20" Width="500" Height="20" SmallChange="1" LargeChange="1" TickPlacement="BottomRight" TickFrequency="1" VerticalAlignment="Top" Margin="0 10 0 0">
+            <metro:RangeSlider.Resources>
+                
+            </metro:RangeSlider.Resources>
+        </metro:RangeSlider>-->
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
@@ -63,7 +85,7 @@
             <!--Counter Title-->
             <!--Text="{Binding TotalWordString}"-->
 
-            <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15 20 0 0">
+            <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15 40 0 0">
                 <TextBlock Text="{Binding TotalWordString}" Name="wordTitleText" FontSize="18" FontWeight="SemiBold"
                            Foreground="#000" />
                 <TextBlock Text="{DynamicResource DashBoard_Words}" FontSize="18" FontWeight="SemiBold" Margin="10 0 0 0"
@@ -71,20 +93,15 @@
 
             </StackPanel>
 
-            <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="200 20 0 0"  HorizontalAlignment="Left" VerticalAlignment="Center">
-                <!--<TextBlock Text="{DynamicResource Learn_WordList_LastLearned}"   FontSize="18" FontWeight="SemiBold"
-                           Foreground="#000"  />-->
+            <!--<StackPanel Grid.Row="4" Orientation="Horizontal" Margin="200 40 0 0"  HorizontalAlignment="Left" VerticalAlignment="Center">
+                --><!--<TextBlock Text="{DynamicResource Learn_WordList_LastLearned}"   FontSize="18" FontWeight="SemiBold"
+                           Foreground="#000"  />--><!--
                 <TextBlock Text="{Binding LastLearnedText}" Margin="10 0 0 0"  FontSize="18" FontWeight="SemiBold"
                            Foreground="#000"  />
 
-            </StackPanel>
+            </StackPanel>-->
 
-            <StackPanel Orientation="Horizontal" Grid.Row="4" Margin="0 20 270 0" HorizontalAlignment="Right" VerticalAlignment="Center">
-                <TextBlock Text="{DynamicResource Learn_WordList_Page}" FontSize="18" FontWeight="SemiBold" 
-                           Foreground="#000" />
-                <TextBlock Text="{Binding PageNumString}" Name="addTablePage" Margin="10 0 0 0"  FontSize="18" FontWeight="SemiBold" 
-                           Foreground="#000" />
-            </StackPanel>
+            
 
             <!--<Button Grid.Row="4" Content="Finish" Width="70px" Margin="0 0 20 0" HorizontalAlignment="Right"></Button>-->
             <Button Grid.Row="4" Content="Finish" Width="70px" Visibility="{Binding Path=FinishVisibility, Converter={StaticResource BoolToVis}}" Margin="0 0 20 0" HorizontalAlignment="Right" Command="{Binding NewWordsCommand}" CommandParameter="finish"></Button>
@@ -105,7 +122,6 @@
                           ItemsSource="{Binding Members}"
                   >
                 <DataGrid.Columns>
-
                     <DataGridTextColumn Header="#" Foreground="#000" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Number}"/>
                     <DataGridTemplateColumn  Header="Word" IsReadOnly="True" Width="auto">
                         <DataGridTemplateColumn.CellTemplate>
@@ -221,7 +237,15 @@
             <!--Pagination Section-->
             <Border Grid.Row="6" HorizontalAlignment="Right" BorderBrush="#dee4ec" BorderThickness="1"
                         CornerRadius="5" Padding="5" Background="White" Margin="0 10 10 10">
+
+                
                 <StackPanel Orientation="Horizontal" Name="stackPaging">
+                    <StackPanel Orientation="Horizontal" Grid.Row="4" Margin="0 0 15 0" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <!--<TextBlock Text="{DynamicResource Learn_WordList_Page}" FontSize="18" FontWeight="SemiBold" 
+                           Foreground="#000" />-->
+                        <TextBlock Text="{Binding PageNumString}" Name="addTablePage" Margin="10 0 0 0"  FontSize="18" FontWeight="SemiBold" 
+                           Foreground="#000" />
+                    </StackPanel>
                     <Button Style="{StaticResource pagingButton}" Tag="previous" Command="{Binding NewWordsCommand}" CommandParameter="prev" Click="pageClicked">
                         <Icon:PackIconMaterial Kind="ChevronLeft" Style="{StaticResource pagingButtonIcon}"/>
                     </Button>

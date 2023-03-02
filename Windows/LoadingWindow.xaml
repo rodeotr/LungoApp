@@ -13,9 +13,9 @@
             <TextBlock Text="{DynamicResource LoadingWindow_Title}" Margin="0 25" HorizontalAlignment="Center" Foreground="#fff" FontSize="20"/>
             <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="50 20 50 0">
                 <!--<ProgressBar x:Name="progressBar" VerticalAlignment="Center" Height="30" Minimum="0" Maximum="100" Value="20"/>-->
-                <ProgressBar x:Name="progressBar" VerticalAlignment="Center" Height="30" Minimum="0" Maximum="100" Value="{Binding Percentage}"/>
-                <Grid Width="400" HorizontalAlignment="Left">
-                    <TextBlock x:Name="progressText" HorizontalAlignment="Left" FontSize="20" Foreground="#000" Text="{Binding WordName}"/>
+                <ProgressBar x:Name="bar" VerticalAlignment="Center" Height="30" Minimum="0" Maximum="100"/>
+                <Grid  Width="400" HorizontalAlignment="Left">
+                    <TextBlock x:Name="text" HorizontalAlignment="Left" FontSize="20" Foreground="#000"/>
                     <!--<TextBlock x:Name="timeText" HorizontalAlignment="Right" FontSize="20" Foreground="#000" Text="{Binding TimingText}"/>-->
                 </Grid>
                 

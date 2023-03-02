@@ -1,4 +1,5 @@
-﻿using LungoApp.Windows;
+﻿using CaptionCrafter;
+using LungoApp.Windows;
 using LungoModels;
 using LungoViewModels;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +29,7 @@ namespace LungoApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        IDisposable subscription;
         private WordProgressEventAggregator eventAggregator;
         private LoadingWindow _loadingWindow;
 
@@ -36,23 +38,31 @@ namespace LungoApp
             InitializeComponent();
             IHost _hostApp = (IHost)App.Current.Properties["AppHost"];
             eventAggregator = _hostApp.Services.GetRequiredService<WordProgressEventAggregator>();
-            eventAggregator.ShowWindowObservable.Subscribe(x => { Update(x); });
-            Console.WriteLine("thread of main window entry " + Thread.CurrentThread.ManagedThreadId);
+            subscription = eventAggregator.ShowWindowObservable.Subscribe(x => { Update(x); });
 
 
         }
 
-        private async void Update(WordProgressMessage a)
+        private async void Update(Report a)
         {
             if(_loadingWindow == null)
             {
-                _loadingWindow = new LoadingWindow(eventAggregator);
-                _loadingWindow.Show();
+                Dispatcher.Invoke(() =>
+                {
+                    _loadingWindow = new LoadingWindow(eventAggregator);
+                    _loadingWindow.Show();
+                });
+                
             }
-            else if (a.shouldClose)
+            else if (a.EndOfProcess)
             {
-                _loadingWindow.Close();
-                _loadingWindow = null;
+                Dispatcher.Invoke(() =>
+                {
+                    subscription.Dispose();
+                    _loadingWindow.Close();
+                    _loadingWindow = null;
+                });
+                
             }
             else
             {

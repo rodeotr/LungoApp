@@ -16,7 +16,7 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="1" Height="40">
+        <Grid Grid.Row="1" Height="40"  Margin="0 16 0 0">
             <TextBox x:Name="LinkTextBox" Width="300" Style="{DynamicResource SignUpTextBoxStyle}" Text="{Binding Path=Link,UpdateSourceTrigger=PropertyChanged}" FontSize="18px" Padding="10 0"   VerticalContentAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="3"/>
             <TextBlock IsHitTestVisible="False" Text="Link" Margin="10" FontSize="15px" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="DarkGray">
                 <TextBlock.Style>

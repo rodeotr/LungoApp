@@ -85,7 +85,7 @@
                         Style="{DynamicResource SignUpTextBoxStyle}" 
                         HorizontalAlignment="Left" 
                         FontSize="18px" 
-                        Padding="10 0"  
+                        Padding="10 0 44 0"  
                         Width="300" 
                         VerticalContentAlignment="Center" 
                         ToolTipService.ToolTip="{DynamicResource Learn_AddMedia_SubtitleLocation_ToolTip}">
@@ -103,6 +103,7 @@
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
                                 <Setter Property="Visibility" Value="Collapsed"/>
+                                
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding Text, ElementName=SubtitleLocationTextBox}" Value="">
                                         <Setter Property="Visibility" Value="Visible"/>
