@@ -1,4 +1,6 @@
-﻿using LungoViewModels.ViewModels.Media;
+﻿using LungoDatabase.Models;
+using LungoModel.Models;
+using LungoViewModels.ViewModels.Media;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -34,6 +36,13 @@ namespace LungoApp.Views.LeftPanel
                 ((MenuMediaViewModel)(this.DataContext)).SelectedIndex = myValue;
                 ((MenuMediaViewModel)(this.DataContext)).MediaLocation = openFileDialog.FileName;
             }
+        }
+
+        public async void DataGridRow_MouseLeftButtonDown(object sender, RoutedEventArgs e)
+        {
+            DataGridRow dataGridRow = (DataGridRow)sender;
+            ((MenuMediaViewModel)DataContext).setTheWordsOfMedia((MediaMember)dataGridRow.DataContext);
+            Console.WriteLine("");
         }
     }
 }

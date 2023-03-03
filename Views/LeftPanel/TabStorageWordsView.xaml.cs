@@ -54,16 +54,7 @@ namespace LungoApp.Views.LeftPanel
         private void SearchChanged(object sender, TextChangedEventArgs args)
         {
             string text = ((TextBox)sender).Text;
-            if(text.Length == 0)
-            {
-                _vm.StorageMemberModel.updateCurrentMembers();
-            }
-            else
-            {
-                _vm.CurrentMembers = new ObservableCollection<WordMember>(_vm.StorageMemberModel.AllMembers.Where(a => a.Name.Contains(text)).ToList());
-            }
-            _vm.OnPropertyChanged(nameof(_vm.CurrentMembers));
-
+            _vm.CurrentMembers = new ObservableCollection<WordMember>(_vm.StorageMemberModel.AllMembers.Where(a => a.Name.Contains(text)).ToList());
         } 
 
 

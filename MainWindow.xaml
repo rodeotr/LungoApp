@@ -83,6 +83,9 @@
                         <DataTemplate DataType="{x:Type vmsMedia:MenuMediaViewModel}">
                             <viewsLeftPanel:TabMediaView/>
                         </DataTemplate>
+                        <DataTemplate DataType="{x:Type vmsMedia:TabMediaWordsViewModel}">
+                            <viewsLeftPanel:TabMediaWordsView/>
+                        </DataTemplate>
                         <DataTemplate DataType="{x:Type vmsStorage:MenuStorageMainViewModel}">
                             <viewsLeftPanel:TabStorageMainView/>
                         </DataTemplate>
