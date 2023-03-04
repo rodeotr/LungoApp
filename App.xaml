@@ -9,6 +9,8 @@
              >
     <Application.Resources>
         
+        
+        
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -88,6 +90,20 @@
         <Thickness x:Key="TabItemBorderThickness" Left="0" Top="0" Right="0" Bottom="0"/>
 
 
+        <ControlTemplate x:Key="ComboBoxToggleButton1" TargetType="{x:Type ToggleButton}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="30"/>
+                </Grid.ColumnDefinitions>
+                <Border x:Name="Border" Background="#fff" BorderBrush="#FF97A0A5" BorderThickness="1" CornerRadius="20" Grid.ColumnSpan="2"/>
+                <Border Background="#fff" BorderBrush="#FF97A0A5" BorderThickness="0,0,1,0" CornerRadius="20 0 0 20" Grid.Column="0" Margin="1"/>
+                <Path x:Name="Arrow" Grid.Column="1" Data="M0,0 L0,2 L4,6 L8,2 L8,0 L4,4 z" Fill="#000" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </ControlTemplate>
+        <ControlTemplate x:Key="ComboBoxTextBox1" TargetType="{x:Type TextBox}">
+            <Border x:Name="PART_ContentHost" Background="{TemplateBinding Background}" Focusable="False"/>
+        </ControlTemplate>
         <ControlTemplate x:Key="TabItemTemplateLearning" TargetType="{x:Type TabItem}">
             <Grid x:Name="templateRoot" SnapsToDevicePixels="true">
                 <Border x:Name="mainBorder" Background="Transparent" BorderThickness="0,0,0,0" BorderBrush="{TemplateBinding BorderBrush}" Margin="0">
@@ -1517,7 +1533,7 @@
                                 <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
                             </Trigger>
                             <Trigger SourceName="Popup" Property="Popup.AllowsTransparency" Value="true">
-                                <Setter TargetName="DropDownBorder" Property="CornerRadius" Value="0"/>
+                                <Setter TargetName="DropDownBorder" Property="CornerRadius" Value="15"/>
                                 <Setter TargetName="DropDownBorder" Property="Margin" Value="0,2,0,0"/>
                             </Trigger>
                             <Trigger Property="IsEditable"  Value="true">

@@ -281,7 +281,7 @@
             <Grid Grid.Row="2" Panel.ZIndex="2">
                 <Grid HorizontalAlignment="Center">
                     <TextBox FontSize="16" x:Name="NameTextBox" VerticalAlignment="Center" VerticalContentAlignment="Center" Padding="10 0" HorizontalAlignment="Left"  Style="{DynamicResource SignUpTextBoxStyle}" Width="{StaticResource Input_Width}" Height="{StaticResource Input_Height}" Margin="5"/>
-                    <TextBlock FontSize="{StaticResource Hint_FontSize}" IsHitTestVisible="False" Text="Name" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,0" Foreground="DarkGray">
+                    <TextBlock FontSize="{StaticResource Hint_FontSize}" IsHitTestVisible="False" Text="{DynamicResource FirstTime_Name}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,0" Foreground="DarkGray">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
                                 <Setter Property="Visibility" Value="Collapsed"/>
@@ -297,8 +297,8 @@
 
             </Grid>
             <Grid Grid.Row="3" Panel.ZIndex="2" Width="{StaticResource Input_Width}" Height="{StaticResource Input_Height}">
-                <ComboBox x:Name="LanguageComboBox" FontSize="17"/>
-                <TextBlock FontSize="{StaticResource Hint_FontSize}" IsHitTestVisible="False" Text="Your Language" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="10 0" Margin="10,0,0,0" Foreground="DarkGray">
+                <ComboBox x:Name="LanguageComboBox" FontSize="17" SelectionChanged="YourLanguageChanged"/>
+                <TextBlock FontSize="{StaticResource Hint_FontSize}" IsHitTestVisible="False" Text="{DynamicResource FirstTime_YourLanguage}" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="10 0" Margin="10,0,0,0" Foreground="DarkGray">
                     <TextBlock.Style>
                         <Style TargetType="{x:Type TextBlock}">
                             <Setter Property="Visibility" Value="Collapsed"/>
@@ -316,7 +316,7 @@
             <Grid Grid.Row="4" Panel.ZIndex="2" Width="{StaticResource Input_Width}" Height="{StaticResource Input_Height}">
                 <ComboBox x:Name="LanguageToLearnComboBox" FontSize="17"/>
 
-                <TextBlock FontSize="{StaticResource Hint_FontSize}" IsHitTestVisible="False" Text="The Language You Want To Learn" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,0" Foreground="DarkGray">
+                <TextBlock FontSize="{StaticResource Hint_FontSize}" IsHitTestVisible="False" Text="{DynamicResource FirstTime_TargetLanguage}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,0" Foreground="DarkGray">
                     <TextBlock.Style>
                         <Style TargetType="{x:Type TextBlock}">
                             <Setter Property="Visibility" Value="Collapsed"/>
@@ -361,8 +361,8 @@
                     </Style>
                     
                 </Border.Style>
-                
-                <TextBlock Text="START" Foreground="#fff" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                <TextBlock Text="{DynamicResource FirstTime_ButtonStart}" Foreground="#fff" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Border>
             <Border Width="150" Height="100" Panel.ZIndex="1" Grid.RowSpan="6" VerticalAlignment="Bottom" HorizontalAlignment="Center">
                 <Border.Background>

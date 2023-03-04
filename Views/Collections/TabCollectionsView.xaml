@@ -21,12 +21,12 @@
 
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.3*"/>
+                <!--<RowDefinition Height="0.1*"/>-->
                 <RowDefinition Height="0.5*"/>
                 <RowDefinition Height="5*"/>
             </Grid.RowDefinitions>
 
-            <ItemsControl Grid.Row="1" ItemsSource="{Binding CollectionList}" VerticalAlignment="Top" Width="660" HorizontalAlignment="Left" Margin="0 0 0 0">
+            <ItemsControl Grid.Row="0" ItemsSource="{Binding CollectionList}" VerticalAlignment="Top" Width="660" HorizontalAlignment="Left" Margin="0 0 0 0">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <UniformGrid Columns="3"/>
@@ -247,9 +247,9 @@
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
-            <Grid Grid.Row="2">
+            <Grid Grid.Row="1" Margin="0 -40">
                 <StackPanel Orientation="Vertical">
-                    <Border Cursor="Hand" Height="50" Width="120" Margin="50 0" CornerRadius="25" HorizontalAlignment="Right">
+                    <Border Cursor="Hand" Height="50" Width="120"  CornerRadius="5" HorizontalAlignment="Right">
                         <Border.InputBindings>
                             <MouseBinding Gesture="LeftClick" Command="{Binding TabCollectionsCommand}" CommandParameter="Create"/>
                         </Border.InputBindings>
@@ -270,14 +270,14 @@
                                 </Style.Triggers>
                             </Style>
                         </Border.Style>
-                        <Grid Width="120">
-                            <Border Margin="0 0 0 0" Background="#1c7514" Width="50" Height="50" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="25">
+                        <Grid Width="100">
+                            <Border Margin="-10 0 0 0" Background="#1c7514" Width="50" Height="50" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="5 25 15 0">
                                 <Border.Effect>
                                     <DropShadowEffect Direction="220" ShadowDepth="2"/>
                                 </Border.Effect>
                                 <Icon:PackIconMaterial Kind="Plus" Width="25" Height="25" Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#fff"/>
                             </Border>
-                            <TextBlock Text="{DynamicResource Collections_Button_Create}" Margin="45 0 0 0" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#fff"/>
+                            <TextBlock Text="{DynamicResource Collections_Button_Create}" Margin="45 0 0 0" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#fff"/>
                         </Grid>
                     </Border>
 

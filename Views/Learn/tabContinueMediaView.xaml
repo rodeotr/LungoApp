@@ -8,98 +8,86 @@
              xmlns:loadingspinnercontrol="clr-namespace:LoadingSpinnerControl;assembly=LoadingSpinnerControl"
              mc:Ignorable="d" 
              >
-    <Grid  TextBlock.FontSize="20px" Width="700" TextBlock.Foreground="#000">
+    <Grid TextBlock.FontSize="20px" Width="750" TextBlock.Foreground="#000">
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="4*"/>
-            
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.01*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <loadingspinnercontrol:LoadingSpinner Grid.Row="0" Grid.Column="0" Margin="0 150" Grid.ColumnSpan="3" Grid.RowSpan="4" Diameter="100" Thickness="5" IsLoading="{Binding IsLoading}" VerticalAlignment="Top"></loadingspinnercontrol:LoadingSpinner>
-        <TextBlock Grid.Row="0" Text="" FontSize="30px"/>
-        <Grid Grid.Row="1" Grid.Column="1" Height="40" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="2*"/>
-            </Grid.ColumnDefinitions>
-            <ComboBox Grid.Column="0" FontSize="15" x:Name="TypeComboBox" IsTextSearchEnabled="False" IsEditable="False" HorizontalAlignment="Left"  Style="{DynamicResource ComboRound}" Width="120px" SelectedItem="{Binding MediaType}" ItemsSource="{Binding MediaTypes}"/>
-            <TextBlock Grid.Column="0" IsHitTestVisible="False" Text="{DynamicResource Learn_ContinueMedia_Type}" FontSize="15px" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray">
-                <TextBlock.Style>
-                    <Style TargetType="{x:Type TextBlock}">
-                        <Setter Property="Visibility" Value="Collapsed"/>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding Text, ElementName=TypeComboBox}" Value="">
-                                <Setter Property="Visibility" Value="Visible"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </TextBlock.Style>
-            </TextBlock>
-        </Grid>
-        <Grid Grid.Row="2" Grid.Column="1" Height="40" Margin="0 10">
-            <ComboBox x:Name="TitleComboBox" Style="{DynamicResource ComboRound}" FontSize="14px" Width="250px" HorizontalAlignment="Left" VerticalContentAlignment="Center" IsEditable="False" Text="{Binding SelectedMediaName, UpdateSourceTrigger=PropertyChanged}"  ItemsSource="{Binding MediaNames}"/>
-            <TextBlock IsHitTestVisible="False" Text="{DynamicResource Learn_ContinueMedia_Title}" Margin="10,0,0,0" FontSize="15px" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="DarkGray">
-                <TextBlock.Style>
-                    <Style TargetType="{x:Type TextBlock}">
-                        <Setter Property="Visibility" Value="Collapsed"/>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding Text, ElementName=TitleComboBox}" Value="">
-                                <Setter Property="Visibility" Value="Visible"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </TextBlock.Style>
-            </TextBlock>
+        <loadingspinnercontrol:LoadingSpinner Grid.Row="0" Grid.Column="0" Margin="0 150" Grid.ColumnSpan="3" Grid.RowSpan="2" Diameter="100" Thickness="5" IsLoading="{Binding IsLoading}" VerticalAlignment="Top"></loadingspinnercontrol:LoadingSpinner>
+        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical">
+            <Grid Height="40">
+                <ComboBox FontSize="15" x:Name="TypeComboBox" IsTextSearchEnabled="False" IsEditable="False" HorizontalAlignment="Left"  Style="{DynamicResource ComboRound}" Width="120px" SelectedItem="{Binding MediaType}" ItemsSource="{Binding MediaTypes}"/>
+                <TextBlock IsHitTestVisible="False" Text="{DynamicResource Learn_ContinueMedia_Type}" FontSize="15px" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=TypeComboBox}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </Grid>
+            <Grid Height="40" Margin="0 10">
+                <ComboBox x:Name="TitleComboBox" Style="{DynamicResource ComboRound}" FontSize="14px" Width="250px" HorizontalAlignment="Left" VerticalContentAlignment="Center" IsEditable="False" Text="{Binding SelectedMediaName, UpdateSourceTrigger=PropertyChanged}"  ItemsSource="{Binding MediaNames}"/>
+                <TextBlock IsHitTestVisible="False" Text="{DynamicResource Learn_ContinueMedia_Title}" Margin="10,0,0,0" FontSize="15px" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="DarkGray">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=TitleComboBox}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
 
-        </Grid>
+            </Grid>
+            <Grid Margin="120 50 0 0" >
+                <Border Cursor="Hand" Height="50" Width="120" CornerRadius="25">
+                    <Border.InputBindings>
+                        <MouseBinding Gesture="LeftClick" Command="{Binding TabContinueCommand}"/>
+                    </Border.InputBindings>
+                    <Border.Style>
+                        <Style>
+                            <Setter Property="Border.Background" Value="#2db521"/>
+                            <Setter Property="Border.RenderTransformOrigin" Value="0.5, 0.5"/>
+                            <Style.Triggers>
 
-        <Grid Grid.Row="5" Grid.Column="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Border Grid.Column="2" Cursor="Hand" Height="50" Width="120" Margin="10 0" CornerRadius="25" HorizontalAlignment="Right">
-                <Border.InputBindings>
-                    <MouseBinding Gesture="LeftClick" Command="{Binding TabContinueCommand}"/>
-                </Border.InputBindings>
-                <Border.Style>
-                    <Style>
-                        <Setter Property="Border.Background" Value="#2db521"/>
-                        <Setter Property="Border.RenderTransformOrigin" Value="0.5, 0.5"/>
-                        <Style.Triggers>
+                                <Trigger Property="Border.IsMouseOver" Value="True">
+                                    <Setter Property="Border.RenderTransform">
+                                        <Setter.Value>
+                                            <ScaleTransform ScaleX="1.05" ScaleY="1.05" />
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="Border.Background" Value="#024f14"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                    <Grid Width="120">
+                        <Border Margin="0 0 0 0" Background="#1c7514" Width="50" Height="50" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="25">
+                            <Border.Effect>
+                                <DropShadowEffect Direction="220" ShadowDepth="2"/>
+                            </Border.Effect>
+                            <Icon:PackIconMaterial Kind="Play" Width="25" Height="25" Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#fff"/>
+                            <!--<Icon:PackIconMaterial Kind="DesktopMac" Width="50" Height="50" Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="ForestGreen"/>-->
+                        </Border>
+                        <TextBlock Text="{DynamicResource Learn_ContinueMedia_Bring}" Margin="40 0 0 0"  FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#fff"/>
+                    </Grid>
+                </Border>
 
-                            <Trigger Property="Border.IsMouseOver" Value="True">
-                                <Setter Property="Border.RenderTransform">
-                                    <Setter.Value>
-                                        <ScaleTransform ScaleX="1.05" ScaleY="1.05" />
-                                    </Setter.Value>
-                                </Setter>
-                                <Setter Property="Border.Background" Value="#024f14"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Border.Style>
-                <Grid Width="120">
-                    <Border Margin="0 0 0 0" Background="#1c7514" Width="50" Height="50" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="25">
-                        <Border.Effect>
-                            <DropShadowEffect Direction="220" ShadowDepth="2"/>
-                        </Border.Effect>
-                        <Icon:PackIconMaterial Kind="Play" Width="25" Height="25" Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#fff"/>
-                        <!--<Icon:PackIconMaterial Kind="DesktopMac" Width="50" Height="50" Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="ForestGreen"/>-->
-                    </Border>
-                    <TextBlock Text="{DynamicResource Learn_ContinueMedia_Bring}" Margin="40 0 0 0"  FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#fff"/>
-                </Grid>
-            </Border>
-
-            <!--<Button Style="{DynamicResource ButtonStyleLearning}" Name="btnExecuteAdd" Content="Execute" Command="{Binding TabAddCommand}" Grid.Column="2"  VerticalAlignment="Top" HorizontalAlignment="Right" Height="50" Width="110" FontSize="20"/>-->
-        </Grid>
+            </Grid>
+        </StackPanel>
+        
+        
     </Grid>
     <!--<Grid>
 

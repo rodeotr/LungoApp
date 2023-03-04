@@ -16,7 +16,7 @@
                 <ProgressBar x:Name="bar" VerticalAlignment="Center" Height="30" Minimum="0" Maximum="100"/>
                 <Grid  Width="400" HorizontalAlignment="Left">
                     <TextBlock x:Name="text" HorizontalAlignment="Left" FontSize="20" Foreground="#000"/>
-                    <!--<TextBlock x:Name="timeText" HorizontalAlignment="Right" FontSize="20" Foreground="#000" Text="{Binding TimingText}"/>-->
+                    <TextBlock x:Name="frequency" HorizontalAlignment="Right" FontSize="20" Foreground="#000"/>
                 </Grid>
                 
             </StackPanel>

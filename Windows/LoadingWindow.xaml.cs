@@ -73,15 +73,8 @@ namespace LungoApp.Windows
 
         private void updateUI(Report message)
         {
-            //_loadingContext.WordName = message.wordName;
-            //_loadingContext.Percentage = message.percentage;
-            //Dispatcher.Invoke(() =>
-            //{
-            //    text.Text = "DAAS";
-            //});
-
-
             text.Text = message.Word;
+            frequency.Text = "Density: " + message.WordFrequency;
             bar.Value = Double.Parse(message.Percentage);
         }
 

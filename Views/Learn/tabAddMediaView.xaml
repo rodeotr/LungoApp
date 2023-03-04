@@ -26,61 +26,61 @@
         
     </UserControl.Resources>
     <Grid HorizontalAlignment="Left" TextBlock.FontSize="20px" Width="750" TextBlock.Foreground="#000">
-       
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.15*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="0.1*"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="0.3*"/>
-            </Grid.RowDefinitions>
-            <!--<TextBlock Grid.Row="0" Text="" FontSize="30px"/>-->
-            <Grid Grid.Row="1" Grid.Column="1" Height="40" >
-
-                <ComboBox Grid.Column="0" FontSize="15" x:Name="TypeComboBox" HorizontalAlignment="Left"  Style="{DynamicResource ComboRound}" Width="300px" SelectedItem="{Binding MediaType}" ItemsSource="{Binding MediaTypes}" ToolTipService.ToolTip="{DynamicResource Learn_AddMedia_Type_ToolTip}"/>
-                <TextBlock Grid.Column="0" IsHitTestVisible="False" Text="{DynamicResource Learn_AddMedia_Type}" FontSize="15px" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray">
-                    <TextBlock.Style>
-                        <Style TargetType="{x:Type TextBlock}">
-                            <Setter Property="Visibility" Value="Collapsed"/>
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding Text, ElementName=TypeComboBox}" Value="">
-                                    <Setter Property="Visibility" Value="Visible"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TextBlock.Style>
-                </TextBlock>
-            </Grid>
-            <Grid Grid.Row="2" Grid.Column="1" Height="40" Margin="0 20 0 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="5*"/>
-                    <ColumnDefinition Width="26*"/>
-                </Grid.ColumnDefinitions>
-                <ComboBox Grid.Column="0" x:Name="TitleComboBox" Style="{DynamicResource ComboRound}" FontSize="14px" Width="300px" HorizontalAlignment="Left" VerticalContentAlignment="Center" IsEditable="True" Text="{Binding SelectedMediaName}"  ItemsSource="{Binding CurrentChildViewModel.ExistingMedia}" Grid.ColumnSpan="2"/>
-                <TextBlock Grid.Column="0" IsHitTestVisible="False" Text="{DynamicResource Learn_AddMedia_Title}" Margin="10" FontSize="15px" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="DarkGray">
-                    <TextBlock.Style>
-                        <Style TargetType="{x:Type TextBlock}">
-                            <Setter Property="Visibility" Value="Collapsed"/>
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding Text, ElementName=TitleComboBox}" Value="">
-                                    <Setter Property="Visibility" Value="Visible"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TextBlock.Style>
-                </TextBlock>
-            </Grid>
-            <Grid Grid.Row="3" Grid.Column="1" Height="40" Margin="0 20 0 0">
-                <Grid>
-                    <TextBox 
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="0.3*"/>
+                </Grid.RowDefinitions>
+                <!--<TextBlock Grid.Row="0" Text="" FontSize="30px"/>-->
+                <Grid Grid.Row="0" Grid.Column="1" Height="40" >
+                    <ComboBox Grid.Column="0" FontSize="15" x:Name="TypeComboBox" HorizontalAlignment="Left"  Style="{DynamicResource ComboRound}" Width="300px" SelectedItem="{Binding MediaType}" ItemsSource="{Binding MediaTypes}" ToolTipService.ToolTip="{DynamicResource Learn_AddMedia_Type_ToolTip}"/>
+                    <TextBlock Grid.Column="0" IsHitTestVisible="False" Text="{DynamicResource Learn_AddMedia_Type}" FontSize="15px" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Text, ElementName=TypeComboBox}" Value="">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="1" Height="40" Margin="0 20 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="26*"/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox Grid.Column="0" x:Name="TitleComboBox" Style="{DynamicResource ComboRound}" FontSize="14px" Width="300px" HorizontalAlignment="Left" VerticalContentAlignment="Center" IsEditable="True" Text="{Binding SelectedMediaName}"  ItemsSource="{Binding CurrentChildViewModel.ExistingMedia}" Grid.ColumnSpan="2"/>
+                    <TextBlock Grid.Column="0" IsHitTestVisible="False" Text="{DynamicResource Learn_AddMedia_Title}" Margin="10" FontSize="15px" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="DarkGray">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Text, ElementName=TitleComboBox}" Value="">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </Grid>
+                <Grid Grid.Row="2" Grid.Column="1" Height="40" Margin="0 20 0 0">
+                    <Grid>
+                        <TextBox 
                         x:Name="SubtitleLocationTextBox" 
                         Style="{DynamicResource SignUpTextBoxStyle}" 
                         HorizontalAlignment="Left" 
@@ -89,94 +89,94 @@
                         Width="300" 
                         VerticalContentAlignment="Center" 
                         ToolTipService.ToolTip="{DynamicResource Learn_AddMedia_SubtitleLocation_ToolTip}">
-                        <TextBox.Text>
-                            <Binding Path="TranscriptionLocation" 
+                            <TextBox.Text>
+                                <Binding Path="TranscriptionLocation" 
                                      UpdateSourceTrigger="PropertyChanged">
-                                <Binding.ValidationRules>
-                                    <local:STRValidation/>
-                                </Binding.ValidationRules>
-                            </Binding>
-                        </TextBox.Text>
-                    </TextBox>
+                                    <Binding.ValidationRules>
+                                        <local:STRValidation/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
 
-                    <TextBlock IsHitTestVisible="False" Text="{DynamicResource Learn_AddMedia_SubtitleLocation}" Margin="10,0,0,0" FontSize="15px" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="DarkGray">
+                        <TextBlock IsHitTestVisible="False" Text="{DynamicResource Learn_AddMedia_SubtitleLocation}" Margin="10,0,0,0" FontSize="15px" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="DarkGray">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Text, ElementName=SubtitleLocationTextBox}" Value="">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                        <Border Cursor="Hand" Margin="260 0 0 0" Background="#1e3ee1" Width="40" Height="40" MouseDown="btnOpenFile_Click" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="20">
+                            <Border.Effect>
+                                <DropShadowEffect Direction="220" ShadowDepth="2"/>
+                            </Border.Effect>
+                            <Icon:PackIconMaterial Kind="Upload" Width="20" Height="20" Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#fff"/>
+                        </Border>
+                    </Grid>
+
+                    <!--<Button Style="{DynamicResource ButtonStyleLearning}" Name="btnOpenFile" HorizontalAlignment="Right" FontSize="15px" Content="Open" Height="30px" Width="60px"  Margin="-20 0" Click="btnOpenFile_Click"/>-->
+
+                </Grid>
+                <!--<Grid Grid.Row="4" Grid.Column="1" Height="40" Margin="0 20 0 0" IsEnabled="False">
+                    <TextBox Grid.Row="5" x:Name="MaxWordFrequencyTextBox" Grid.Column="0" Width="60" Style="{DynamicResource SignUpTextBoxStyle}" Text="{Binding Path=MaxWordFreq,UpdateSourceTrigger=PropertyChanged}" FontSize="18px" Padding="10 0" VerticalContentAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="3"  PreviewTextInput="PreviewTextInputMaxFreq" ToolTipService.ShowDuration="20000" ToolTipService.ToolTip="{DynamicResource Learn_AddMedia_MaxWordFrequency_ToolTip}"/>
+                    <TextBlock Grid.Row="5" Grid.Column="0" IsHitTestVisible="False" Text="{DynamicResource Learn_AddMedia_MaxWordFrequency}" Margin="10" FontSize="15px" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="DarkGray">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
                                 <Setter Property="Visibility" Value="Collapsed"/>
-                                
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding Text, ElementName=SubtitleLocationTextBox}" Value="">
+                                    <DataTrigger Binding="{Binding Text, ElementName=MaxWordFrequencyTextBox}" Value="">
                                         <Setter Property="Visibility" Value="Visible"/>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
-                    <Border Cursor="Hand" Margin="260 0 0 0" Background="#1e3ee1" Width="40" Height="40" MouseDown="btnOpenFile_Click" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="20">
-                        <Border.Effect>
-                            <DropShadowEffect Direction="220" ShadowDepth="2"/>
-                        </Border.Effect>
-                        <Icon:PackIconMaterial Kind="Upload" Width="20" Height="20" Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#fff"/>
-                    </Border>
-                </Grid>
 
-                <!--<Button Style="{DynamicResource ButtonStyleLearning}" Name="btnOpenFile" HorizontalAlignment="Right" FontSize="15px" Content="Open" Height="30px" Width="60px"  Margin="-20 0" Click="btnOpenFile_Click"/>-->
+                </Grid>-->
 
-            </Grid>
-            <Grid Grid.Row="4" Grid.Column="1" Height="40" Margin="0 20 0 0">
-                <TextBox Grid.Row="5" x:Name="MaxWordFrequencyTextBox" Grid.Column="0" Width="160" Style="{DynamicResource SignUpTextBoxStyle}" Text="{Binding Path=MaxWordFreq,UpdateSourceTrigger=PropertyChanged}" FontSize="18px" Padding="10 0" VerticalContentAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="3"  PreviewTextInput="PreviewTextInputMaxFreq" ToolTipService.ShowDuration="20000" ToolTipService.ToolTip="{DynamicResource Learn_AddMedia_MaxWordFrequency_ToolTip}"/>
-                <TextBlock Grid.Row="5" Grid.Column="0" IsHitTestVisible="False" Text="{DynamicResource Learn_AddMedia_MaxWordFrequency}" Margin="10" FontSize="15px" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="DarkGray">
-                    <TextBlock.Style>
-                        <Style TargetType="{x:Type TextBlock}">
-                            <Setter Property="Visibility" Value="Collapsed"/>
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding Text, ElementName=MaxWordFrequencyTextBox}" Value="">
-                                    <Setter Property="Visibility" Value="Visible"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TextBlock.Style>
-                </TextBlock>
-           
-            </Grid>
-            
                 <!--<Button Style="{DynamicResource ButtonStyleLearning}" Name="btnExecuteAdd" Content="Execute" Command="{Binding TabAddCommand}" Grid.Column="2"  VerticalAlignment="Top" HorizontalAlignment="Right" Height="50" Width="110" FontSize="20"/>-->
-            
-        </Grid>
-        <Border Grid.Row="5" Grid.Column="2" Margin="0 250 0 0"  Cursor="Hand" Height="50" Width="120" CornerRadius="5" HorizontalAlignment="Right">
-            <Border.Effect>
-                <DropShadowEffect Direction="220" ShadowDepth="2"/>
-            </Border.Effect>
-            <Border.InputBindings>
-                <MouseBinding Gesture="LeftClick" Command="{Binding TabAddCommand}"/>
-            </Border.InputBindings>
-            <Border.Style>
-                <Style>
-                    <Setter Property="Border.Background" Value="#2db521"/>
-                    <Setter Property="Border.RenderTransformOrigin" Value="0.5, 0.5"/>
-                    <Style.Triggers>
-
-                        <Trigger Property="Border.IsMouseOver" Value="True">
-                            <Setter Property="Border.RenderTransform">
-                                <Setter.Value>
-                                    <ScaleTransform ScaleX="1.05" ScaleY="1.05" />
-                                </Setter.Value>
-                            </Setter>
-                            <Setter Property="Border.Background" Value="#024f14"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Border.Style>
-            <Grid Width="120">
-                <Border Margin="0 0 0 0" Background="#1c7514" Width="48" Height="50" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="2">
-
-                    <Icon:PackIconMaterial Kind="Play" Width="25" Height="25" Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#fff"/>
-                    <!--<Icon:PackIconMaterial Kind="DesktopMac" Width="50" Height="50" Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="ForestGreen"/>-->
-                </Border>
-                <TextBlock Text="{DynamicResource Learn_AddMedia_ButtonRun}" Margin="40 0 0 0"  FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#fff"/>
             </Grid>
-        </Border>
-        <ContentControl Grid.Row="1" Grid.Column="2" Margin="40 77 0 0" Content="{Binding CurrentViewModel}"/>
+            <Border Margin="0 100 0 0"  Cursor="Hand" Height="50" Width="120" CornerRadius="5" HorizontalAlignment="Right">
+                <Border.Effect>
+                    <DropShadowEffect Direction="220" ShadowDepth="2"/>
+                </Border.Effect>
+                <Border.InputBindings>
+                    <MouseBinding Gesture="LeftClick" Command="{Binding TabAddCommand}"/>
+                </Border.InputBindings>
+                <Border.Style>
+                    <Style>
+                        <Setter Property="Border.Background" Value="#2db521"/>
+                        <Setter Property="Border.RenderTransformOrigin" Value="0.5, 0.5"/>
+                        <Style.Triggers>
+
+                            <Trigger Property="Border.IsMouseOver" Value="True">
+                                <Setter Property="Border.RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="1.05" ScaleY="1.05" />
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Border.Background" Value="#024f14"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+                <Grid Width="120">
+                    <Border Margin="0 0 0 0" Background="#1c7514" Width="48" Height="50" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="2">
+
+                        <Icon:PackIconMaterial Kind="Play" Width="25" Height="25" Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#fff"/>
+                        <!--<Icon:PackIconMaterial Kind="DesktopMac" Width="50" Height="50" Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="ForestGreen"/>-->
+                    </Border>
+                    <TextBlock Text="{DynamicResource Learn_AddMedia_ButtonRun}" Margin="40 0 0 0"  FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#fff"/>
+                </Grid>
+            </Border>
+        </StackPanel>
+        <ContentControl Grid.Row="1" Grid.Column="2" Margin="40 0 0 0" Content="{Binding CurrentViewModel}"/>
       
         
         

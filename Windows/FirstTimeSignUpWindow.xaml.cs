@@ -7,8 +7,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -29,11 +31,36 @@ namespace LungoApp.Windows
     {
         private readonly App _app;
         private bool _maleActive = true;
+        private List<Language> _languages;
         public FirstTimeSignUpWindow(App app)
         {
             InitializeComponent();
             _app = app;
             setLanguageSources();
+
+            ResourceDictionary dict = new ResourceDictionary()
+            {
+                Source = new Uri("..\\ResourceDictionary\\LangEnglish.xaml", UriKind.Relative)
+            };
+            Resources.MergedDictionaries.Add(dict);
+        }
+
+        private void setLanguageDictionary(string language)
+        {
+            Language lang = _languages.First(a => a.Name.Equals(language));
+            if(lang.AppLanguageRepositoryFileName == null || lang.AppLanguageRepositoryFileName.Length == 0)
+            {
+                return;
+            }
+
+            Resources.MergedDictionaries.RemoveAt(0);
+            string url = "..\\ResourceDictionary\\" + lang.AppLanguageRepositoryFileName + ".xaml";
+            ResourceDictionary dict = new ResourceDictionary()
+            {
+                Source = new Uri(url, UriKind.Relative)
+            };
+            Resources.MergedDictionaries.Add(dict);
+
         }
 
         private void setLanguageSources()
@@ -43,8 +70,8 @@ namespace LungoApp.Windows
             using (LungoContextDB context = new LungoContextDB(options))
             {
                 SettingServices services = new SettingServices(context);
-                List<Language> languages = services.getAllLanguages();
-                string[] languageArray = languages.Select(a => a.Name).ToArray();
+                _languages = services.getAllLanguages();
+                string[] languageArray = _languages.Select(a => a.Name).ToArray();
                 LanguageComboBox.ItemsSource = languageArray;
                 LanguageToLearnComboBox.ItemsSource = languageArray;
             }
@@ -96,6 +123,7 @@ namespace LungoApp.Windows
                     Name = NameTextBox.Text,
                     MotherLanguage = mainLanguage,
                     CurrentLanguage = toLearnLanguage,
+                    Languages = new List<Language>() { toLearnLanguage},
                     Gender = gender,
                     Score = new Score()
                 };
@@ -106,8 +134,10 @@ namespace LungoApp.Windows
                 Close();
             }
 
-               
-           
+            
+
+
+
 
 
 
@@ -116,7 +146,14 @@ namespace LungoApp.Windows
             //    LanguageComboBox.SelectedItem.ToString(),
             //    LanguageToLearnComboBox.SelectedItem.ToString(),
             //    gender);
-            
+
+        }
+        private void YourLanguageChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox combo = (ComboBox)sender;
+            string selected = combo.SelectedItem.ToString();
+
+            setLanguageDictionary(selected);
         }
     }
     

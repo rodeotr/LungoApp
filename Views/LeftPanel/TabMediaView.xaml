@@ -58,6 +58,7 @@
                 <DataGrid.RowStyle>
                     <Style TargetType="DataGridRow">
                         <EventSetter Event="MouseLeftButtonDown" Handler="DataGridRow_MouseLeftButtonDown" />
+                        <Setter Property="Cursor" Value="Hand"/>
                         <Setter Property="Background" Value="White"/>
                         <Setter Property="Margin" Value="0 2 0 0"/>
                         <Setter Property="SnapsToDevicePixels" Value="true"/>

@@ -239,7 +239,7 @@
                             <ListView ItemsSource="{Binding UnfinishedMedia}" HorizontalContentAlignment="Left" Background="Transparent" BorderThickness="0">
                                 <ListView.ItemsPanel>
                                     <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Horizontal"></StackPanel>
+                                        <StackPanel Orientation="Horizontal" Cursor="Hand"></StackPanel>
                                     </ItemsPanelTemplate>
                                 </ListView.ItemsPanel>
                                 <ListView.ItemTemplate>
