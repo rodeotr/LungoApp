@@ -1,4 +1,7 @@
-﻿using System;
+﻿using LungoApp.Windows.Collections;
+using LungoModel.Models;
+using LungoViewModels.ViewModels.Test;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -21,8 +24,19 @@ namespace LungoApp.Views.LeftPanel
         public TabTestView()
         {
             InitializeComponent();
+            Loaded += OnLoaded;
         }
 
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            TabTestViewModel vM = (TabTestViewModel)DataContext;
+            vM.TestContextEvent += (context) => ShowContext(context);
+        }
 
+        private void ShowContext(StorageContext context)
+        {
+            ShowContextsWindow window = new ShowContextsWindow(context);
+            window.Show();
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿
+using LungoDatabase;
 using LungoDatabase.Models;
 using LungoModel.Models;
 using LungoModel.Utils;
@@ -77,12 +78,14 @@ namespace LungoApp.Windows.Collections
         }
         private void Play(object sender, RoutedEventArgs e)
         {
-            switch (_context.Medium)
+
+            MediaTypes.TYPE tYPE = ((WordContext)_context.Context).Type;
+            switch (tYPE)
             {
-                case "Youtube":
+                case MediaTypes.TYPE.Youtube:
                     openYoutube();
                     break;
-                case "TVSeries":
+                case MediaTypes.TYPE.TVSeries:
                     openMedia();
                     break;
             }
