@@ -30,7 +30,7 @@ namespace LungoApp.Views.LeftPanel
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             _vm = (TabStorageWordsViewModel)DataContext;
-            _vm.StorageShowtEvent += (context) => ShowContext(context);
+            _vm.StorageShowEvent += (context) => ShowContext(context);
             _vm.WordEditEvent += (member) => ShowWordEdit(member);
             _vm.AddToCollectionEvent += (member, collections) => AddToCollection(member, collections);
         }
@@ -44,6 +44,8 @@ namespace LungoApp.Views.LeftPanel
         {
             EditWordWindow window = new EditWordWindow(member);
             window.Show();
+
+            
         }
         private void AddToCollection(WordMember member, List<Collection> collections)
         {

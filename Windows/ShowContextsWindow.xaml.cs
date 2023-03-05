@@ -1,8 +1,10 @@
 ﻿
 using LungoDatabase.Models;
 using LungoModel.Models;
+using LungoModel.Utils;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -42,21 +44,14 @@ namespace LungoApp.Windows.Collections
             word.Text = context.Word;
             medium.Text = _wcontext.Type.ToString();
             source.Text = _wcontext.Address.TranscriptionAddress.Title;
-            setTimeText();
-
+            timeStamp.Text = ((WordContext)(_context.Context)).Address.SubLocation;
             setText();
-
-
             if (context.MediaLocation == null)
             {
                 playButton.Visibility = Visibility.Hidden;
             }
         }
 
-        private void setTimeText()
-        {
-            timeStamp.Text = ((WordContext)(_context.Context)).Address.SubLocation;
-        }
 
         private void setText()
         {
@@ -82,10 +77,29 @@ namespace LungoApp.Windows.Collections
         }
         private void Play(object sender, RoutedEventArgs e)
         {
+            switch (_context.Medium)
+            {
+                case "Youtube":
+                    openYoutube();
+                    break;
+                case "TVSeries":
+                    openMedia();
+                    break;
+            }
+            
+        }
+
+        private void openMedia()
+        {
+            MediaPlayer mediaPlayer = new MediaPlayer(_context);
+            mediaPlayer.Show();
+        }
+
+        private void openYoutube()
+        {
             string timeAppendix = getTimeAppendix(_context.Time);
             System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
             {
-                //FileName = "https://www.google.com/search?q=" + wordStr + " meaning",
                 FileName = _context.MediaLocation + timeAppendix,
                 UseShellExecute = true
             });

@@ -23,6 +23,8 @@ namespace LungoApp.Views.LeftPanel
         {
             InitializeComponent();
 
+            
+
             //var T = new TranslateTransform(40, 0);
             //Duration duration = new Duration(new TimeSpan(0, 0, 0, 1, 0));
             //DoubleAnimation anim = new DoubleAnimation(30, duration);

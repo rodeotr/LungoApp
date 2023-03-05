@@ -42,7 +42,6 @@ namespace LungoApp.Views.LeftPanel
         {
             DataGridRow dataGridRow = (DataGridRow)sender;
             ((MenuMediaViewModel)DataContext).setTheWordsOfMedia((MediaMember)dataGridRow.DataContext);
-            Console.WriteLine("");
         }
     }
 }

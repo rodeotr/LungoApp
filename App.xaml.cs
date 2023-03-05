@@ -74,6 +74,8 @@ namespace LungoApp
             MainWindow window = _host.Services.GetRequiredService<MainWindow>();
             window.DataContext = _host.Services.GetRequiredService<MainViewModel>();
             window.Show();
+
+
         }
 
         private DbContextOptions getDatabaseOptions()
