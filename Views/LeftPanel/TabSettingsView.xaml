@@ -64,32 +64,6 @@
             </StackPanel>
 
             
-            <Border Grid.Row="3" Grid.Column="1" Margin="50 50 0 0" Background="#26a0da" Cursor="Hand" CornerRadius="8" Padding="10 5">
-                <Border.Effect>
-                    <DropShadowEffect Direction="250" ShadowDepth="3"/>
-                </Border.Effect>
-                <Border.InputBindings>
-                    <MouseBinding Gesture="LeftClick" Command="{Binding Command}" CommandParameter="Save"/>
-                </Border.InputBindings>
-                <Border.Style>
-                    <Style>
-                        <Setter Property="Border.Background" Value="ForestGreen"/>
-                        <Setter Property="Border.RenderTransformOrigin" Value="0.5, 0.5"/>
-                        <Style.Triggers>
-
-                            <Trigger Property="Border.IsMouseOver" Value="True">
-                                <Setter Property="Border.RenderTransform">
-                                    <Setter.Value>
-                                        <ScaleTransform ScaleX="1.05" ScaleY="1.05" />
-                                    </Setter.Value>
-                                </Setter>
-                                <Setter Property="Border.Background" Value="#024f14"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Border.Style>
-                <TextBlock Text="{DynamicResource Settings_Button_Save}" FontSize="20" HorizontalAlignment="Center"/>
-            </Border>
             
 
         </Grid>
@@ -119,7 +93,7 @@
                     <Border.Effect>
                         <DropShadowEffect Direction="220" ShadowDepth="2"/>
                     </Border.Effect>
-                    <Icon:PackIconMaterial Kind="Plus" Width="25" Height="25" Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#fff"/>
+                    <Icon:PackIconMaterial Kind="AccountPlus" Width="25" Height="25" Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#fff"/>
                 </Border>
                 <TextBlock Text="{DynamicResource Settings_Button_AddUser}" Margin="45 0 0 0" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#fff"/>
             </Grid>

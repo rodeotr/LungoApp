@@ -22,6 +22,7 @@ using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore;
 using LungoDatabase.DataAccess;
 using LungoDatabase.Models;
+using LungoViewModels.ViewModels.Collections;
 
 namespace LungoApp.Windows
 {

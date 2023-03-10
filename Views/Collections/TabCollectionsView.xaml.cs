@@ -12,6 +12,7 @@ namespace LungoApp.Views.Collections
     /// </summary>
     public partial class TabCollectionsView : UserControl
     {
+        CreateCollectionWindow window;
         public TabCollectionsView()
         {
             InitializeComponent();
@@ -25,8 +26,16 @@ namespace LungoApp.Views.Collections
 
         private void CreateCollection(TabCollectionsViewModel vM)
         {
-            CreateCollectionWindow window = new CreateCollectionWindow(vM);
-            window.Show();
+            if (window == null)
+            {
+                window = new CreateCollectionWindow(vM);
+                window.Show();
+            }
+            else if(!window.IsVisible)
+            {
+                window = new CreateCollectionWindow(vM);
+                window.Show();
+            }
         }
     }
 }

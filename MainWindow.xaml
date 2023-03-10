@@ -14,6 +14,7 @@
         xmlns:vmsStorage="clr-namespace:LungoViewModels.ViewModels.Storage;assembly=LungoViewModels"
         xmlns:vmsSettings="clr-namespace:LungoViewModels.ViewModels.Settings;assembly=LungoViewModels"
         xmlns:vmsMedia="clr-namespace:LungoViewModels.ViewModels.Media;assembly=LungoViewModels"
+        xmlns:vmsBrowse="clr-namespace:LungoViewModels.ViewModels.Browse;assembly=LungoViewModels"
         xmlns:vmsCollections="clr-namespace:LungoViewModels.ViewModels.Collections;assembly=LungoViewModels"
         xmlns:vmsTest="clr-namespace:LungoViewModels.ViewModels.Test;assembly=LungoViewModels"
         xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
@@ -43,10 +44,18 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="1" Panel.ZIndex="999">
 
                 <Button Style="{StaticResource topButton}" Margin="0 0 5 0" HorizontalAlignment="Left">
+                    
                     <Icon:PackIconMaterial Kind="Bell" Height="20" Width="20" Foreground="#444"/>
                 </Button>
-                <Button Style="{StaticResource topButton}" Margin="0 0 0 0" HorizontalAlignment="Right">
-                    <Icon:PackIconMaterial Kind="Cog"  Height="20" Width="20" Foreground="#444"/>
+                <Button Style="{StaticResource topButton}" Cursor="Hand" Margin="0 0 0 0" HorizontalAlignment="Right">
+                    
+                    <!--<Button.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Settings"/>
+                            <MenuItem Header="Profile"/>
+                        </ContextMenu>
+                    </Button.ContextMenu>-->
+                    <Icon:PackIconMaterial Kind="DotsVertical" Height="20" Width="20" Foreground="#444"/>
                 </Button>
                 <Separator Width="20" Height="50"  Margin="5 0 0 0" Foreground="#6e7783" Background="#6e7783">
                     <Separator.LayoutTransform>
@@ -89,8 +98,11 @@
                         <DataTemplate DataType="{x:Type vmsStorage:MenuStorageMainViewModel}">
                             <viewsLeftPanel:TabStorageMainView/>
                         </DataTemplate>
-                        <DataTemplate DataType="{x:Type vms:MenuCollectionsMainViewModel}">
+                        <DataTemplate DataType="{x:Type vmsCollections:MenuCollectionsMainViewModel}">
                             <viewsCollections:TabCollectionsMainView/>
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type vmsBrowse:TabBrowseViewModel}">
+                            <viewsLeftPanel:TabBrowseMainView/>
                         </DataTemplate>
                         <DataTemplate DataType="{x:Type vmsSettings:MenuSettingsViewModel}">
                             <viewsLeftPanel:TabSettingsView/>

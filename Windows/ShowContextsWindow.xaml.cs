@@ -78,7 +78,6 @@ namespace LungoApp.Windows.Collections
         }
         private void Play(object sender, RoutedEventArgs e)
         {
-
             MediaTypes.TYPE tYPE = ((WordContext)_context.Context).Type;
             switch (tYPE)
             {
@@ -89,7 +88,6 @@ namespace LungoApp.Windows.Collections
                     openMedia();
                     break;
             }
-            
         }
 
         private void openMedia()
