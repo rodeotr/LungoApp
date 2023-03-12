@@ -125,7 +125,8 @@ namespace LungoApp.Windows
                     CurrentLanguage = toLearnLanguage,
                     Languages = new List<Language>() { toLearnLanguage},
                     Gender = gender,
-                    Score = new Score()
+                    Score = new Score(),
+                    InitTime = DateTime.Now
                 };
                 await appServices.addUserToDB(user);
                 await appServices.SetCurrentUser(await services.getFirstUser());

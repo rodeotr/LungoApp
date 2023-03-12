@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LungoViewModels.ViewModels.Browse;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -21,6 +22,17 @@ namespace LungoApp.Views.LeftPanel
         public TabBrowseMainView()
         {
             InitializeComponent();
+            Loaded += OnLoaded;
+
         }
+
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            TabBrowseViewModel vM = (TabBrowseViewModel)DataContext;
+            vM.LoadData();
+            
+        }
+
+        
     }
 }

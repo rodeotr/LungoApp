@@ -45,7 +45,7 @@
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <Button  Style="{StaticResource gridSaveButton}" Command="{Binding DataContext.TabCollectionsCommand,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGrid}}}" CommandParameter="{Binding}" ToolTipService.ToolTip="Show Context">
-                                            <Icon:PackIconMaterial Kind="Youtube" Width="20px" Height="20px"/>
+                                            <Icon:PackIconMaterial Kind="{Binding CollectionTypeIconKind}" Width="20px" Height="20px"/>
                                         </Button>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>

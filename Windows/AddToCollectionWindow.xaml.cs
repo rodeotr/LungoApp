@@ -41,12 +41,12 @@ namespace LungoApp.Windows
 
 
         }
-
+            
         private async void AddButtonDown(object sender, MouseButtonEventArgs e)
         {
             if(collection.Text.Length != 0)
             {
-                int result;
+                int result = 0;
                 IHost _hostApp = (IHost)App.Current.Properties["AppHost"];
                 DbContextOptions options = _hostApp.Services.GetRequiredService<DbContextOptions>();
                 using(LungoContextDB context = new LungoContextDB(options))
@@ -60,12 +60,14 @@ namespace LungoApp.Windows
                     MessageBox.Show("Collection Type Mismatch.");
                 }
                 else{
-                    IHost _hostMain = (IHost)App.Current.Properties["MainViewModelHost"];
-                    MenuStorageMainViewModel vM = _hostMain.Services.GetRequiredService<MenuStorageMainViewModel>();
-                    MenuCollectionsMainViewModel vM_collections = _hostMain.Services.GetRequiredService<MenuCollectionsMainViewModel>();
-                    vM_collections.TabcollectionsViewModel.updateTheFields();
-                    vM.TabStorageWordsViewModel.Refresh();
-                    vM.TabStorageWordsViewModel.raisePropertyChangedEvent(nameof(vM.TabStorageWordsViewModel.CurrentMembers));
+                    // FIX THIS LATER. UPDATING REQUIRED FIELDS
+
+                    //IHost _hostMain = (IHost)App.Current.Properties["MainViewModelHost"];
+                    //MenuStorageMainViewModel vM = _hostMain.Services.GetRequiredService<MenuStorageMainViewModel>();
+                    //MenuCollectionsMainViewModel vM_collections = _hostMain.Services.GetRequiredService<MenuCollectionsMainViewModel>();
+                    //vM_collections.TabcollectionsViewModel.updateTheFields();
+                    //vM.TabStorageWordsViewModel.Refresh();
+                    //vM.TabStorageWordsViewModel.raisePropertyChangedEvent(nameof(vM.TabStorageWordsViewModel.CurrentMembers));
                 }
             }
             Close();

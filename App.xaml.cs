@@ -2,6 +2,7 @@
 using LungDatabaseAccess.Services.IServices;
 using LungoApp.Windows;
 using LungoDatabase.DataAccess;
+using LungoDatabaseAccess.Services;
 using LungoModels;
 using LungoViewModels;
 using LungoViewModels.Stores;
@@ -49,7 +50,7 @@ namespace LungoApp
             App.Current.Properties["AppHost"] = _host;
         }
 
-        protected override void OnStartup(StartupEventArgs e)
+        protected async override void OnStartup(StartupEventArgs e)
         {
             _host.Start();
 
@@ -62,6 +63,22 @@ namespace LungoApp
             else
             {
                 launchMainWindow();
+                DbContextOptions options = _host.Services.GetRequiredService<DbContextOptions>();
+                using (LungoContextDB context = new LungoContextDB(options))
+                {
+                    SettingServices settingServices = new SettingServices(context);
+                    bool IsUserRegistered = await settingServices.checkIfUserRegistered();
+                    if (!IsUserRegistered) {
+                        Guid guid;
+                        string userPublicId = await settingServices.registerUser();
+                        if(Guid.TryParse(userPublicId, out guid))
+                        {
+                            await settingServices.setPublicIdOfUser(userPublicId);
+                        }
+                    }
+                    SettingServices.getAllPublicUsersOfApplication();
+                }
+
             }
             base.OnStartup(e);
         }

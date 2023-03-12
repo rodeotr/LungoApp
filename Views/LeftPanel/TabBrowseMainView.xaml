@@ -6,27 +6,19 @@
              xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:local="clr-namespace:LungoApp.Views" 
              xmlns:sys="clr-namespace:System;assembly=System.Runtime"
-             xmlns:views="clr-namespace:LungoApp.Views.Collections"
-             xmlns:vms="clr-namespace:LungoViewModels.ViewModels.Collections;assembly=LungoViewModels"
+             xmlns:views="clr-namespace:LungoApp.Views.LeftPanel"
+             xmlns:vms="clr-namespace:LungoViewModels.ViewModels.Browse;assembly=LungoViewModels"
             mc:Ignorable="d" RenderOptions.BitmapScalingMode="NearestNeighbor"
             TextOptions.TextFormattingMode="Display"
             RenderOptions.ClearTypeHint="Enabled"
              >
     <Grid>
-        <!--<Grid.Resources>
-            <DataTemplate DataType="{x:Type vms:TabCollectionsViewModel}">
-                <views:TabCollectionsView/>
+        <Grid.Resources>
+            <DataTemplate DataType="{x:Type vms:TabBrowseUserViewModel}">
+                <views:TabBrowseView/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type vms:TabCollectionsMediaViewModel}">
-                <views:TabCollectionsMediaView/>
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type vms:TabCollectionsItemViewModel}">
-                <views:TabCollectionsItemView/>
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type vms:TabCollectionsMediaItemViewModel}">
-                <views:TabCollectionsItemView/>
-            </DataTemplate>
-        </Grid.Resources>-->
+            
+        </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="5*"/>
