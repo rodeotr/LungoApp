@@ -46,7 +46,7 @@ namespace LungoApp
         {
             _host = Host.CreateDefaultBuilder().ConfigureServices(services =>
             {
-                services.AddDbContextPool<LungoContextDB>(options => getDatabaseOptions(options));
+                services.AddDbContext<LungoContextDB>(options => getDatabaseOptions(options), ServiceLifetime.Transient);
                 services.AddSingleton(new WordProgressEventAggregator());
                 services.AddSingleton(new NewWordContextEventAggregator());
                 services.AddSingleton(this);
@@ -55,15 +55,15 @@ namespace LungoApp
                     new LungoViewModels.IHostModel() { _appHost = _host }));
                 services.AddSingleton<MainWindow>();
 
-                services.AddScoped<IAppServices,AppServices>();
-                services.AddScoped<CollectionServices>();
-                services.AddScoped<MediaServices>();
-                services.AddScoped<ScoreServices>();
-                services.AddScoped<SettingServices>();
-                services.AddScoped<TempServices>();
-                services.AddScoped<TestServices>();
-                services.AddScoped<TranscriptionServices>();
-                services.AddScoped<WordServices>();
+                services.AddTransient<IAppServices,AppServices>();
+                services.AddTransient<CollectionServices>();
+                services.AddTransient<MediaServices>();
+                services.AddTransient<ScoreServices>();
+                services.AddTransient<SettingServices>();
+                services.AddTransient<TempServices>();
+                services.AddTransient<TestServices>();
+                services.AddTransient<TranscriptionServices>();
+                services.AddTransient<WordServices>();
 
 
             }).Build();
@@ -73,9 +73,11 @@ namespace LungoApp
         protected async override void OnStartup(StartupEventArgs e)
         {
             _host.Start();
-
-            AppServices appServices = (AppServices)_host.Services.GetRequiredService<IAppServices>();
-            bool isAppRunningFirstTime = appServices.isAppRunningFirstTime();
+            bool isAppRunningFirstTime;
+            { 
+                AppServices appServices = (AppServices)_host.Services.GetRequiredService<IAppServices>();
+                isAppRunningFirstTime = appServices.isAppRunningFirstTime();
+            }
             if (isAppRunningFirstTime)
             {
                 firstTimeRunningSequence();
