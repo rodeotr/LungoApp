@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LungoViewModels.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -22,13 +23,19 @@ namespace LungoApp.Views.LeftPanel
         public LeftPanelView()
         {
             InitializeComponent();
-
+            //Loaded += OnLoaded;
             
 
             //var T = new TranslateTransform(40, 0);
             //Duration duration = new Duration(new TimeSpan(0, 0, 0, 1, 0));
             //DoubleAnimation anim = new DoubleAnimation(30, duration);
             //T.BeginAnimation(TranslateTransform.YProperty, anim);
+        }
+
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            LeftPanelViewModel vM = (LeftPanelViewModel)DataContext;
+            vM.updateTheFields();
         }
 
         private void menuAdd_Click(object sender, RoutedEventArgs e)

@@ -39,9 +39,14 @@ namespace LungoApp
             IHost _hostApp = (IHost)App.Current.Properties["AppHost"];
             eventAggregator = _hostApp.Services.GetRequiredService<WordProgressEventAggregator>();
             subscription = eventAggregator.ShowWindowObservable.Subscribe(x => { Update(x); });
-
+            //Loaded += OnLoaded;
 
         }
+
+        //private void OnLoaded(object sender, RoutedEventArgs e)
+        //{
+            
+        //}
 
         private async void Update(Report a)
         {

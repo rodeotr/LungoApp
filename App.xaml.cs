@@ -17,6 +17,7 @@ using System.Configuration;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Reactive.Disposables;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -28,25 +29,44 @@ namespace LungoApp
     /// </summary>
     public partial class App : Application
     {
-        private readonly IHost _host;
-        private readonly NavigationStore _navigationStore;
+        private IHost _host;
+        private NavigationStore _navigationStore;
 
         public App()
         {
+            InitializeHost();
+            InitializeNavigationStore();
+            
+        }
+        private void InitializeNavigationStore()
+        {
+            _navigationStore = new NavigationStore();
+        }
+        private void InitializeHost()
+        {
             _host = Host.CreateDefaultBuilder().ConfigureServices(services =>
             {
-                services.AddSingleton(getDatabaseOptions());
+                services.AddDbContextPool<LungoContextDB>(options => getDatabaseOptions(options));
                 services.AddSingleton(new WordProgressEventAggregator());
                 services.AddSingleton(new NewWordContextEventAggregator());
                 services.AddSingleton(this);
                 services.AddSingleton<NavigationStore>();
-                services.AddSingleton<IAppServices, AppServices>();
                 services.AddSingleton((s) => new MainViewModel(s.GetRequiredService<NavigationStore>(),
-                    new LungoViewModels.IHostModel() { _appHost = _host}));
+                    new LungoViewModels.IHostModel() { _appHost = _host }));
                 services.AddSingleton<MainWindow>();
 
+                services.AddScoped<IAppServices,AppServices>();
+                services.AddScoped<CollectionServices>();
+                services.AddScoped<MediaServices>();
+                services.AddScoped<ScoreServices>();
+                services.AddScoped<SettingServices>();
+                services.AddScoped<TempServices>();
+                services.AddScoped<TestServices>();
+                services.AddScoped<TranscriptionServices>();
+                services.AddScoped<WordServices>();
+
+
             }).Build();
-            _navigationStore = new NavigationStore();
             App.Current.Properties["AppHost"] = _host;
         }
 
@@ -63,24 +83,31 @@ namespace LungoApp
             else
             {
                 launchMainWindow();
-                DbContextOptions options = _host.Services.GetRequiredService<DbContextOptions>();
-                using (LungoContextDB context = new LungoContextDB(options))
+                bool userRegistered = await IsUserRegistered();
+                if (!userRegistered)
                 {
-                    SettingServices settingServices = new SettingServices(context);
-                    bool IsUserRegistered = await settingServices.checkIfUserRegistered();
-                    if (!IsUserRegistered) {
-                        Guid guid;
-                        string userPublicId = await settingServices.registerUser();
-                        if(Guid.TryParse(userPublicId, out guid))
-                        {
-                            await settingServices.setPublicIdOfUser(userPublicId);
-                        }
-                    }
-                    SettingServices.getAllPublicUsersOfApplication();
+                    registerUser();
                 }
-
             }
+
             base.OnStartup(e);
+        }
+
+        private async void registerUser()
+        {
+            Guid guid;
+            SettingServices settingServices = _host.Services.GetRequiredService<SettingServices>();
+            string userPublicId = await settingServices.registerUser();
+            if (Guid.TryParse(userPublicId, out guid))
+            {
+                await settingServices.setPublicIdOfUser(userPublicId);
+            }
+        }
+
+        private async Task<bool> IsUserRegistered()
+        {
+            SettingServices settingServices = _host.Services.GetRequiredService<SettingServices>();
+            return await settingServices.checkIfUserRegistered();
         }
 
         public void launchMainWindow()
@@ -92,13 +119,10 @@ namespace LungoApp
             window.DataContext = _host.Services.GetRequiredService<MainViewModel>();
             window.Show();
 
-
         }
 
-        private DbContextOptions getDatabaseOptions()
+        private DbContextOptions getDatabaseOptions(DbContextOptionsBuilder optionBuilder)
         {
-            var optionBuilder = new DbContextOptionsBuilder<LungoContextDB>();
-
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
@@ -107,7 +131,6 @@ namespace LungoApp
             string connectionString = configuration.GetConnectionString("DefaultConnection");
 
             optionBuilder.UseSqlServer(connectionString);
-
             return optionBuilder.Options;
         }
 

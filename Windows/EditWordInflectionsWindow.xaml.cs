@@ -43,16 +43,12 @@ namespace LungoApp.Windows
             if(textBox_addWord.Text.Length != 0)
             {
                 IHost _hostApp = (IHost)App.Current.Properties["AppHost"];
-                DbContextOptions options = _hostApp.Services.GetRequiredService<DbContextOptions>();
-                using (LungoContextDB context = new LungoContextDB(options))
+                WordServices services = _hostApp.Services.GetRequiredService<WordServices>();
+                int result = await services.addInflectionWord(_word, textBox_addWord.Text);
+                if (result == 1)
                 {
-                    WordServices services = new WordServices(context);
-                    int result = await services.addInflectionWord(_word, textBox_addWord.Text);
-                    if (result == 1)
-                    {
-                        _word = await services.getWordByID(_word.Id);
-                        listView_inflections.ItemsSource = _word.WordInflections;
-                    }
+                    _word = await services.getWordByID(_word.Id);
+                    listView_inflections.ItemsSource = _word.WordInflections;
                 }
                    
             }
@@ -70,16 +66,12 @@ namespace LungoApp.Windows
         {
             WordData wD = (WordData)((Button)sender).DataContext;
             IHost _hostApp = (IHost)App.Current.Properties["AppHost"];
-            DbContextOptions options = _hostApp.Services.GetRequiredService<DbContextOptions>();
-            using (LungoContextDB context = new LungoContextDB(options))
+            WordServices services = _hostApp.Services.GetRequiredService<WordServices>();
+            int result = await services.deleteWordInflection(wD.Id);
+            if (result == 1)
             {
-                WordServices services = new WordServices(context);
-                int result = await services.deleteWordInflection(wD.Id);
-                if (result == 1)
-                {
-                    _word = await services.getWordByID(_word.Id);
-                    listView_inflections.ItemsSource = _word.WordInflections;
-                }
+                _word = await services.getWordByID(_word.Id);
+                listView_inflections.ItemsSource = _word.WordInflections;
             }
                 
         }

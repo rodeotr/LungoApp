@@ -43,19 +43,14 @@ namespace LungoApp.Windows
             if(textBox_addExample.Text.Length != 0)
             {
                 IHost _hostApp = (IHost)App.Current.Properties["AppHost"];
-                DbContextOptions options = _hostApp.Services.GetRequiredService<DbContextOptions>();
-                using (LungoContextDB context = new LungoContextDB(options))
+                WordServices services = _hostApp.Services.GetRequiredService<WordServices>();
+                int result = await services.addExample(_word, textBox_addExample.Text);
+                if (result == 1)
                 {
-                    WordServices services = new WordServices(context);
-                    int result = await services.addExample(_word, textBox_addExample.Text);
-                    if (result == 1)
-                    {
-                        textBox_addExample.Text = "";
-                        _word = await services.getWordByID(_word.Id);
-                        listView_examples.ItemsSource = _word.Example;
-                    }
+                    textBox_addExample.Text = "";
+                    _word = await services.getWordByID(_word.Id);
+                    listView_examples.ItemsSource = _word.Example;
                 }
-                    
             }
         }
         private void MeaningEditClick(object sender, RoutedEventArgs e)
@@ -71,16 +66,12 @@ namespace LungoApp.Windows
         {
             Example ex = (Example)((Button)sender).DataContext;
             IHost _hostApp = (IHost)App.Current.Properties["AppHost"];
-            DbContextOptions options = _hostApp.Services.GetRequiredService<DbContextOptions>();
-            using (LungoContextDB context = new LungoContextDB(options))
+            WordServices services = _hostApp.Services.GetRequiredService<WordServices>();
+            int result = await services.deleteWordExample(ex.Id);
+            if (result == 1)
             {
-                WordServices services = new WordServices(context);
-                int result = await services.deleteWordExample(ex.Id);
-                if (result == 1)
-                {
-                    _word = await services.getWordByID(_word.Id);
-                    listView_examples.ItemsSource = _word.Example;
-                }
+                _word = await services.getWordByID(_word.Id);
+                listView_examples.ItemsSource = _word.Example;
             }
                 
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LungoViewModels.ViewModels.Test;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -21,8 +22,15 @@ namespace LungoApp.Views.LeftPanel
         public TabTestOverview()
         {
             InitializeComponent();
+            Loaded += OnLoaded;
             BeginAnim();
             
+        }
+
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            MenuTestDashViewModel vM = (MenuTestDashViewModel)DataContext;
+            vM.Model.updateWords();
         }
 
         private void BeginAnim()

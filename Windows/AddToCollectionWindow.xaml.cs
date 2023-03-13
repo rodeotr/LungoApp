@@ -48,13 +48,9 @@ namespace LungoApp.Windows
             {
                 int result = 0;
                 IHost _hostApp = (IHost)App.Current.Properties["AppHost"];
-                DbContextOptions options = _hostApp.Services.GetRequiredService<DbContextOptions>();
-                using(LungoContextDB context = new LungoContextDB(options))
-                {
-                    CollectionServices services = new CollectionServices(context);
-                    result = await services.addWordToCollection(collection.SelectedItem.ToString(), _wm.Name);
+                CollectionServices services = _hostApp.Services.GetRequiredService<CollectionServices>();
+                result = await services.addWordToCollection(collection.SelectedItem.ToString(), _wm.Name);
 
-                }
                 if (result == -1)
                 {
                     MessageBox.Show("Collection Type Mismatch.");

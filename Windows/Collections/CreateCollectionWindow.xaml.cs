@@ -46,13 +46,8 @@ namespace LungoApp.Windows.Collections
         {
             _vM.Model.createCollection(word.Text, collection.SelectedItem.ToString(),medium.SelectedItem.ToString());
             IHost _hostApp = (IHost)App.Current.Properties["AppHost"];
-            DbContextOptions options = _hostApp.Services.GetRequiredService<DbContextOptions>();
-            using (LungoContextDB context = new LungoContextDB(options))
-            {
-                ScoreServices services = new ScoreServices(context);
-                await services.IncrementScoreCollectionAdding();
-
-            }
+            ScoreServices services = _hostApp.Services.GetRequiredService<ScoreServices>();
+            await services.IncrementScoreCollectionAdding();
 
             Close();
         }

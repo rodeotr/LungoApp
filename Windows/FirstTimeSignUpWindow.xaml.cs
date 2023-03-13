@@ -66,15 +66,11 @@ namespace LungoApp.Windows
         private void setLanguageSources()
         {
             IHost _hostApp = (IHost)App.Current.Properties["AppHost"];
-            DbContextOptions options = _hostApp.Services.GetRequiredService<DbContextOptions>();
-            using (LungoContextDB context = new LungoContextDB(options))
-            {
-                SettingServices services = new SettingServices(context);
-                _languages = services.getAllLanguages();
-                string[] languageArray = _languages.Select(a => a.Name).ToArray();
-                LanguageComboBox.ItemsSource = languageArray;
-                LanguageToLearnComboBox.ItemsSource = languageArray;
-            }
+            SettingServices services = _hostApp.Services.GetRequiredService<SettingServices>();
+            _languages = services.getAllLanguages();
+            string[] languageArray = _languages.Select(a => a.Name).ToArray();
+            LanguageComboBox.ItemsSource = languageArray;
+            LanguageToLearnComboBox.ItemsSource = languageArray;
             
         }
 
@@ -111,29 +107,25 @@ namespace LungoApp.Windows
             IAppServices appServices = (IAppServices)host.Services.GetRequiredService<IAppServices>();
 
             IHost _hostApp = (IHost)App.Current.Properties["AppHost"];
-            DbContextOptions options = _hostApp.Services.GetRequiredService<DbContextOptions>();
-            using (LungoContextDB context = new LungoContextDB(options))
+            SettingServices services = _hostApp.Services.GetRequiredService<SettingServices>();
+            Language mainLanguage = await services.getLanguageByString(LanguageComboBox.SelectedItem.ToString());
+            Language toLearnLanguage = await services.getLanguageByString(LanguageToLearnComboBox.SelectedItem.ToString());
+
+            User user = new User()
             {
-                SettingServices services = new SettingServices(context);
-                Language mainLanguage = await services.getLanguageByString(LanguageComboBox.SelectedItem.ToString());
-                Language toLearnLanguage = await services.getLanguageByString(LanguageToLearnComboBox.SelectedItem.ToString());
+                Name = NameTextBox.Text,
+                MotherLanguage = mainLanguage,
+                CurrentLanguage = toLearnLanguage,
+                Languages = new List<Language>() { toLearnLanguage},
+                Gender = gender,
+                Score = new Score(),
+                InitTime = DateTime.Now
+            };
+            await appServices.addUserToDB(user);
+            await appServices.SetCurrentUser(await services.getFirstUser());
 
-                User user = new User()
-                {
-                    Name = NameTextBox.Text,
-                    MotherLanguage = mainLanguage,
-                    CurrentLanguage = toLearnLanguage,
-                    Languages = new List<Language>() { toLearnLanguage},
-                    Gender = gender,
-                    Score = new Score(),
-                    InitTime = DateTime.Now
-                };
-                await appServices.addUserToDB(user);
-                await appServices.SetCurrentUser(await services.getFirstUser());
-
-                _app.launchMainWindow();
-                Close();
-            }
+            _app.launchMainWindow();
+            Close();
 
             
 

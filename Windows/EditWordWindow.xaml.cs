@@ -64,17 +64,13 @@ namespace LungoApp.Windows
         private async void WordEditClick(object sender, RoutedEventArgs e)
         {
             IHost _hostApp = (IHost)App.Current.Properties["AppHost"];
-            DbContextOptions options = _hostApp.Services.GetRequiredService<DbContextOptions>();
-            using (LungoContextDB context = new LungoContextDB(options))
+            WordServices services = _hostApp.Services.GetRequiredService<WordServices>();
+            int result = await services.editWordName(_wordMember.Word, textBox_Name.Text);
+            if (result == 1)
             {
-                WordServices services = new WordServices(context);
-                int result = await services.editWordName(_wordMember.Word, textBox_Name.Text);
-                if (result == 1)
-                {
-                    resetValues();
-                }
-                Close();
+                resetValues();
             }
+            Close();
 
                 
         }
@@ -92,15 +88,11 @@ namespace LungoApp.Windows
         private async void MeaningEditClick(object sender, RoutedEventArgs e)
         {
             IHost _hostApp = (IHost)App.Current.Properties["AppHost"];
-            DbContextOptions options = _hostApp.Services.GetRequiredService<DbContextOptions>();
-            using (LungoContextDB context = new LungoContextDB(options))
+            WordServices services = _hostApp.Services.GetRequiredService<WordServices>();
+            int result = await services.editWordMeaning(_wordMember.Word, textBox_Meaning.Text);
+            if (result == 1)
             {
-                WordServices services = new WordServices(context);
-                int result = await services.editWordMeaning(_wordMember.Word, textBox_Meaning.Text);
-                if (result == 1)
-                {
-                    resetValues();
-                }
+                resetValues();
             }
                 
         }
@@ -125,12 +117,8 @@ namespace LungoApp.Windows
         private async void resetValues()
         {
             IHost _hostApp = (IHost)App.Current.Properties["AppHost"];
-            DbContextOptions options = _hostApp.Services.GetRequiredService<DbContextOptions>();
-            using (LungoContextDB context = new LungoContextDB(options))
-            {
-                WordServices services = new WordServices(context);
-                _wordMember.Word = await services.getWordByID(_wordMember.Word.Id);
-            }
+            WordServices services = _hostApp.Services.GetRequiredService<WordServices>();
+            _wordMember.Word = await services.getWordByID(_wordMember.Word.Id);
 
             textBox_Name.Text = _wordMember.Word.Name;
             textBox_Meaning.Text = _wordMember.Word.Description;

@@ -39,16 +39,12 @@ namespace LungoApp.Windows
         private async void AddButtonDown(object sender, MouseButtonEventArgs e)
         {
             IHost _hostApp = (IHost)App.Current.Properties["AppHost"];
-            DbContextOptions options = _hostApp.Services.GetRequiredService<DbContextOptions>();
-            using (LungoContextDB context = new LungoContextDB(options))
-            {
-                SettingServices services = new SettingServices(context);
-                ScoreServices servicesScore = new ScoreServices(context);
-                await services.AddLanguageToCurrentUser(comboLanguages.SelectedItem.ToString());
-                _vM.updateTheFields();
-                await servicesScore.IncrementScoreLanguageAdding();
-                Close();
-            }
+            SettingServices services = _hostApp.Services.GetRequiredService<SettingServices>();
+            ScoreServices servicesScore = _hostApp.Services.GetRequiredService<ScoreServices>();
+            await services.AddLanguageToCurrentUser(comboLanguages.SelectedItem.ToString());
+            _vM.updateTheFields();
+            await servicesScore.IncrementScoreLanguageAdding();
+            Close();
 
                 
         }
