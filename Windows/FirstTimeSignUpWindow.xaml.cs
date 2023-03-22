@@ -63,11 +63,11 @@ namespace LungoApp.Windows
 
         }
 
-        private void setLanguageSources()
+        private async void setLanguageSources()
         {
             IHost _hostApp = (IHost)App.Current.Properties["AppHost"];
-            SettingServices services = _hostApp.Services.GetRequiredService<SettingServices>();
-            _languages = services.getAllLanguages();
+            ILanguageServices services = _hostApp.Services.GetRequiredService<ILanguageServices>();
+            _languages = await services.getAllLanguages();
             string[] languageArray = _languages.Select(a => a.Name).ToArray();
             LanguageComboBox.ItemsSource = languageArray;
             LanguageToLearnComboBox.ItemsSource = languageArray;
@@ -107,9 +107,9 @@ namespace LungoApp.Windows
             IAppServices appServices = (IAppServices)host.Services.GetRequiredService<IAppServices>();
 
             IHost _hostApp = (IHost)App.Current.Properties["AppHost"];
-            SettingServices services = _hostApp.Services.GetRequiredService<SettingServices>();
-            Language mainLanguage = await services.getLanguageByString(LanguageComboBox.SelectedItem.ToString());
-            Language toLearnLanguage = await services.getLanguageByString(LanguageToLearnComboBox.SelectedItem.ToString());
+            ILanguageServices services = _hostApp.Services.GetRequiredService<ILanguageServices>();
+            Language mainLanguage = await services.getLanguageByName(LanguageComboBox.SelectedItem.ToString());
+            Language toLearnLanguage = await services.getLanguageByName(LanguageToLearnComboBox.SelectedItem.ToString());
 
             User user = new User()
             {
@@ -122,7 +122,7 @@ namespace LungoApp.Windows
                 InitTime = DateTime.Now
             };
             await appServices.addUserToDB(user);
-            await appServices.SetCurrentUser(await services.getFirstUser());
+            await appServices.SetCurrentUser(null);
 
             _app.launchMainWindow();
             Close();

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LungoApp.Windows;
+using LungoViewModels.ViewModels.Settings;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -21,6 +23,18 @@ namespace LungoApp.Views.LeftPanel
         public TabSettingsView()
         {
             InitializeComponent();
+            Loaded += OnLoaded;
+        }
+
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            ((MenuSettingsViewModel)DataContext).AddLanguageEvent += (languageList, vM) => ShowAddLanguage(languageList, vM);
+        }
+
+        private void ShowAddLanguage(string[] languageList, MenuSettingsViewModel vM)
+        {
+            AddLanguageWindow window = new AddLanguageWindow(languageList, vM);
+            window.Show();
         }
     }
 }

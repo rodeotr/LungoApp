@@ -1,7 +1,5 @@
 ﻿using LungDatabaseAccess.Services.IServices;
 using LungDatabaseAccess.Services;
-
-using LungoDatabaseAccess.Services;
 using LungoModel.Models;
 using LungoViewModels.ViewModels;
 using LungoViewModels.ViewModels.Storage;
@@ -23,6 +21,7 @@ using Microsoft.EntityFrameworkCore;
 using LungoDatabase.DataAccess;
 using LungoDatabase.Models;
 using LungoViewModels.ViewModels.Collections;
+using LungoDatabaseAccess.Services.Implementations;
 
 namespace LungoApp.Windows
 {

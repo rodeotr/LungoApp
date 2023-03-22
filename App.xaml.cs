@@ -3,6 +3,7 @@ using LungDatabaseAccess.Services.IServices;
 using LungoApp.Windows;
 using LungoDatabase.DataAccess;
 using LungoDatabaseAccess.Services;
+using LungoDatabaseAccess.Services.Implementations;
 using LungoModels;
 using LungoViewModels;
 using LungoViewModels.Stores;
@@ -55,14 +56,15 @@ namespace LungoApp
                     new LungoViewModels.IHostModel() { _appHost = _host }));
                 services.AddSingleton<MainWindow>();
 
-                services.AddTransient<IAppServices,AppServices>();
-                services.AddTransient<CollectionServices>();
-                services.AddTransient<MediaServices>();
-                services.AddTransient<ScoreServices>();
-                services.AddTransient<SettingServices>();
+                services.AddTransient<IAppServices, AppServices>();
+                services.AddTransient<IUserServices, UserServices>();
+                services.AddTransient<ICollectionServices, CollectionServices>();
+                services.AddTransient<ITestServices, TestServices>();
+                services.AddTransient<IScoreServices, ScoreServices>();
+                services.AddTransient<ILanguageServices, LanguageServices>();
+                services.AddTransient<ITranscriptionServices, TranscriptionServices>();
+                services.AddTransient<MediaServicesAlt>();
                 services.AddTransient<TempServices>();
-                services.AddTransient<TestServices>();
-                services.AddTransient<TranscriptionServices>();
                 services.AddTransient<WordServices>();
 
 
@@ -98,18 +100,18 @@ namespace LungoApp
         private async void registerUser()
         {
             Guid guid;
-            SettingServices settingServices = _host.Services.GetRequiredService<SettingServices>();
-            string userPublicId = await settingServices.registerUser();
+            IUserServices userServices = _host.Services.GetRequiredService<IUserServices>();
+            string userPublicId = await userServices.registerUser();
             if (Guid.TryParse(userPublicId, out guid))
             {
-                await settingServices.setPublicIdOfUser(userPublicId);
+                await userServices.setPublicIdOfUser(userPublicId);
             }
         }
 
         private async Task<bool> IsUserRegistered()
         {
-            SettingServices settingServices = _host.Services.GetRequiredService<SettingServices>();
-            return await settingServices.checkIfUserRegistered();
+            IUserServices userServices = _host.Services.GetRequiredService<IUserServices>();
+            return await userServices.checkIfCurrentUserRegistered();
         }
 
         public void launchMainWindow()

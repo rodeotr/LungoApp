@@ -1,5 +1,7 @@
-﻿using LungoDatabase.DataAccess;
-using LungoDatabaseAccess.Services;
+﻿using LungDatabaseAccess.Services.IServices;
+using LungoDatabase.DataAccess;
+using LungoDatabase.Models;
+using LungoDatabaseAccess.Services.Implementations;
 using LungoViewModels.ViewModels.Settings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -39,11 +41,12 @@ namespace LungoApp.Windows
         private async void AddButtonDown(object sender, MouseButtonEventArgs e)
         {
             IHost _hostApp = (IHost)App.Current.Properties["AppHost"];
-            SettingServices services = _hostApp.Services.GetRequiredService<SettingServices>();
-            ScoreServices servicesScore = _hostApp.Services.GetRequiredService<ScoreServices>();
-            await services.AddLanguageToCurrentUser(comboLanguages.SelectedItem.ToString());
+            ILanguageServices languageServices = _hostApp.Services.GetRequiredService<ILanguageServices>();
+            IScoreServices servicesScore = _hostApp.Services.GetRequiredService<IScoreServices>();
+            Language language = new Language() { Name = comboLanguages.SelectedItem.ToString() };
+            int result = await languageServices.AddLanguageToCurrentUser(language);
             _vM.updateTheFields();
-            await servicesScore.IncrementScoreLanguageAdding();
+            await servicesScore.IncrementScore(ScoreIncrements.PointsLanguage);
             Close();
 
                 

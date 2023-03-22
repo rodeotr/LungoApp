@@ -1,6 +1,5 @@
 ﻿using LungoDatabaseAccess;
 using LungoDatabase.DataAccess;
-using LungoDatabaseAccess.Services;
 using LungoViewModels.ViewModels.Collections;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +17,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using LungoDatabase;
+using LungDatabaseAccess.Services.IServices;
+using LungoDatabaseAccess.Services.Implementations;
 
 namespace LungoApp.Windows.Collections
 {
@@ -46,8 +47,8 @@ namespace LungoApp.Windows.Collections
         {
             _vM.Model.createCollection(word.Text, collection.SelectedItem.ToString(),medium.SelectedItem.ToString());
             IHost _hostApp = (IHost)App.Current.Properties["AppHost"];
-            ScoreServices services = _hostApp.Services.GetRequiredService<ScoreServices>();
-            await services.IncrementScoreCollectionAdding();
+            IScoreServices services = _hostApp.Services.GetRequiredService<IScoreServices>();
+            await services.IncrementScore(ScoreIncrements.PointsCollection);
 
             Close();
         }

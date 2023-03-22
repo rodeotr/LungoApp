@@ -20,7 +20,20 @@
     <None Remove="Assets\Images\exam.jpg" />
     <None Remove="Assets\Images\got.jpg" />
     <None Remove="Assets\Images\harry.jpg" />
+    <None Remove="Assets\Images\LanguageFlags\ar.png" />
+    <None Remove="Assets\Images\LanguageFlags\bn.png" />
+    <None Remove="Assets\Images\LanguageFlags\cn.png" />
+    <None Remove="Assets\Images\LanguageFlags\de.png" />
     <None Remove="Assets\Images\LanguageFlags\en.png" />
+    <None Remove="Assets\Images\LanguageFlags\es.png" />
+    <None Remove="Assets\Images\LanguageFlags\fr.png" />
+    <None Remove="Assets\Images\LanguageFlags\in.png" />
+    <None Remove="Assets\Images\LanguageFlags\it.png" />
+    <None Remove="Assets\Images\LanguageFlags\ja.png" />
+    <None Remove="Assets\Images\LanguageFlags\ko.png" />
+    <None Remove="Assets\Images\LanguageFlags\pt.png" />
+    <None Remove="Assets\Images\LanguageFlags\ru.png" />
+    <None Remove="Assets\Images\LanguageFlags\tr.png" />
     <None Remove="Assets\Images\phot.png" />
     <None Remove="Assets\Images\success.jpg" />
     <None Remove="ResourceDictionary\WordParsing.xml" />
@@ -40,6 +53,9 @@
     <PackageReference Include="LoadingSpinner.WPF" Version="1.0.0" />
     <PackageReference Include="MahApps.Metro.IconPacks" Version="4.11.0" />
     <PackageReference Include="Prism.Core" Version="8.1.97" />
+    <PackageReference Include="Serilog" Version="2.12.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -90,7 +106,46 @@
     <Resource Include="Assets\Images\harry.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Images\LanguageFlags\ar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\LanguageFlags\bn.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\LanguageFlags\cn.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\LanguageFlags\de.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Images\LanguageFlags\en.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\LanguageFlags\es.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\LanguageFlags\fr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\LanguageFlags\in.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\LanguageFlags\it.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\LanguageFlags\ja.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\LanguageFlags\ko.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\LanguageFlags\pt.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\LanguageFlags\ru.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\LanguageFlags\tr.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Images\phot.png">
