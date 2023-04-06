@@ -73,8 +73,8 @@ namespace LungoApp.Windows
 
         private void updateUI(Report message)
         {
-            text.Text = message.Word;
-            frequency.Text = "Density: " + message.WordFrequency;
+            text.Text = message.Number + ". " + message.Word;
+            frequency.Text = "Density: " + message.WordFrequency + "/20";
             bar.Value = Double.Parse(message.Percentage);
         }
 

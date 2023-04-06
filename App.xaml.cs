@@ -1,7 +1,9 @@
 ﻿using LungDatabaseAccess.Services;
 using LungDatabaseAccess.Services.IServices;
 using LungoApp.Windows;
+using LungoDatabase;
 using LungoDatabase.DataAccess;
+using LungoDatabase.Models;
 using LungoDatabaseAccess.Services;
 using LungoDatabaseAccess.Services.Implementations;
 using LungoModels;
@@ -86,8 +88,9 @@ namespace LungoApp
             }
             else
             {
+
                 launchMainWindow();
-                bool userRegistered = await IsUserRegistered();
+                bool userRegistered = IsUserRegistered();
                 if (!userRegistered)
                 {
                     registerUser();
@@ -108,10 +111,10 @@ namespace LungoApp
             }
         }
 
-        private async Task<bool> IsUserRegistered()
+        private bool IsUserRegistered()
         {
             IUserServices userServices = _host.Services.GetRequiredService<IUserServices>();
-            return await userServices.checkIfCurrentUserRegistered();
+            return userServices.checkIfCurrentUserRegistered();
         }
 
         public void launchMainWindow()
@@ -133,7 +136,8 @@ namespace LungoApp
 
             IConfigurationRoot configuration = builder.Build();
             string connectionString = configuration.GetConnectionString("DefaultConnection");
-
+            
+            
             optionBuilder.UseSqlServer(connectionString);
             return optionBuilder.Options;
         }

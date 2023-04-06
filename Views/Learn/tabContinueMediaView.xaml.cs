@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LungoViewModels.ViewModels.Browse;
+using LungoViewModels.ViewModels.Learn.Tabs;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -23,6 +25,7 @@ namespace LungoApp.Views.Learn
         public tabContinueMediaView()
         {
             InitializeComponent();
+            Loaded += OnLoaded;
         }
         private void PreviewTextInputMaxFreq(object sender, TextCompositionEventArgs e)
         {
@@ -33,6 +36,12 @@ namespace LungoApp.Views.Learn
         {
             _regex = new Regex("[^0-9.-]+");
             return !_regex.IsMatch(text);
+        }
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            TabContinueMediaViewModel vM = (TabContinueMediaViewModel)DataContext;
+            vM.updateTheFields();
+
         }
     }
 }

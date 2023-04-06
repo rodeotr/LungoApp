@@ -44,8 +44,8 @@ namespace LungoApp.Windows.Collections
             
             word.Text = context.Word;
             medium.Text = _wcontext.Type.ToString();
-            source.Text = _wcontext.Address.TranscriptionAddress.Title;
-            timeStamp.Text = ((WordContext)(_context.Context)).Address.SubLocation;
+            source.Text = _wcontext.Address?.TranscriptionAddress.Title;
+            timeStamp.Text = ((WordContext)(_context.Context)).Address?.SubLocation;
             setText();
             if (context.MediaLocation == null)
             {
@@ -70,8 +70,7 @@ namespace LungoApp.Windows.Collections
                 text.Text = text_;
             }
             
-        }
-
+        } 
         private void Close(object sender, RoutedEventArgs e)
         {
             Close();

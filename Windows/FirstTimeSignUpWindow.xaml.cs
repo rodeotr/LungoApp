@@ -108,8 +108,8 @@ namespace LungoApp.Windows
 
             IHost _hostApp = (IHost)App.Current.Properties["AppHost"];
             ILanguageServices services = _hostApp.Services.GetRequiredService<ILanguageServices>();
-            Language mainLanguage = await services.getLanguageByName(LanguageComboBox.SelectedItem.ToString());
-            Language toLearnLanguage = await services.getLanguageByName(LanguageToLearnComboBox.SelectedItem.ToString());
+            Language mainLanguage =  services.getLanguageByName(LanguageComboBox.SelectedItem.ToString());
+            Language toLearnLanguage = services.getLanguageByName(LanguageToLearnComboBox.SelectedItem.ToString());
 
             User user = new User()
             {
