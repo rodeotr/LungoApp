@@ -47,7 +47,7 @@ namespace LungoApp.Windows
             {
                 int result = 0;
                 IHost _hostApp = (IHost)App.Current.Properties["AppHost"];
-                CollectionServices services = _hostApp.Services.GetRequiredService<CollectionServices>();
+                CollectionServices services = (CollectionServices)_hostApp.Services.GetRequiredService<ICollectionServices>();
                 result = await services.addWordToCollection(collection.SelectedItem.ToString(), _wm.Name);
 
                 if (result == -1)

@@ -222,7 +222,7 @@
                 <RowDefinition Height="1.5*"/>
                 <RowDefinition Height="1.7*"/>
             </Grid.RowDefinitions>
-            <TextBlock Panel.ZIndex="2" Grid.Row="0" Text="Lingo" FontSize="35" Foreground="white" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="SimSun"/>
+            <TextBlock Panel.ZIndex="2" Grid.Row="0" Text="Lungo" FontSize="35" Foreground="white" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="SimSun"/>
             <Grid Grid.Row="1" Margin="20 0 20 10" Panel.ZIndex="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>

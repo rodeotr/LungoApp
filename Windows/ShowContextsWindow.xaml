@@ -9,6 +9,15 @@
         AllowsTransparency="True"
         WindowStyle="None" WindowStartupLocation="CenterScreen"
         Title="ShowContextsWindow">
+    <Window.Resources>
+        <Style x:Key="title" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
+            <Setter Property="FontFamily" Value="Sniglet"></Setter>
+        </Style>
+    </Window.Resources>
     <Border CornerRadius="2" Background="#0288b5">
         <Grid Margin="15 0">
             <Grid.ColumnDefinitions>
@@ -21,25 +30,25 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Button Style="{StaticResource topButton}" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Margin="0 13" Width="40px" Height="40px" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Close">
                 <Icon:PackIconMaterial Kind="Close" Width="20px" Height="20px" Foreground="white" />
             </Button>
-            <TextBlock Grid.Row="1" Grid.Column="0" Text="Word: " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="white" FontSize="20"/>
-            <TextBlock x:Name="word" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="white" FontSize="20"/>
-            <TextBlock Grid.Row="2" Grid.Column="0" Text="Medium" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="white" FontSize="20"/>
-            <TextBlock x:Name="medium" Grid.Row="2" Grid.Column="1"  HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="white" FontSize="20"/>
-            <TextBlock Grid.Row="3" Grid.Column="0" Text="Source" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="white" FontSize="20"/>
-            <TextBlock x:Name="source" Grid.Row="3" Grid.Column="1"  HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="white" FontSize="20"/>
-            <TextBlock Grid.Row="4" Grid.Column="0" Text="Playhead" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="white" FontSize="20"/>
-            <TextBlock x:Name="timeStamp" Grid.Row="4" Grid.Column="1" Text="" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="white" FontSize="20"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Word: " Style="{StaticResource title}"/>
+            <TextBlock x:Name="word" Grid.Row="1" Grid.Column="1" Style="{StaticResource title}"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Medium" Style="{StaticResource title}"/>
+            <TextBlock x:Name="medium" Grid.Row="2" Grid.Column="1" Style="{StaticResource title}"/>
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Source" Style="{StaticResource title}"/>
+            <TextBlock x:Name="source" Grid.Row="3" Grid.Column="1" Style="{StaticResource title}"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Playhead" Style="{StaticResource title}"/>
+            <TextBlock x:Name="timeStamp" Grid.Row="4" Grid.Column="1" Text="" Style="{StaticResource title}"/>
 
 
-            <TextBlock Grid.Row="5" Grid.Column="0" Text="Text" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="white" FontSize="20"/>
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="Text" Style="{StaticResource title}"/>
             <ScrollViewer Grid.Row="5" Grid.Column="1" VerticalScrollBarVisibility="Auto">
-                <TextBlock x:Name="text" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" Foreground="white" FontSize="20"/>
+                <TextBlock x:Name="text" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" Foreground="white" FontSize="17"/>
             </ScrollViewer>
             <StackPanel Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                 <Border Width="30px" Height="30px" Grid.Row="0" Grid.Column="1" Margin="10 0" Cursor="Hand" HorizontalAlignment="Right" Background="Transparent" MouseDown="getMeaning">
