@@ -116,8 +116,24 @@
                                         </Grid.ColumnDefinitions>
                                         <Border Cursor="Hand" Grid.Column="1" Width="26" Height="26" Background="White" CornerRadius="30 15 15 15" Panel.ZIndex="10">
                                             <Border.InputBindings>
-                                                <MouseBinding Gesture="LeftClick" Command="{Binding DataContext.TabCollectionsCommand,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type ItemsControl}}}" CommandParameter="{Binding}"/>
+                                                <MouseBinding Gesture="LeftClick" Command="{Binding DataContext.TabCollectionsCommand,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type ItemsControl}}}">
+                                                    <MouseBinding.CommandParameter>
+                                                        <MultiBinding Converter="{StaticResource multiConverter}">
+                                                            <Binding>
+                                                                <Binding.Source>
+                                                                    Edit
+                                                                </Binding.Source>
+                                                            </Binding>
+                                                            <Binding Path=".">
+                                                            </Binding>
+                                                        </MultiBinding>
+                                                    </MouseBinding.CommandParameter>
+                                                </MouseBinding>
+
                                             </Border.InputBindings>
+                                            <!--<Border.InputBindings>
+                                                <MouseBinding Gesture="LeftClick" Command="{Binding DataContext.TabCollectionsCommand,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type ItemsControl}}}" CommandParameter="{Binding}"/>
+                                            </Border.InputBindings>-->
                                             <Icon:PackIconMaterial Grid.Column="1"  Kind="DotsVertical" Width="15px" Height="15px" Foreground="#1e386b" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                         </Border>
 

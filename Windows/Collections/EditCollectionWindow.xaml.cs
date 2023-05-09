@@ -1,4 +1,5 @@
-﻿using LungoModel.Utils;
+﻿using LungoModel.Models;
+using LungoModel.Utils;
 using LungoViewModels.ViewModels.Browse;
 using System;
 using System.Collections.Generic;
@@ -19,8 +20,8 @@ namespace LungoApp.Windows.Collections
     /// </summary>
     public partial class EditCollectionWindow : Window
     {
-        CollectionModel _collection;
-        public EditCollectionWindow(CollectionModel collection)
+        CollectionModelTemplate _collection;
+        public EditCollectionWindow(CollectionModelTemplate collection)
         {
             InitializeComponent();
             _collection = collection;
