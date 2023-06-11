@@ -22,6 +22,7 @@ using LungoDatabase.DataAccess;
 using LungoDatabase.Models;
 using LungoViewModels.ViewModels.Collections;
 using LungoDatabaseAccess.Services.Implementations;
+using LungoViewModels;
 
 namespace LungoApp.Windows
 {
@@ -57,12 +58,12 @@ namespace LungoApp.Windows
                 else{
                     // FIX THIS LATER. UPDATING REQUIRED FIELDS
 
-                    //IHost _hostMain = (IHost)App.Current.Properties["MainViewModelHost"];
-                    //MenuStorageMainViewModel vM = _hostMain.Services.GetRequiredService<MenuStorageMainViewModel>();
-                    //MenuCollectionsMainViewModel vM_collections = _hostMain.Services.GetRequiredService<MenuCollectionsMainViewModel>();
-                    //vM_collections.TabcollectionsViewModel.updateTheFields();
-                    //vM.TabStorageWordsViewModel.Refresh();
-                    //vM.TabStorageWordsViewModel.raisePropertyChangedEvent(nameof(vM.TabStorageWordsViewModel.CurrentMembers));
+                    IHost _hostMain = IHostContainer.Model._mainHost;
+                    MenuStorageMainViewModel vM = _hostMain.Services.GetRequiredService<MenuStorageMainViewModel>();
+                    MenuCollectionsMainViewModel vM_collections = _hostMain.Services.GetRequiredService<MenuCollectionsMainViewModel>();
+                    vM_collections.TabcollectionsViewModel.updateTheFields();
+                    vM.TabStorageWordsViewModel.Refresh();
+                    vM.TabStorageWordsViewModel.raisePropertyChangedEvent(nameof(vM.TabStorageWordsViewModel.CurrentMembers));
                 }
             }
             Close();

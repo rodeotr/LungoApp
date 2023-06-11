@@ -16,9 +16,9 @@ namespace LungoApp.Views.LeftPanel
     /// <summary>
     /// Interaction logic for tabDashBoard.xaml
     /// </summary>
-    public partial class TabBrowseView : UserControl
+    public partial class TabBrowseRankingsView : UserControl
     {
-        public TabBrowseView()
+        public TabBrowseRankingsView()
         {
             InitializeComponent();
         }

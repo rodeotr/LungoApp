@@ -57,9 +57,6 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <Button Style="{StaticResource gridSaveButton}" Margin="0 0 1 0" Command="{Binding DataContext.GridCommand,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGrid}}}" CommandParameter="{Binding Number}" ToolTipService.ToolTip="Edit the Word">
-                                    <Icon:PackIconMaterial Kind="Pencil" Width="20px" Height="20px"/>
-                                </Button>
                                 <Button Style="{StaticResource gridSaveButton}" Command="{Binding DataContext.GridCommand,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGrid}}}" CommandParameter="{Binding Number}" ToolTipService.ToolTip="Delete the Word">
                                     <Icon:PackIconMaterial Kind="Delete" Width="20px" Height="20px"/>
                                 </Button>

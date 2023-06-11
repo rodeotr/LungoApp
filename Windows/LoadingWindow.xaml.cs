@@ -35,7 +35,6 @@ namespace LungoApp.Windows
             InitializeComponent();
             _eventAggregator = eventAggregator;
             _loadingContext = new LoadingContext();
-            Console.WriteLine("loading window constructor");
             //DataContext = this;
 
             //DataContext = _loadingContext;

@@ -15,6 +15,8 @@
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
         <local:ContextConverter x:Key="multiConverter"/>
+        <FontFamily x:Key="Montserrat">pack://application:,,,/Resources/Montserrat-Regular.ttf#Montserrat</FontFamily>
+
     </UserControl.Resources>
     <!--<UserControl.Resources>
         <local:CommandConverter x:Key="commandConverter"/>
@@ -130,7 +132,7 @@
                                     <Border Width="40" Height="40" CornerRadius="50" Margin="0 0 10 0" Background="{Binding BGColor}">
                                         <TextBlock Text="{Binding Character}" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#eee" Margin="0 0 0 0"/>
                                     </Border>
-                                    <TextBlock Text="{Binding WordObj.Name}" FontSize="20" VerticalAlignment="Center" FontFamily="Sniglet"/>
+                                    <TextBlock Text="{Binding WordObj.Name}" FontSize="20" VerticalAlignment="Center" FontFamily="{StaticResource Montserrat}"/>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>

@@ -1,26 +1,18 @@
-﻿using LungDatabaseAccess.Services;
-using LungDatabaseAccess.Services.IServices;
+﻿using LungDatabaseAccess.Services.IServices;
 using LungoApp.Windows;
-using LungoDatabase;
 using LungoDatabase.DataAccess;
-using LungoDatabase.Models;
 using LungoDatabaseAccess.Services;
 using LungoDatabaseAccess.Services.Implementations;
 using LungoModels;
-using LungoViewModels;
 using LungoViewModels.Stores;
 using LungoViewModels.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.IO;
-using System.Linq;
-using System.Reactive.Disposables;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -70,6 +62,9 @@ namespace LungoApp
                 services.AddTransient<WordServices>();
 
 
+            }).ConfigureLogging( logging =>
+            {
+                logging.ClearProviders();
             }).Build();
             App.Current.Properties["AppHost"] = _host;
         }
@@ -88,27 +83,28 @@ namespace LungoApp
             }
             else
             {
-
                 launchMainWindow();
                 bool userRegistered = IsUserRegistered();
-                if (!userRegistered)
-                {
+                if(!userRegistered){
                     registerUser();
                 }
+                updateUserOnServer();
             }
 
             base.OnStartup(e);
         }
 
-        private async void registerUser()
+        private async Task registerUser()
         {
             Guid guid;
             IUserServices userServices = _host.Services.GetRequiredService<IUserServices>();
             string userPublicId = await userServices.registerUser();
-            if (Guid.TryParse(userPublicId, out guid))
-            {
-                await userServices.setPublicIdOfUser(userPublicId);
-            }
+        }
+
+        private async Task updateUserOnServer()
+        {
+            IUserServices userServices = _host.Services.GetRequiredService<IUserServices>();
+            await userServices.updateUserInfoOnServer();
         }
 
         private bool IsUserRegistered()

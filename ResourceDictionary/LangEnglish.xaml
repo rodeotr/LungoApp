@@ -3,6 +3,7 @@
 
     <system:String x:Key="FirstTime_Name">Name</system:String>
     <system:String x:Key="FirstTime_YourLanguage">Your Language</system:String>
+    <system:String x:Key="FirstTime_YourCountry">Country</system:String>
     <system:String x:Key="FirstTime_AppLanguage">Application Language</system:String>
     <system:String x:Key="FirstTime_TargetLanguage">The Language You Want To Learn</system:String>
     <system:String x:Key="FirstTime_ButtonStart">START</system:String>
@@ -114,6 +115,10 @@
     <system:String x:Key="Collections_Button_Create">Create</system:String>
     <system:String x:Key="Collections_Browse_Elements">Elements</system:String>
     <system:String x:Key="Collections_Browse_Examples">Examples</system:String>
+
+    <system:String x:Key="Browse_Tab_Collections">Collections</system:String>
+    <system:String x:Key="Browse_Tab_Rankings">Rankings</system:String>
+
 
 
     <system:String x:Key="Settings_User">User</system:String>

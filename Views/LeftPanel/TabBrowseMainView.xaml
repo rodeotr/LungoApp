@@ -10,14 +10,15 @@
              xmlns:vms="clr-namespace:LungoViewModels.ViewModels.Browse;assembly=LungoViewModels"
             mc:Ignorable="d" RenderOptions.BitmapScalingMode="NearestNeighbor"
             TextOptions.TextFormattingMode="Display"
-            RenderOptions.ClearTypeHint="Enabled"
-             >
+            RenderOptions.ClearTypeHint="Enabled">
     <Grid>
         <Grid.Resources>
             <DataTemplate DataType="{x:Type vms:TabBrowseUserViewModel}">
-                <views:TabBrowseView/>
+                <views:TabBrowseRankingsView/>
             </DataTemplate>
-            
+            <DataTemplate DataType="{x:Type vms:TabBrowseCollectionsViewModel}">
+                <views:TabBrowseCollectionsView/>
+            </DataTemplate>
         </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -29,15 +30,15 @@
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <Icon:PackIconMaterial Kind="Trophy" Width="15px" Height="15px" Margin="0 0 5 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="green"/>
-                            <TextBlock Text="Ranking" Foreground="#000" FontSize="15" VerticalAlignment="Center"/>
+                            <TextBlock Text="{DynamicResource Browse_Tab_Rankings}" Foreground="#000" FontSize="15" VerticalAlignment="Center"/>
                         </StackPanel>
                     </TabItem.Header>
                 </TabItem>
                 <TabItem Template="{DynamicResource TabItemTemplateLearning}">
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <Icon:PackIconMaterial Kind="Filmstrip" Width="15px" Height="15px" Margin="0 0 5 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="green"/>
-                            <TextBlock Text="{DynamicResource Collections_Tab_Media}" Foreground="#000" FontSize="15"/>
+                            <Icon:PackIconMaterial Kind="Rhombus" Width="15px" Height="15px" Margin="0 0 5 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="green"/>
+                            <TextBlock Text="{DynamicResource Browse_Tab_Collections}" Foreground="#000" FontSize="15"/>
                         </StackPanel>
                     </TabItem.Header>
                 </TabItem>

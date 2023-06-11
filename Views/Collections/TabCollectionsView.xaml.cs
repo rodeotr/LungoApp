@@ -1,8 +1,10 @@
 ﻿
 using LungoApp.Windows.Collections;
+using LungoModel.Interfaces;
 using LungoModel.Models;
 using LungoViewModels.ViewModels.Collections;
 using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -11,13 +13,17 @@ namespace LungoApp.Views.Collections
     /// <summary>
     /// Interaction logic for tabListWords.xaml
     /// </summary>
-    public partial class TabCollectionsView : UserControl
+    public partial class TabCollectionsView : UserControl, ContextClosable
     {
         CreateCollectionWindow createCollectionwindow;
         EditCollectionWindow editCollectionWindow;
+
+        public List<string> OpenContexts { get; set; }
+
         public TabCollectionsView()
         {
             InitializeComponent();
+            OpenContexts = new List<string>();
             Loaded += OnLoaded;
         }
 
@@ -29,20 +35,22 @@ namespace LungoApp.Views.Collections
 
         private void EditCollection(CollectionModelTemplate cModel)
         {
-            editCollectionWindow = new EditCollectionWindow(cModel);
-            editCollectionWindow.Show();
+            if (!OpenContexts.Contains(cModel.Name))
+            {
+                OpenContexts.Add(cModel.Name);
+                editCollectionWindow = new EditCollectionWindow(cModel, this);
+                editCollectionWindow.Show();
+            }
+            
         }
 
         private void CreateCollection(TabCollectionsViewModel vM)
         {
-            if (createCollectionwindow == null)
+            
+            if (!OpenContexts.Contains("CreateCollection"))
             {
-                createCollectionwindow = new CreateCollectionWindow(vM);
-                createCollectionwindow.Show();
-            }
-            else if(!createCollectionwindow.IsVisible)
-            {
-                createCollectionwindow = new CreateCollectionWindow(vM);
+                OpenContexts.Add("CreateCollection");
+                createCollectionwindow = new CreateCollectionWindow(vM, this);
                 createCollectionwindow.Show();
             }
         }

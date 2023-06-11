@@ -15,10 +15,12 @@
             <Setter Property="HorizontalAlignment" Value="Left"></Setter>
             <Setter Property="VerticalAlignment" Value="Center"></Setter>
             <Setter Property="Foreground" Value="White"></Setter>
-            <Setter Property="FontFamily" Value="Sniglet"></Setter>
+            <!--<Setter Property="FontFamily" Value="Sniglet"></Setter>-->
         </Style>
+        <FontFamily x:Key="Montserrat">pack://application:,,,/Resources/Montserrat-Regular.ttf#Montserrat</FontFamily>
+
     </Window.Resources>
-    <Border CornerRadius="2" Background="#0288b5">
+    <Border CornerRadius="2" Background="#0288b5" TextBlock.FontFamily="{StaticResource Montserrat}">
         <Grid Margin="15 0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>

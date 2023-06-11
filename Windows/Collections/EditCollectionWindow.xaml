@@ -10,6 +10,8 @@
         WindowStyle="None" WindowStartupLocation="CenterScreen"
         Title="ShowContextsWindow">
     <Window.Resources>
+        <FontFamily x:Key="Montserrat">pack://application:,,,/Resources/Montserrat-Regular.ttf#Montserrat</FontFamily>
+
         <Style x:Key="Titles" TargetType="TextBlock">
             <Setter Property="FontSize" Value="17"/>
             <Setter Property="FontFamily" Value="Sniglet"/>
@@ -29,7 +31,7 @@
         </Style>
     </Window.Resources>
     <Border CornerRadius="5" Background="#fff">
-        <Grid TextBlock.FontSize="15">
+        <Grid TextBlock.FontSize="15" TextBlock.FontFamily="{StaticResource Montserrat}">
             
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -110,8 +112,7 @@
                         <TextBlock Text="Publish" Margin="20 0 0 0" FontFamily="Arial" FontWeight="Normal" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#fff"/>
                     </Grid>
                 </Border>
-           
-            <Border Grid.Row="8" Height="50" Margin="50 0" Cursor="Hand" CornerRadius="2" Grid.ColumnSpan="2">
+            <Border Grid.Row="8" Height="50" Margin="50 0" Cursor="Hand" CornerRadius="2" Grid.ColumnSpan="2" MouseDown="DeleteCollection">
                 <Border.Style>
                     <Style>
                         <Setter Property="Border.Background" Value="#0B834D"/>
@@ -133,9 +134,9 @@
                         <Border.Effect>
                             <DropShadowEffect Direction="220" ShadowDepth="2"/>
                         </Border.Effect>
-                        <Icon:PackIconMaterial Kind="ContentSave" Width="25" Height="25" Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#fff"/>
+                        <Icon:PackIconMaterial Kind="Delete" Width="25" Height="25" Margin="0 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#fff"/>
                     </Border>
-                    <TextBlock Text="Save" Margin="20 0 0 0"  FontSize="20" FontFamily="Arial" FontWeight="Normal" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#fff"/>
+                    <TextBlock Text="Delete" Margin="20 0 0 0"  FontSize="20" FontFamily="Arial" FontWeight="Normal" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#fff"/>
                 </Grid>
             </Border>
 

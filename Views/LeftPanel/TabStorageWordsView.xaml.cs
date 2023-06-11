@@ -2,6 +2,7 @@
 using LungoApp.Windows;
 using LungoApp.Windows.Collections;
 using LungoDatabase.Models;
+using LungoModel.Interfaces;
 using LungoModel.Models;
 using LungoViewModels.ViewModels.Storage;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -17,15 +18,19 @@ namespace LungoApp.Views.LeftPanel
     /// <summary>
     /// Interaction logic for tabListWords.xaml
     /// </summary>
-    public partial class TabStorageWordsView : UserControl
+    public partial class TabStorageWordsView : UserControl, ContextClosable
     {
         TabStorageWordsViewModel _vm;
+
+
         public TabStorageWordsView()
         {
             InitializeComponent();
+            OpenContexts = new List<string>();
             Loaded += OnLoaded;
             
         }
+        public List<string> OpenContexts { get; set; }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
@@ -37,8 +42,13 @@ namespace LungoApp.Views.LeftPanel
 
         private void ShowContext(StorageContext context)
         {
-            ShowContextsWindow window = new ShowContextsWindow(context);
-            window.Show();
+            if (!OpenContexts.Contains(context.Word))
+            {
+                OpenContexts.Add(context.Word);
+                ShowContextsWindow window = new ShowContextsWindow(context);
+                window.parentWindow = this;
+                window.Show();
+            }
         }
         private void ShowWordEdit(WordMember member)
         {

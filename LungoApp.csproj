@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
@@ -36,7 +36,9 @@
     <None Remove="Assets\Images\LanguageFlags\tr.png" />
     <None Remove="Assets\Images\phot.png" />
     <None Remove="Assets\Images\success.jpg" />
+    <None Remove="Content\countryFlags.json" />
     <None Remove="ResourceDictionary\WordParsing.xml" />
+    <None Remove="Resources\Montserrat-Regular.ttf" />
   </ItemGroup>
 
   <ItemGroup>
@@ -45,6 +47,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Content\countryFlags.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="symbol.ico" />
   </ItemGroup>
 
@@ -52,7 +57,6 @@
     <PackageReference Include="Extended.Wpf.Toolkit" Version="4.5.0" />
     <PackageReference Include="LoadingSpinner.WPF" Version="1.0.0" />
     <PackageReference Include="MahApps.Metro.IconPacks" Version="4.11.0" />
-    <PackageReference Include="Prism.Core" Version="8.1.97" />
     <PackageReference Include="Serilog" Version="2.12.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
     <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
@@ -60,6 +64,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LungViewModels\LungoViewModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Montserrat-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -163,6 +173,7 @@
     <Resource Include="ResourceDictionary\WordParsing.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Montserrat-Regular.ttf" />
   </ItemGroup>
 
   <ItemGroup>

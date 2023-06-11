@@ -5,9 +5,12 @@ using LungoDatabaseAccess.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -20,6 +23,7 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
+using System.Windows.Resources;
 using System.Windows.Shapes;
 
 namespace LungoApp.Windows
@@ -32,17 +36,47 @@ namespace LungoApp.Windows
         private readonly App _app;
         private bool _maleActive = true;
         private List<Language> _languages;
+        private List<string> _countries = new List<string>();
         public FirstTimeSignUpWindow(App app)
         {
             InitializeComponent();
             _app = app;
             setLanguageSources();
+            setCountryList();
 
             ResourceDictionary dict = new ResourceDictionary()
             {
                 Source = new Uri("..\\ResourceDictionary\\LangEnglish.xaml", UriKind.Relative)
             };
             Resources.MergedDictionaries.Add(dict);
+        }
+
+        private void setCountryList()
+        {
+            string json = "";
+            string filePath = "Content/countryFlags.json";
+
+            Uri fileUri = new Uri(filePath, UriKind.Relative);
+            StreamResourceInfo resourceInfo = Application.GetContentStream(fileUri);
+
+            if (resourceInfo != null)
+            {
+                using (StreamReader reader = new StreamReader(resourceInfo.Stream))
+                {
+                    json = reader.ReadToEnd();
+                    // Process the JSON content
+                }
+            }
+
+            List<Countries> jsonObjectList = JsonConvert.DeserializeObject<List<Countries>>(json);
+
+            foreach (Countries jsonObject in jsonObjectList)
+            {
+                _countries.Add(jsonObject.name);
+            }
+
+            CountryComboBox.ItemsSource = _countries;
+
         }
 
         private void setLanguageDictionary(string language)
@@ -119,7 +153,8 @@ namespace LungoApp.Windows
                 Languages = new List<Language>() { toLearnLanguage},
                 Gender = gender,
                 Score = new Score(),
-                InitTime = DateTime.Now
+                InitTime = DateTime.Now,
+                CountryName = CountryComboBox.SelectedItem.ToString()
             };
             await appServices.addUserToDB(user);
             await appServices.SetCurrentUser(null);
@@ -148,6 +183,11 @@ namespace LungoApp.Windows
 
             setLanguageDictionary(selected);
         }
+    }
+    class Countries
+    {
+        public string name { get; set; }
+        public string code { get; set; }
     }
     
 

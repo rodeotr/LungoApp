@@ -22,8 +22,12 @@
 
                 <Grid Grid.Row="0">
                     <StackPanel Orientation="Vertical">
-                        <TextBlock Text="{DynamicResource LeftPanel_DashBoard}" Foreground="#000" FontSize="20" Margin="10 40 0 30" FontFamily="Berlin Sans FB"/>
-                        <TextBlock Text="{DynamicResource DashBoard_Title}" Foreground="#000" FontSize="30" Margin="10 0 0 15" FontFamily="Raleway"/>
+                        <TextBlock Text="{DynamicResource LeftPanel_DashBoard}" Foreground="#000" FontSize="20" Margin="10 40 0 15" FontFamily="Berlin Sans FB"/>
+                        <StackPanel Orientation="Horizontal" Margin="10 0 0 0">
+                            <TextBlock Text="{Binding TotalWords}" FontSize="25" Foreground="Green" ></TextBlock>
+                            <TextBlock Text="Words" FontSize="25" Foreground="Green" Margin="10 0 0 0"></TextBlock>
+                        </StackPanel>
+                        <TextBlock Text="{DynamicResource DashBoard_Title}" Foreground="#000" FontSize="30" Margin="10 10 0 15" FontFamily="Raleway"/>
                     </StackPanel>
 
                 </Grid>

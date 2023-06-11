@@ -23,21 +23,6 @@
 						<ColumnDefinition Width="*"/>
 						<ColumnDefinition Width="2.3*"/>
 					</Grid.ColumnDefinitions>
-					<!--<Grid HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2">
-						<Ellipse x:Name="EG_1"
-								 Height="100"
-								 Width="100"
-								 Fill="#A9C220"
-								 />
-						<Ellipse x:Name="EG_2"
-								 Height="100"
-								 Width="100"
-								 Fill="#A9C220"
-								 />
-
-
-					</Grid>-->
-					
 					<Border Grid.Column="0" CornerRadius="40" Margin="10 5 10 20" Background="#eee"/>
 					<Grid Grid.Column="0">
 						<Border Width="50" Height="50" CornerRadius="25" Background="red" HorizontalAlignment="Right" VerticalAlignment="Top" BorderBrush="#FFEA7878" BorderThickness="2">
@@ -203,7 +188,7 @@
 							</Grid>
 							<Grid Grid.Column="0" Margin="15 0 0 0">
 								<Grid>
-									<Border Height="120" Width="120" Cursor="Hand" CornerRadius="60" Background="#0033cc" RenderTransformOrigin=".5,.5">
+									<Border Height="120" Width="120" Cursor="Hand" CornerRadius="20" Background="#0033cc" RenderTransformOrigin=".5,.5">
 									<Border.InputBindings>
 										<MouseBinding Gesture="LeftClick" Command="{Binding TabTestCommand}" CommandParameter="Practice_30"/>
 									</Border.InputBindings>
@@ -221,7 +206,7 @@
 										</Style>
 									</Border.Style>
 										<Grid>
-											<Border Width="40px" Height="40px" CornerRadius="20" HorizontalAlignment="Right" VerticalAlignment="Top" Background="Red">
+											<Border Width="40px" Height="40px" CornerRadius="10 20 10 10" HorizontalAlignment="Right" VerticalAlignment="Top" Background="Red">
 												<Icon:PackIconMaterial Kind="ChevronUp" Width="20px" Height="20px" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="white"/>
 											</Border>
 											<TextBlock Text="30" FontSize="60" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="white"/>
@@ -232,7 +217,7 @@
 							</Grid>
 							<Grid Grid.Column="1" Margin="15 0 0 0">
 								<Grid>
-									<Border Height="120" Width="120" Cursor="Hand" CornerRadius="60" Background="#009933" RenderTransformOrigin=".5,.5">
+									<Border Height="120" Width="120" Cursor="Hand" CornerRadius="20" Background="#009933" RenderTransformOrigin=".5,.5">
 										<Border.InputBindings>
 											<MouseBinding Gesture="LeftClick" Command="{Binding TabTestCommand}" CommandParameter="Practice_60"/>
 										</Border.InputBindings>
@@ -250,7 +235,7 @@
 											</Style>
 										</Border.Style>
 										<Grid>
-											<Border Width="40px" Height="40px" CornerRadius="20" HorizontalAlignment="Right" VerticalAlignment="Top" Background="Red">
+											<Border Width="40px" Height="40px" CornerRadius="20" HorizontalAlignment="Right" VerticalAlignment="Top" Background="DarkViolet">
 												<Icon:PackIconMaterial Kind="ChevronDoubleUp" Width="20px" Height="20px" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="white"/>
 											</Border>
 											<TextBlock FontSize="60" Text="60" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="white"/>
@@ -261,7 +246,7 @@
 							</Grid>
 							<Grid Grid.Column="2" Margin="15 0 0 0">
 								<Grid>
-									<Border Height="120" Width="120" Cursor="Hand" CornerRadius="60" Background="#E52724" RenderTransformOrigin=".5,.5">
+									<Border Height="120" Width="120" Cursor="Hand" CornerRadius="20" Background="#E52724" RenderTransformOrigin=".5,.5">
 										<Border.InputBindings>
 											<MouseBinding Gesture="LeftClick" Command="{Binding TabTestCommand}" CommandParameter="Practice_All"/>
 										</Border.InputBindings>

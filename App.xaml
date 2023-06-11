@@ -8,9 +8,7 @@
              
              >
     <Application.Resources>
-        
-        
-        
+        <FontFamily x:Key="Montserrat">pack://application:,,,/Resources/Montserrat-Regular.ttf#Montserrat</FontFamily>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -1225,7 +1223,7 @@
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Foreground" Value="#000"/>
             <Setter Property="Margin" Value="0 0 0 10"/>
-            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="{StaticResource Montserrat}"></Setter>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type DataGridColumnHeader}">

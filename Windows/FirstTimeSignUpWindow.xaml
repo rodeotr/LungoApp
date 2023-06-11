@@ -220,6 +220,7 @@
                 <RowDefinition Height="1.5*"/>
                 <RowDefinition Height="1.5*"/>
                 <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="1.5*"/>
                 <RowDefinition Height="1.7*"/>
             </Grid.RowDefinitions>
             <TextBlock Panel.ZIndex="2" Grid.Row="0" Text="Lungo" FontSize="35" Foreground="white" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="SimSun"/>
@@ -297,6 +298,21 @@
 
             </Grid>
             <Grid Grid.Row="3" Panel.ZIndex="2" Width="{StaticResource Input_Width}" Height="{StaticResource Input_Height}">
+                <ComboBox x:Name="CountryComboBox" FontSize="17"/>
+                <TextBlock FontSize="{StaticResource Hint_FontSize}" IsHitTestVisible="False" Text="{DynamicResource FirstTime_YourCountry}" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="10 0" Margin="10,0,0,0" Foreground="DarkGray">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=CountryComboBox}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </Grid>
+            <Grid Grid.Row="4" Panel.ZIndex="2" Width="{StaticResource Input_Width}" Height="{StaticResource Input_Height}">
                 <ComboBox x:Name="LanguageComboBox" FontSize="17" SelectionChanged="YourLanguageChanged"/>
                 <TextBlock FontSize="{StaticResource Hint_FontSize}" IsHitTestVisible="False" Text="{DynamicResource FirstTime_YourLanguage}" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="10 0" Margin="10,0,0,0" Foreground="DarkGray">
                     <TextBlock.Style>
@@ -310,10 +326,8 @@
                         </Style>
                     </TextBlock.Style>
                 </TextBlock>
-
-
             </Grid>
-            <Grid Grid.Row="4" Panel.ZIndex="2" Width="{StaticResource Input_Width}" Height="{StaticResource Input_Height}">
+            <Grid Grid.Row="5" Panel.ZIndex="2" Width="{StaticResource Input_Width}" Height="{StaticResource Input_Height}">
                 <ComboBox x:Name="LanguageToLearnComboBox" FontSize="17"/>
 
                 <TextBlock FontSize="{StaticResource Hint_FontSize}" IsHitTestVisible="False" Text="{DynamicResource FirstTime_TargetLanguage}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,0" Foreground="DarkGray">
@@ -329,7 +343,7 @@
                     </TextBlock.Style>
                 </TextBlock>
         </Grid>
-        <Border x:Name="startButton" Grid.Row="5" Panel.ZIndex="2" Cursor="Hand" Width="150" MouseDown="Save_MouseDowned" Height="40" Background="#000" CornerRadius="1">
+        <Border x:Name="startButton" Grid.Row="6" Panel.ZIndex="2" Cursor="Hand" Width="150" MouseDown="Save_MouseDowned" Height="40" Background="#000" CornerRadius="1">
                 <!--<Border.Triggers>
                     <EventTrigger RoutedEvent="Border.MouseEnter">
                         <EventTrigger.Actions>

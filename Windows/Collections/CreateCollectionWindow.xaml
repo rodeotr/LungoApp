@@ -9,10 +9,14 @@
         AllowsTransparency="True"
         WindowStyle="None" WindowStartupLocation="CenterScreen"
         Title="ShowContextsWindow">
-    <Border CornerRadius="2" Background="#0288b5">
+    <Window.Resources>
+        <FontFamily x:Key="Montserrat">pack://application:,,,/Resources/Montserrat-Regular.ttf#Montserrat</FontFamily>
+    </Window.Resources>
+    
+    <Border CornerRadius="2" Background="#0288b5" TextBlock.FontFamily="{StaticResource Montserrat}">
         <Grid Margin="15 0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2.2*"/>
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -26,11 +30,11 @@
                 <Icon:PackIconMaterial Kind="Close" Width="20px" Height="20px" Foreground="white" />
             </Button>
             <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="white" FontSize="20"/>
-            <TextBox Width="150" x:Name="word" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"  FontSize="20"/>
+            <TextBox Width="150" x:Name="word" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"  FontSize="20"/>
             <TextBlock Grid.Row="2" Grid.Column="0" Text="Collection Type" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="white" FontSize="20"/>
-            <ComboBox Width="150" x:Name="collection" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20"/>
+            <ComboBox Width="150" x:Name="collection" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
             <TextBlock Grid.Row="3" Grid.Column="0" Text="Medium Type" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="white" FontSize="20"/>
-            <ComboBox Width="150" x:Name="medium" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20"/>
+            <ComboBox Width="150" x:Name="medium" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
 
             <Border Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Cursor="Hand" Height="50" Width="120" Margin="10 0" CornerRadius="25" MouseDown="Create_Down">
                 <!--<Border.InputBindings>

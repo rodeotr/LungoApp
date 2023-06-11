@@ -1,6 +1,8 @@
 ﻿
+using LungoApp.Views.LeftPanel;
 using LungoDatabase;
 using LungoDatabase.Models;
+using LungoModel.Interfaces;
 using LungoModel.Models;
 using LungoModel.Utils;
 using System;
@@ -24,6 +26,7 @@ namespace LungoApp.Windows.Collections
     public partial class ShowContextsWindow : Window
     {
         StorageContext _context;
+        public ContextClosable parentWindow;
         public ShowContextsWindow(StorageContext context)
         {
             _context = context;
@@ -73,6 +76,7 @@ namespace LungoApp.Windows.Collections
         } 
         private void Close(object sender, RoutedEventArgs e)
         {
+            parentWindow.OpenContexts.Remove(_context.Word);
             Close();
         }
         private void Play(object sender, RoutedEventArgs e)

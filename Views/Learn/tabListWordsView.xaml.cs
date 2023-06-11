@@ -1,23 +1,14 @@
 ﻿using LungoApp.Windows.Collections;
+using LungoModel.Interfaces;
 using LungoModels;
-using LungoViewModels;
 using LungoViewModels.ViewModels.Learn;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Prism.Events;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Xceed.Wpf.Toolkit;
 
 namespace LungoApp.Views.Learn
@@ -26,17 +17,22 @@ namespace LungoApp.Views.Learn
     /// Interaction logic for tabListWords.xaml
     /// </summary>
     /// 
-    
-    public partial class tabListWordsView : UserControl
+
+    public partial class tabListWordsView : UserControl, ContextClosable
     {
         ScrollViewer scroll;
         private NewWordContextEventAggregator _eventAggregator;
         private TabLearnNewWordsViewModel _viewModel;
+        
         int _lowerValue = 1;
         int _higherValue = 2;
+
+        public List<string> OpenContexts { get; set; }
+
         public tabListWordsView()
         {
             InitializeComponent();
+            OpenContexts = new List<string>();
             IHost _hostApp = (IHost)App.Current.Properties["AppHost"];
             _eventAggregator = _hostApp.Services.GetRequiredService<NewWordContextEventAggregator>();
             _eventAggregator.ShowWindowObservable.Subscribe(x => { launchContextWindow(x); });
@@ -46,6 +42,8 @@ namespace LungoApp.Views.Learn
         private void launchContextWindow(NewWordContextMessage Message)
         {
             ShowContextsWindow contextsWindow = new ShowContextsWindow(Message.Context);
+            OpenContexts.Add(Message.Context.Word);
+            contextsWindow.parentWindow = this;
             contextsWindow.Show();
         }
 
@@ -72,11 +70,6 @@ namespace LungoApp.Views.Learn
                 _viewModel.OnPropertyChanged(nameof(_viewModel.TotalWordString));
             }
         }
-
-
-
-
-
 
         public static ScrollViewer GetScrollViewer(UIElement element)
         {
